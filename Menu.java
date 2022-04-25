@@ -17,10 +17,7 @@ public class Menu{
         fenetre.setMinimumSize(new Dimension(300,300));
         fenetre.setLocation(200,200);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GridLayout gestionnaire = new GridLayout(10, 1);
-		       for (i = 0; i < 4; i++) {
-            fenetre.add(new JPanel());
-        }
+		GridLayout gestionnaire = new GridLayout(3, 1);
 		JPanel newgam = new JPanel();
 		JPanel rpgame = new JPanel();
 		JPanel quit = new JPanel();
