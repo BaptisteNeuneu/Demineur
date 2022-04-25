@@ -19,6 +19,12 @@ public class TestMenu{
         fenetre.setSize(lx,ly);
         fenetre.setMinimumSize(new Dimension(mx,my));
         fenetre.setLocation(px,py);
+        GridLayout gestionnaire2 = new GridLayout(4, 8);
+
+
+
+
+
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fenetre.setVisible(true); /*Afficher la fenêtre*/
 	}
