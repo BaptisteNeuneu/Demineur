@@ -6,29 +6,40 @@
 import javax.swing.*;
 import java.awt.*;
 public class Menu{
-	  private int lx;
-  	  private int ly;
-  	  private int mx;
-	  private int my;
-  	  private int px;
-  	  private int py;
+		private int i;
 
-	public Menu(int lx,int ly,int mx,int my,int px,int py){
-		this.lx=lx;
-    	this.ly=ly;
-    	this.mx=mx;
-		this.my=my;
-    	this.px=px;
-    	this.py=py;
-	}
+
 	public void Menu(){
 		/*Un objet pour servir de fenetre*/
         JFrame fenetre = new JFrame();
         /*On configure la fenetre*/
-        fenetre.setSize(lx,ly);
-        fenetre.setMinimumSize(new Dimension(mx,my));
-        fenetre.setLocation(px,py);
+        fenetre.setSize(500,500);
+        fenetre.setMinimumSize(new Dimension(300,300));
+        fenetre.setLocation(200,200);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fenetre.setVisible(true); /*Afficher la fenêtre*/
+		GridLayout gestionnaire = new GridLayout(10, 1);
+		       for (i = 0; i < 4; i++) {
+            fenetre.add(new JPanel());
+        }
+		JPanel newgam = new JPanel();
+		JPanel rpgame = new JPanel();
+		JPanel quit = new JPanel();
+		JButton newgame = new JButton("Nouvelle Partie");
+		JButton reprendregame = new JButton("Reprendre la partie");
+		JButton quitter = new JButton("Quitter la partie");
+				newgam.add(newgame);
+		rpgame.add(reprendregame);
+		quit.add(quitter);
+		fenetre.add(newgam);
+		fenetre.add(quit);
+		fenetre.add(rpgame);
+				ActionMenu amenu = new ActionMenu(fenetre,newgame);
+		newgame.addActionListener(amenu);
+		//reprendregame.addActionListener(this);
+		quitter.addActionListener(amenu);
+			        fenetre.setVisible(true); /*Afficher la fenêtre*/
 	}
+	public static void main(String[] args){
+	new Menu();
+}
 }
