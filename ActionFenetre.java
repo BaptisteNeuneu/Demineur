@@ -4,8 +4,16 @@ import javax.swing.*;
 
 public class ActionFenetre  extends JFrame,Check implements ActionListener,
 MouseListener {
-
-    public void ActionFenetre(int rows, int cols,int numMines){
+        private boolean[] mines;
+        private boolean[] clickable;
+        private boolean lost;
+        private boolean won;
+        private int[] numbers;
+        private boolean[] clickdone;
+        private int rows = 15;
+        private int cols = 10;
+        private int numMines = 15;
+        public void ActionFenetre(){
         @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == difficulty) {

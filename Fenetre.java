@@ -5,22 +5,22 @@ import javax.swing.*;
 /**MineSweeper by SciWizEH*/
 public class Fenetre extends JFrame implements ActionFenetre {
  
-    int rows = 10;
-    int cols = 10;
-    int numMines = 15;
+    private int rows;
+    private int cols;
+    private int numMines;
     GridLayout layout = new GridLayout(rows, cols);
     /*type[][] name = new type[rows][cols];
      * type[x][y];
      * is 1d
      * type[] name = new type[rows*cols];
      * type[(rows*y)+x];*/
-    boolean[] mines = new boolean[rows * cols];
-    boolean[] clickable = new boolean[rows * cols];
-    boolean lost = false;
-    boolean won = false;
-    int[] numbers = new int[rows * cols];
+    private boolean[] mines = new boolean[rows * cols];
+    private boolean[] clickable = new boolean[rows * cols];
+    private boolean lost = false;
+    private boolean won = false;
+    private int[] numbers = new int[rows * cols];
+    private boolean[] clickdone = new boolean[rows * cols];
     JButton[] buttons = new JButton[rows * cols];
-    boolean[] clickdone = new boolean[rows * cols];
     JMenuItem newGameButton = new JMenuItem("new game");
     JMenuItem reglage = new JMenuItem("options");
     JLabel mineLabel = new JLabel("mines: " + numMines + " marked: 0" + " suposition: 0");
