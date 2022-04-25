@@ -4,11 +4,11 @@ import javax.swing.*;
 
 public class ActionMenu2  extends JFrame implements TextListener {
 
-    TextArea newligne;
-    TextArea newcolonne;
-    TextArea newnbrMines;
+    JTextArea newligne;
+    JTextArea newcolonne;
+    JTextArea newnbrMines;
 
-    public void ActionMenu2(TextArea newligne,TextArea newcolonne,TextArea newnbrMines){
+    public void ActionMenu2(JTextArea newligne,JTextArea newcolonne,JTextArea newnbrMines){
              this.newligne=newligne;
              this.newcolonne=newcolonne;
              this.newnbrMines=newnbrMines;   

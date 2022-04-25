@@ -19,9 +19,9 @@ public class Menu2{
 		JPanel panecritcolonne = new JPanel();
 		JPanel panneaunbrMines = new JPanel();
 		JPanel panecritnbrMines = new JPanel();
-		TextArea newligne = new TextArea("", 3,3);
-		TextArea newcolonne = new TextArea("", 3,3);
-		TextArea newnbrMines = new TextArea("", 3,3);
+		JTextArea newligne = new JTextArea("", 3,3);
+		JTextArea newcolonne = new JTextArea("", 3,3);
+		JTextArea newnbrMines = new JTextArea("", 3,3);
 		ActionMenu2 amenu2 = new ActionMenu2(newligne, newcolonne, newnbrMines);
 		newligne.textValueChanged(amenu2);
 		newcolonne.textValueChanged(amenu2 );
