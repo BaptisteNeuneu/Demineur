@@ -4,14 +4,12 @@
 */
 //inclusion des bibliothèques
 import javax.swing.*;
-import java.awt.*;
 
 public class Case {
 
-	private int taille;
 	private static JFrame fenetre;
 
-	public void Case(){
+	public void Case1(){
 		JButton bouton = new JButton("");
 		fenetre.add(bouton);
 	}

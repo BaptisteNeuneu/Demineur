@@ -9,7 +9,9 @@ import java.awt.*;
 public class Grille {
     private static int ligne = 15;
     private static int colonne = 15;
-    private static int taille = ligne * colonne;
+    private static int nbrMines = 15;
+    private static boolean[] presencemines = new boolean[ligne * colonne] ;
+   // private static int taille = ligne * colonne;
     // Un objet pour servir de fenetre
     private static JFrame fenetre = new JFrame();
 
@@ -24,13 +26,14 @@ public class Grille {
         fenetre.setLayout(grille);
         for(int i = 0; i < ligne; i++){
             for(int j = 0; j < colonne; j++){
-                JButton bouton = new JButton("");
-                fenetre.add(bouton);
+                macase.Case1();
         }
     }
     fenetre.setVisible(true); //Afficher la fenêtre
     fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+    Mine newrandMine = new Mine();
+    newrandMine.setMine( nbrMines,ligne,colonne,presencemines);
+    newrandMine.Mine1();
 
 
 

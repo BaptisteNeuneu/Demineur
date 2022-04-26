@@ -6,10 +6,10 @@
 import javax.swing.*;
 import java.awt.*;
 public class Menu{
-		private int i;
 
 
-	public void Menu(){
+
+	public void Menu1(){
 		/*Un objet pour servir de fenetre*/
         JFrame fenetre = new JFrame();
         /*On configure la fenetre*/
@@ -17,26 +17,25 @@ public class Menu{
         fenetre.setMinimumSize(new Dimension(300,300));
         fenetre.setLocation(200,200);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GridLayout gestionnaire = new GridLayout(3, 1);
+		GridLayout r = new GridLayout(3,2);
+		fenetre.setLayout(r);
 		JPanel newgam = new JPanel();
 		JPanel rpgame = new JPanel();
 		JPanel quit = new JPanel();
 		JButton newgame = new JButton("Nouvelle Partie");
 		JButton reprendregame = new JButton("Reprendre la partie");
 		JButton quitter = new JButton("Quitter la partie");
-				newgam.add(newgame);
+		newgam.add(newgame);
 		rpgame.add(reprendregame);
 		quit.add(quitter);
 		fenetre.add(newgam);
-		fenetre.add(quit);
 		fenetre.add(rpgame);
-				ActionMenu amenu = new ActionMenu(fenetre,newgame);
+		fenetre.add(quit);
+				ActionMenu amenu = new ActionMenu(newgame,reprendregame,quitter);
 		newgame.addActionListener(amenu);
-		//reprendregame.addActionListener(this);
+		reprendregame.addActionListener(amenu);
 		quitter.addActionListener(amenu);
 			        fenetre.setVisible(true); /*Afficher la fenêtre*/
 	}
-	public static void main(String[] args){
-	new Menu();
-}
+
 }

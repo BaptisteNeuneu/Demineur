@@ -1,9 +1,8 @@
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
  
 /**MineSweeper by SciWizEH*/
-public class Fenetre extends JFrame implements ActionFenetre {
+public class Fenetre extends JFrame  {
  
     private int rows;
     private int cols;
