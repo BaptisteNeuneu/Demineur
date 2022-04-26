@@ -6,11 +6,12 @@
 import java.awt.*;
 import javax.swing.*;
  
-public class Fenetre extends JFrame  {
+public class Fenetre  {
  
     private int ligne = 10;
     private int colonne = 10;
     private int nbrMines = 5;
+    JFrame fenetre = new JFrame();
     GridLayout layout = new GridLayout(ligne, colonne);
     /*type[][] name = new type[ligne][colonne];
      * type[x][y];
@@ -45,12 +46,12 @@ public class Fenetre extends JFrame  {
         //reglage.addActionListener(this);
         m.add(reglage);
         mb.add(m);
-        this.setJMenuBar(mb);
-        this.add(p);
-        this.add(mineLabel, BorderLayout.SOUTH);
-        this.pack();
+        fenetre.setJMenuBar(mb);
+        fenetre.add(p);
+        fenetre.add(mineLabel, BorderLayout.SOUTH);
+        fenetre.pack();
         //reglage.addActionListener(this);
-        this.setVisible(true);
+        fenetre.setVisible(true);
     }
     public static void main(String[] args){
     new Fenetre();

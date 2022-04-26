@@ -30,7 +30,6 @@ public class ActionButton implements ActionListener, MouseListener{
         this.nbrMines=nbrMines;
         this.numbers=numbers;
     }
-        @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == reglage) {
             ligne = Integer.parseInt((String) JOptionPane.showInputDialog(
