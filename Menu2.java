@@ -4,7 +4,7 @@ import java.awt.*;
 public class Menu2{
 
 
-    public void Menu2(){
+    public void Menu21(){
 		/*Un objet pour servir de fenetre*/
         JFrame fenetre2 = new JFrame();
         /*On configure la fenetre*/
