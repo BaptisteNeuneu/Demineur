@@ -1,5 +1,5 @@
 /**
-* @version 03/02/2022
+* @version 26/04/2022
 * @author Felix Brinet
 */
 //inclusion des bibliothèques
@@ -7,15 +7,16 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Grille {
-    private static int ligne = 15;
-    private static int colonne = 15;
-    private static int nbrMines = 15;
-    private static boolean[] presencemines = new boolean[ligne * colonne] ;
+    private int ligne = 15;
+    private int colonne = 15;
+    private int nbrMines = 15;
+    private boolean[] presencemines = new boolean[ligne * colonne] ;
+    private int[] numbers;
    // private static int taille = ligne * colonne;
     // Un objet pour servir de fenetre
-    private static JFrame fenetre = new JFrame();
+    private  JFrame fenetre = new JFrame();
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
 
         // On configure la fenetre
         fenetre.setSize(500,500);
@@ -34,8 +35,9 @@ public class Grille {
     Mine newrandMine = new Mine();
     newrandMine.setMine( nbrMines,ligne,colonne,presencemines);
     newrandMine.Mine1();
-
-
+    FillNumber newsetnumber = new FillNumber();
+    newsetnumber.setFillNumber(ligne, colonne, presencemines, numbers);
+    newsetnumber.fillnumbers();
 
 
 

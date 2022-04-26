@@ -1,5 +1,5 @@
 /**
-* @version 03/02/2022
+* @version 26/04/2022
 * @author Felix Brinet
 */
 //inclusion des bibliothèques
@@ -7,10 +7,11 @@ import javax.swing.*;
 
 public class Case {
 
-	private static JFrame fenetre;
+	private JFrame fenetre;
 
-	public void Case1(){
+	public void uneCase(){
 		JButton bouton = new JButton("");
 		fenetre.add(bouton);
+		
 	}
 }
