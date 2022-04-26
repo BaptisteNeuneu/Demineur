@@ -1,31 +1,40 @@
+/**
+* @version 25/04/2022
+* @author Felix Brinet
+*/
+//inclusion des bibliothèques
 import javax.swing. *;
 import java.awt. *;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ActionMenu2  extends JFrame implements TextListener {
+public class ActionMenu2 implements ActionListener  {
 
-    JTextField newligne;
-    JTextField newcolonne;
-    JTextField newnbrMines;
+    JButton panecritligne;
+    JButton panecritcolonne;
+    JButton panecritnbrMines;
 
-    public void ActionMenue2(JTextField newligne,JTextField newcolonne,JTextField newnbrMines){
-             this.newligne=newligne;
-             this.newcolonne=newcolonne;
-             this.newnbrMines=newnbrMines;
+    public void ActionMenue2(JButton panecritligne,JButton panecritcolonne,JButton panecritnbrMines){
+             this.panecritligne=panecritligne;
+             this.panecritcolonne=panecritcolonne;
+             this.panecritnbrMines=panecritnbrMines;
     }
 
-    public void actionPerformed(TextEvent xmenu2) {
-        if (xmenu2.getSource() == newligne){
-            int ligne = Integer.parseInt(newligne.getText());
+    public void actionPerformed(ActionEvent xmenu2) {
+        if (xmenu2.getSource() == panecritligne){
+            int ligne = Integer.parseInt(panecritligne.getText());
+            System.out.println("Le nombre de lignes est de"+ligne);
         }
-        if (xmenu2.getSource()== newcolonne){
-            int colonne = Integer.parseInt(newcolonne.getText());
+        if (xmenu2.getSource()== panecritcolonne){
+            int colonne = Integer.parseInt(panecritcolonne.getText());
+            System.out.println("Le nombre de colonne est de"+colonne);
         }
-        if (xmenu2.getSource()== newnbrMines){
-            int nbrMines = Integer.parseInt(newnbrMines.getTest());
+        if (xmenu2.getSource()== panecritnbrMines){
+            int nbrMines = Integer.parseInt(panecritnbrMines.getText());
+            System.out.println("Le nombre de mines"+nbrMines);
 
         }
     }
     }
+
  

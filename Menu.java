@@ -29,7 +29,7 @@ public class Menu{
 		fenetre.add(newgam);
 		fenetre.add(rpgame);
 		fenetre.add(quit);
-				ActionMenu amenu = new ActionMenu(newgame,reprendregame,quitter);
+		ActionMenu amenu = new ActionMenu(newgame,reprendregame,quitter);
 		newgame.addActionListener(amenu);
 		reprendregame.addActionListener(amenu);
 		quitter.addActionListener(amenu);

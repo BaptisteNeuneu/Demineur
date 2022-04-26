@@ -1,3 +1,9 @@
+/**
+* @version 25/04/2022
+* @author Baptiste Nevejans
+*/
+//inclusion des bibliothèques
+
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -13,7 +19,8 @@ private JButton reprendregame;
       }
     public void actionPerformed(ActionEvent menu1) {
         if(menu1.getSource() == newgame){
-            System.out.println("lance le menu 2");
+           Menu2 newmenu2 =new Menu2();
+           newmenu2.Menu2();
         }else if (menu1.getSource()== reprendregame){
             System.out.println("la partie reprend");
         }    

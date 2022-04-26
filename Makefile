@@ -1,3 +1,8 @@
+/**
+* @version 25/04/2022
+* @author Felix Brinet
+*/
+//inclusion des bibliothèques
 ### VARIABLES ###
 
 JC = javac
