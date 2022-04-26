@@ -8,9 +8,9 @@ import javax.swing.*;
  
 public class Fenetre extends JFrame  {
  
-    private int ligne;
-    private int colonne;
-    private int nbrMines;
+    private int ligne = 10;
+    private int colonne = 10;
+    private int nbrMines = 5;
     GridLayout layout = new GridLayout(ligne, colonne);
     /*type[][] name = new type[ligne][colonne];
      * type[x][y];
@@ -51,6 +51,9 @@ public class Fenetre extends JFrame  {
         this.pack();
         //reglage.addActionListener(this);
         this.setVisible(true);
+    }
+    public static void main(String[] args){
+    new Fenetre();
     }
 
 }

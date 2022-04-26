@@ -7,8 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 public class Menu{
 
-
-
 	public void Menu1(){
 		/*Un objet pour servir de fenetre*/
         JFrame fenetre = new JFrame();

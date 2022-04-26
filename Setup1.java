@@ -37,8 +37,8 @@ public class Setup1 {
                 buttons[(ligne * y) + x] = new JButton( "" + ( x * y ));
                 buttons[(ligne * y) + x].setPreferredSize(new Dimension(
                         45, 45));
-                buttons[(ligne * y) + x].addActionListener(this); //ajoute les actions des boutons
-                buttons[(ligne * y) + x].addMouseListener(this);  //ajoute les actions de la souris
+                //buttons[(ligne * y) + x].addActionListener(this); //ajoute les actions des boutons
+                //buttons[(ligne * y) + x].addMouseListener(this);  //ajoute les actions de la souris
             }
         }
         Mine newrandMine = new Mine();
@@ -48,4 +48,5 @@ public class Setup1 {
     newsetnumber.setFillNumber(ligne, colonne, presencemines, numbers);
     newsetnumber.fillnumbers();
     }
+
 }
