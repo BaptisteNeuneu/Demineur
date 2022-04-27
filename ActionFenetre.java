@@ -58,8 +58,7 @@ MouseListener {
             for (int x = 0; x < rows; x++) {
                 for (int y = 0; y < cols; y++) {
                     if (e.getSource() == buttons[(rows * y) + x]) {
-                        clickable[(rows * y) + x] = !clickable[(rows * y)
-                                + x];
+                        clickable[(rows * y) + x] = !clickable[(rows * y) + x];
                     }
                     if (!clickdone[(rows * y) + x]) {
                         if (!clickable[(rows * y) + x]) {
