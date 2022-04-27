@@ -3,7 +3,7 @@ import javax.swing.*;
  
  public class Setup2{
 
-     private boolean[] buttons;
+     private JButton[] buttons;
      private boolean[] presencemines;
      private boolean[] clickdone;
      private boolean[] clickable;
@@ -12,12 +12,25 @@ import javax.swing.*;
      private Mine newrandMine;
      private FillNumber newsetnumber;
      private JPanel p;
+     private int ligne;
+     private int colonne;
+     private int nbrMines;
+     private int[] numbers;
+     private Setup1 grille1;
 
-     public void setsetupII(boolean[] buttons,boolean[] presencemines,boolean[] clickdone,boolean[] clickable,
-     GridLayout layout,JFrame fenetre,Mine newrandMine,FillNumber newsetnumber;JPanel p,){
-         this.buttons=buttons;
+     public void setsetupII(boolean[] presencemines,boolean[] clickdone,boolean[] clickable,
+     GridLayout layout,JFrame fenetre,Mine newrandMine,FillNumber newsetnumber,JPanel p,int[] numbers,Setup1 grille1){
          this.presencemines=presencemines;
-         this.clickdone=clickdone
+         this.clickdone=clickdone;
+         this.clickable=clickable;
+         this.layout=layout;
+         this.fenetre=fenetre;
+         this.newrandMine=newrandMine;
+         this.newsetnumber=newsetnumber;
+         this.p=p;
+         this.numbers=numbers;
+         this.grille1=grille1;
+
      }
  public void setupI2() {
         fenetre.remove(p);
@@ -29,7 +42,7 @@ import javax.swing.*;
         clickdone = new boolean[ligne * colonne];
         clickable = new boolean[ligne * colonne];
         numbers = new int[ligne * colonne];
-        setupI();
+        grille1.setupI();
         for (int i = 0; i < (ligne * colonne); i++) {
             p.add(buttons[i]);
         }

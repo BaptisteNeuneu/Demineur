@@ -4,6 +4,7 @@
 */
 //inclusion des bibliothèques
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class ActionButton implements ActionListener, MouseListener{
@@ -11,15 +12,24 @@ public class ActionButton implements ActionListener, MouseListener{
     private int colonne;
     private boolean[] clickdone;
     private boolean[] clickable;
-    private JButton[] buttons;
     private boolean[] presencemines;
     private int nbrMines;
+    private JButton[] buttons;
     private int[] numbers;
     private boolean lost = false;
     private boolean won = false;
-    private JMenuItem reglage = new JMenuItem("options");
+    private JMenuItem reglage;
+    private JMenuItem newGameButton;
+    private GridLayout layout;
+    private JFrame fenetre;
+    private Mine newrandMine; 
+    private FillNumber newsetnumber;
+    private JPanel p;
+    private JLabel mineLabel;
+    private Test newtest= new Test();
+    Setup newsetup;
     
-    public void ActionButton(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,
+    public ActionButton(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,
     JButton[] buttons,boolean[] presencemines,int nbrMines,int[] numbers){
         this.ligne=ligne;
         this.colonne=colonne;
@@ -29,6 +39,7 @@ public class ActionButton implements ActionListener, MouseListener{
         this.presencemines=presencemines;
         this.nbrMines=nbrMines;
         this.numbers=numbers;
+       
     }
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == reglage) {
@@ -40,26 +51,27 @@ public class ActionButton implements ActionListener, MouseListener{
                     null, null, 10));
             nbrMines = Integer.parseInt((String) JOptionPane.showInputDialog(this, "Mines", "Mines",
                     JOptionPane.PLAIN_MESSAGE, null, null, 10));
-            setupI2();
+                    newsetup.setSetup(buttons, presencemines, clickdone, clickable, layout, fenetre, newrandMine, newsetnumber, p, ligne, colonne, nbrMines, numbers, mineLabel);
+            newsetup.setupI2();
         }
         if (!won) {
             for (int x = 0; x < ligne; x++) {
                 for (int y = 0; y < colonne; y++) {
                     if (e.getSource() == buttons[(ligne * y) + x]
                             && !won && clickable[(ligne * y) + x]) {
-                        doCheck(x, y);
+                        newtest.doCheck(x, y);
                         break;
                     }
                 }
             }
         }
         if (e.getSource() == newGameButton) {
-            setup();
+            newsetup.setup();
             won = false;
             return;
  
         }
-        checkWin();
+        newtest.checkWin();
     }
     public void mouseEntered(MouseEvent e) {
     }
@@ -95,6 +107,5 @@ public class ActionButton implements ActionListener, MouseListener{
     }
  
     public void mouseClicked(MouseEvent e) {
-    }
-} 
+    } 
 }
