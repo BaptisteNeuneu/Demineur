@@ -6,10 +6,10 @@
 import javax.swing.*;
 import java.awt.*;
 public class Menu{
-
+	/*Un objet pour servir de fenetre*/
+	private JFrame fenetre = new JFrame();
 	public void Menu1(){
-		/*Un objet pour servir de fenetre*/
-        JFrame fenetre = new JFrame();
+		
         /*On configure la fenetre*/
         fenetre.setSize(500,500);
         fenetre.setMinimumSize(new Dimension(300,300));
@@ -33,7 +33,7 @@ public class Menu{
 		newgame.addActionListener(amenu);
 		reprendregame.addActionListener(amenu);
 		quitter.addActionListener(amenu);
-			        fenetre.setVisible(true); /*Afficher la fenêtre*/
+		fenetre.setVisible(true); /*Afficher la fenêtre*/
 	}
 
 }

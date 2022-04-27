@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Menu2{
-
+	private JFrame fenetre;
 
     public void Menu21(){
 		/*Un objet pour servir de fenetre*/
@@ -36,6 +36,7 @@ public class Menu2{
 		panecritnbrMines.add(newnbrMines);
 		panecritnbrMines.addActionListener(amenu2);
 		fenetre2.add(panecritnbrMines);
-        fenetre2.setVisible(true); /*Afficher la fenêtre*/
+        fenetre2.setVisible(true); /*Afficher menu2*/
+		fenetre.setVisible(false); /*Faire disparaître menu1*/
 	}
 }
