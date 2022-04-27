@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class ActionButton implements ActionListener, MouseListener{
+public class ActionButton extends JFrame implements ActionListener, MouseListener{
     private int ligne;
     private int colonne;
     private boolean[] clickdone;
@@ -30,7 +30,9 @@ public class ActionButton implements ActionListener, MouseListener{
     Setup newsetup;
     
     public ActionButton(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,
-    JButton[] buttons,boolean[] presencemines,int nbrMines,int[] numbers){
+    JButton[] buttons,boolean[] presencemines,int nbrMines,int[] numbers,JMenuItem reglage,
+    JMenuItem newGameButton,GridLayout layout,JFrame fenetre,Mine newrandMine,FillNumber newsetnumber,
+    JPanel p,JLabel mineLabel,Setup newsetup){
         this.ligne=ligne;
         this.colonne=colonne;
         this.clickdone=clickdone;
@@ -39,6 +41,16 @@ public class ActionButton implements ActionListener, MouseListener{
         this.presencemines=presencemines;
         this.nbrMines=nbrMines;
         this.numbers=numbers;
+        this.reglage=reglage;
+        this.newGameButton=newGameButton;
+        this.layout=layout;
+        this.fenetre=fenetre;
+        this.newrandMine=newrandMine;
+        this.newsetnumber=newsetnumber;
+        this.p=p;
+        this.mineLabel=mineLabel;
+        this.newsetup=newsetup;
+
        
     }
     public void actionPerformed(ActionEvent e) {

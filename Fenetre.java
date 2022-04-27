@@ -20,8 +20,6 @@ public class Fenetre  {
      * type[(ligne*y)+x];*/
     private boolean[] presencemines = new boolean[ligne * colonne];
     private boolean[] clickable = new boolean[ligne * colonne];
-    //private boolean lost = false;
-    //private boolean won = false;
     private int[] numbers = new int[ligne * colonne];
     private boolean[] clickdone = new boolean[ligne * colonne];
     JButton[] buttons = new JButton[ligne * colonne];
@@ -32,8 +30,8 @@ public class Fenetre  {
  
     public Fenetre() {
         p.setLayout(layout);
-        Setup1 grille1 = new Setup1();
-        grille1.setSetup1(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers);
+        Setup grille1 = new Setup();
+        grille1.setSetup(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers);
         grille1.setupI();
         for (int i = 0; i < (ligne * colonne); i++) {
             p.add(buttons[i]);

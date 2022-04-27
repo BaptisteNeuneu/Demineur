@@ -1,7 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class Setup {
+public class Setup  {
     private JButton[] buttons;
     private boolean[] presencemines;
     private boolean[] clickdone;
@@ -17,6 +17,7 @@ public class Setup {
     private int[] numbers;
     private boolean lost;
     private JLabel mineLabel;
+    private JMenuItem reglage;
 
     public void setSetup(JButton[] buttons,boolean[] presencemines,boolean[] clickdone,boolean[] clickable,GridLayout layout,JFrame fenetre,
     Mine newrandMine,FillNumber newsetnumber,JPanel p,int ligne,int colonne,int nbrMines,int[] numbers,JLabel mineLabel){
@@ -45,8 +46,9 @@ public class Setup {
                 buttons[(ligne * y) + x] = new JButton( "" + ( x * y ));
                 buttons[(ligne * y) + x].setPreferredSize(new Dimension(
                         45, 45));
-                //buttons[(ligne * y) + x].addActionListener(this); //ajoute les actions des boutons
-                //buttons[(ligne * y) + x].addMouseListener(this);  //ajoute les actions de la souris
+                        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, reglage, newGameButton, layout, fenetre, newrandMine, newsetnumber, p, mineLabel);
+                buttons[(ligne * y) + x].addActionListener(newbut); //ajoute les actions des boutons
+                buttons[(ligne * y) + x].addMouseListener(newbut);  //ajoute les actions de la souris
             }
         }
         Mine newrandMine = new Mine();
