@@ -1,8 +1,9 @@
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
  
 /**MineSweeper by SciWizEH*/
-public class Fenetre extends JFrame  {
+public class TestFenetre extends JFrame  {
  
     private int rows;
     private int cols;
@@ -25,7 +26,7 @@ public class Fenetre extends JFrame  {
     JLabel mineLabel = new JLabel("mines: " + numMines + " marked: 0" + " suposition: 0");
     JPanel p = new JPanel();
  
-    public Fenetre() {
+    public void Fenetre1() {
         p.setLayout(layout);
         setupI();
         for (int i = 0; i < (rows * cols); i++) {
@@ -181,14 +182,12 @@ public class Fenetre extends JFrame  {
 
  
  
-    public void doCheck(int x, in
-        this.add(p);t y) {
+    public void doCheck(int x, int y) {
         int cur = (rows * y) + x;
         boolean l = (x - 1) >= 0;
         boolean r = (x + 1) < rows;
         boolean u = (y - 1) >= 0;
-        boolean d = (y + 1) < 
-        this.add(p);cols;
+        boolean d = (y + 1) < cols;
         int left = (rows * (y)) + (x - 1);
         int right = (rows * (y)) + (x + 1);
         int up = (rows * (y - 1)) + (x);
