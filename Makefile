@@ -1,36 +1,38 @@
-/**
-* @version 25/04/2022
-* @author Felix Brinet
-*/
-//inclusion des bibliothèques
+
 ### VARIABLES ###
 
 JC = javac
 JCFLAGS = -encoding UTF-8 -implicit:none
 
 JVM = java
-JVMFLAGS = 
+
 
 ### REGLES ESSENTIELLES ###
 
-Main.class : Main.java Fenetre.class
-	${JC} ${JCFLAGS} Main.java
+MainMenu.class : MainMenu.java Menu.class
+	${JC} ${JCFLAGS} MainMenu.java
 
-Fenetre.class : Fenetre.java Controleur.class
-	${JC} ${JCFLAGS} Fenetre.java
+Menu.class : Menu.java ActionMenu.class
+	${JC} ${JCFLAGS} Menu.java
 
-Controleur.class : Controleur.java
-	${JC} ${JCFLAGS} Controleur.java
+ActionMenu.class : ActionMenu.java Menu2.class
+	${JC} ${JCFLAGS} ActionMenu.java
 
+Menu2.class : Menu2.java ActionMenu2.class
+	${JC} ${JCFLAGS} Menu2.java
+
+ActionMenu2.class : ActionMenu2.java
+	${JC} ${JCFLAGS} ActionMenu2.java
+	
 ### REGLES OPTIONNELLES ###
 
-run : Main.class
-	${JVM} ${JVMFLAGS} Main
+run : MainMenu.class
+	${JVM} ${JVMFLAGS} MainMenu
 
 clean :
 	-rm -f *.class
 
-mrproper : clean Main.class
+mrproper : clean MainMenu.class
 
 ### BUTS FACTICES ###
 
