@@ -17,6 +17,7 @@ public class ActionButton implements ActionListener, MouseListener{
     private JButton[] buttons;
     private int[] numbers;
     private boolean won = false;
+    private boolean lost;
     private JMenuItem reglage;
     private JMenuItem newGameButton;
     private GridLayout layout;
@@ -56,6 +57,7 @@ public class ActionButton implements ActionListener, MouseListener{
                     null, null, 10));
             nbrMines = Integer.parseInt((String) k.showInputDialog(fenetre, "Mines", "Mines",
                     k.PLAIN_MESSAGE, null, null, 10));
+                    newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,reglage,newGameButton,fenetre);
             newsetup.setupI2();
         }
         if (!won) {

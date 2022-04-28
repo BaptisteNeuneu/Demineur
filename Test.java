@@ -1,7 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class Test extends JFrame {
+public class Test {
     private int ligne;
     private int colonne;
     private boolean[] clickdone;
@@ -17,6 +17,7 @@ public class Test extends JFrame {
     private GridLayout layout;
     private JPanel p;
     private JLabel mineLabel;
+    private JFrame fenetre;
 
     public void setTest(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,boolean[] presencemines,int nbrMines,
     JButton[] buttons,int[] numbers,JMenuItem reglage,JMenuItem newGameButton,GridLayout layout,JPanel p,JLabel mineLabel){
@@ -156,7 +157,7 @@ public class Test extends JFrame {
                     "you lose!nstarting a new game", "you lose",
                     JOptionPane.ERROR_MESSAGE);
                     Setup newsetup = new Setup();
-                    newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,mineLabel);
+                    newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,reglage,newGameButton,fenetre);
             newsetup.setup();
         }
     }

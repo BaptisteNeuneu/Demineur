@@ -7,7 +7,7 @@ import java.awt.*;
 import javax.swing.*;
  
 public class Fenetre   {
- 
+    private JFrame fenetre = new JFrame();
     private int ligne = 10;
     private int colonne = 10;
     private int nbrMines = 5;
@@ -21,6 +21,7 @@ public class Fenetre   {
     private boolean[] clickable = new boolean[ligne * colonne];
     private int[] numbers = new int[ligne * colonne];
     private boolean[] clickdone = new boolean[ligne * colonne];
+    private boolean lost;
     JButton[] buttons = new JButton[ligne * colonne];
     JMenuItem newGameButton = new JMenuItem("nouvelle partie");
     JMenuItem reglage = new JMenuItem("options");
@@ -29,9 +30,12 @@ public class Fenetre   {
    
  
     public void Fenetre() {
-         JFrame fenetre = new JFrame();
+        fenetre.setSize(500,500);
+        fenetre.setMinimumSize(new Dimension(500, 500));
+        fenetre.setLocation(500, 0);
         p.setLayout(layout);
         Setup newsetup = new Setup();
+        newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,reglage,newGameButton,fenetre);
         newsetup.setupI();
         for (int i = 0; i < (ligne * colonne); i++) {
             p.add(buttons[i]);
@@ -52,7 +56,7 @@ public class Fenetre   {
         fenetre.setVisible(true);
     }
     public static void main(String[] args){
-    new Fenetre();
+        new Fenetre();
     }
 
 }
