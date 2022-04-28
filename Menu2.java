@@ -39,7 +39,7 @@ public class Menu2 {
 		JButton btJouer = new JButton();
 		btJouer.setText("Jouer");	
 		
-		ActionMenu2 amenu = new ActionMenu2(btJouer);
+		ActionMenu2 amenu = new ActionMenu2(newLigne,newColonne,newnbrMines,btJouer);
 		btJouer.addActionListener(amenu);
 
 		panLigne.add(txtLigne);
@@ -50,7 +50,7 @@ public class Menu2 {
 		panColonne.add(newColonne);
 		fenetre2.add(panColonne);
 
-		panMines.add(txtColonne);
+		panMines.add(txtMines);
 		panMines.add(newnbrMines);
 		fenetre2.add(panMines);
         fenetre2.setLayout(new BorderLayout());
