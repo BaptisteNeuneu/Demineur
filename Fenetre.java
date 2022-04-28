@@ -30,25 +30,25 @@ public class Fenetre  {
  
     public Fenetre() {
         p.setLayout(layout);
-        Setup grille1 = new Setup();
-        grille1.setSetup(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers);
-        grille1.setupI();
+        Setup newsetup = new Setup();
+        newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,fenetre,p,ligne,colonne,nbrMines,numbers,mineLabel);
+        newsetup.setupI();
         for (int i = 0; i < (ligne * colonne); i++) {
             p.add(buttons[i]);
         }
         JMenuBar mb = new JMenuBar();
         JMenu m = new JMenu("Menu");
-
-        //newGameButton.addActionListener(this);
+        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, reglage, newGameButton, layout, fenetre, p, mineLabel);
+        newGameButton.addActionListener(newbut);
         m.add(newGameButton);
-        //reglage.addActionListener(this);
+        reglage.addActionListener(newbut);
         m.add(reglage);
         mb.add(m);
         fenetre.setJMenuBar(mb);
         fenetre.add(p);
         fenetre.add(mineLabel, BorderLayout.SOUTH);
         fenetre.pack();
-        //reglage.addActionListener(this);
+        reglage.addActionListener(newbut);
         fenetre.setVisible(true);
     }
     public static void main(String[] args){

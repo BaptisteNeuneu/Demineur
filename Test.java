@@ -16,8 +16,6 @@ public class Test {
     private JMenuItem newGameButton;
     private GridLayout layout;
     private JFrame fenetre;
-    private Mine newrandMine; 
-    private FillNumber newsetnumber;
     private JPanel p;
     private JLabel mineLabel;
     public void doCheck(int x, int y) {
@@ -142,7 +140,7 @@ public class Test {
                     "you lose!nstarting a new game", "you lose",
                     JOptionPane.ERROR_MESSAGE);
                     Setup newsetup = new Setup();
-                    newsetup.setSetup(buttons, presencemines, clickdone, clickable, layout, fenetre, newrandMine, newsetnumber, p, ligne, colonne, nbrMines, numbers, mineLabel);
+                    newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,fenetre,p,ligne,colonne,nbrMines,numbers,mineLabel);
             newsetup.setup();
         }
     }

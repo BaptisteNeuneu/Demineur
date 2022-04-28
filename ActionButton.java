@@ -31,8 +31,7 @@ public class ActionButton extends JFrame implements ActionListener, MouseListene
     
     public ActionButton(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,
     JButton[] buttons,boolean[] presencemines,int nbrMines,int[] numbers,JMenuItem reglage,
-    JMenuItem newGameButton,GridLayout layout,JFrame fenetre,Mine newrandMine,FillNumber newsetnumber,
-    JPanel p,JLabel mineLabel,Setup newsetup){
+    JMenuItem newGameButton,GridLayout layout,JFrame fenetre,JPanel p,JLabel mineLabel){
         this.ligne=ligne;
         this.colonne=colonne;
         this.clickdone=clickdone;
@@ -45,11 +44,8 @@ public class ActionButton extends JFrame implements ActionListener, MouseListene
         this.newGameButton=newGameButton;
         this.layout=layout;
         this.fenetre=fenetre;
-        this.newrandMine=newrandMine;
-        this.newsetnumber=newsetnumber;
         this.p=p;
         this.mineLabel=mineLabel;
-        this.newsetup=newsetup;
 
        
     }
