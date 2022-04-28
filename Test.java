@@ -1,7 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class Test {
+public class Test extends JFrame {
     private int ligne;
     private int colonne;
     private boolean[] clickdone;
@@ -15,9 +15,25 @@ public class Test {
     private JMenuItem reglage;
     private JMenuItem newGameButton;
     private GridLayout layout;
-    private JFrame fenetre;
     private JPanel p;
     private JLabel mineLabel;
+
+    public void setTest(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,boolean[] presencemines,int nbrMines,
+    JButton[] buttons,int[] numbers,JMenuItem reglage,JMenuItem newGameButton,GridLayout layout,JPanel p,JLabel mineLabel){
+        this.ligne=ligne;
+        this.colonne=colonne;
+        this.clickdone=clickdone;
+        this.clickable=clickable;
+        this.presencemines=presencemines;
+        this.nbrMines=nbrMines;
+        this.buttons=buttons;
+        this.numbers=numbers;
+        this.reglage=reglage;
+        this.newGameButton=newGameButton;
+        this.layout=layout;
+        this.p=p;
+        this.mineLabel=mineLabel;
+    }
     public void doCheck(int x, int y) {
         int cur = (ligne * y) + x;
         boolean l = (x - 1) >= 0;
@@ -140,7 +156,7 @@ public class Test {
                     "you lose!nstarting a new game", "you lose",
                     JOptionPane.ERROR_MESSAGE);
                     Setup newsetup = new Setup();
-                    newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,fenetre,p,ligne,colonne,nbrMines,numbers,mineLabel);
+                    newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,mineLabel);
             newsetup.setup();
         }
     }

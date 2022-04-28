@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class ActionButton extends JFrame implements ActionListener, MouseListener{
+public class ActionButton implements ActionListener, MouseListener{
     private int ligne;
     private int colonne;
     private boolean[] clickdone;
@@ -16,22 +16,19 @@ public class ActionButton extends JFrame implements ActionListener, MouseListene
     private int nbrMines;
     private JButton[] buttons;
     private int[] numbers;
-    private boolean lost = false;
     private boolean won = false;
     private JMenuItem reglage;
     private JMenuItem newGameButton;
     private GridLayout layout;
-    private JFrame fenetre;
-    private Mine newrandMine; 
-    private FillNumber newsetnumber;
     private JPanel p;
     private JLabel mineLabel;
     private Test newtest= new Test();
-    Setup newsetup;
+    private Setup newsetup;
+    private JFrame fenetre;
     
     public ActionButton(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,
     JButton[] buttons,boolean[] presencemines,int nbrMines,int[] numbers,JMenuItem reglage,
-    JMenuItem newGameButton,GridLayout layout,JFrame fenetre,JPanel p,JLabel mineLabel){
+    JMenuItem newGameButton,GridLayout layout, JPanel p,JLabel mineLabel){
         this.ligne=ligne;
         this.colonne=colonne;
         this.clickdone=clickdone;
@@ -43,7 +40,6 @@ public class ActionButton extends JFrame implements ActionListener, MouseListene
         this.reglage=reglage;
         this.newGameButton=newGameButton;
         this.layout=layout;
-        this.fenetre=fenetre;
         this.p=p;
         this.mineLabel=mineLabel;
 
@@ -51,15 +47,15 @@ public class ActionButton extends JFrame implements ActionListener, MouseListene
     }
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == reglage) {
-            ligne = Integer.parseInt((String) JOptionPane.showInputDialog(
-                    this, "ligne", "ligne", JOptionPane.PLAIN_MESSAGE, null,
+            JOptionPane k = new JOptionPane();
+            ligne = Integer.parseInt((String) k.showInputDialog(
+                    fenetre, "ligne", "ligne", k.PLAIN_MESSAGE, null,
                     null, 10));
-            colonne = Integer.parseInt((String) JOptionPane.showInputDialog(
-                    this, "Colonne", "Colonne", JOptionPane.PLAIN_MESSAGE,
+            colonne = Integer.parseInt((String) k.showInputDialog(
+                    fenetre, "Colonne", "Colonne", k.PLAIN_MESSAGE,
                     null, null, 10));
-            nbrMines = Integer.parseInt((String) JOptionPane.showInputDialog(this, "Mines", "Mines",
-                    JOptionPane.PLAIN_MESSAGE, null, null, 10));
-                    newsetup.setSetup(buttons, presencemines, clickdone, clickable, layout, fenetre, newrandMine, newsetnumber, p, ligne, colonne, nbrMines, numbers, mineLabel);
+            nbrMines = Integer.parseInt((String) k.showInputDialog(fenetre, "Mines", "Mines",
+                    k.PLAIN_MESSAGE, null, null, 10));
             newsetup.setupI2();
         }
         if (!won) {
@@ -67,6 +63,7 @@ public class ActionButton extends JFrame implements ActionListener, MouseListene
                 for (int y = 0; y < colonne; y++) {
                     if (e.getSource() == buttons[(ligne * y) + x]
                             && !won && clickable[(ligne * y) + x]) {
+                                newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel);
                         newtest.doCheck(x, y);
                         break;
                     }

@@ -8,6 +8,9 @@ public class FillNumber {
     private int colonne;
     private boolean[] presencemines;
     private int[] numbers;
+    private Mine newrandmine;
+    private int nbrMines;
+    private Mine newrandMine;
 
     public void setFillNumber(int ligne,int colonne,boolean[] presencemines,int[] numbers){
         this.ligne=ligne;
@@ -16,6 +19,7 @@ public class FillNumber {
         this.numbers=numbers;
     }
     public void fillnumbers() {
+        newrandMine.setMine( nbrMines,ligne,colonne,presencemines);
         for (int x = 0; x < ligne; x++) {
             for (int y = 0; y < colonne; y++) {
                 int cur = (ligne * y) + x;

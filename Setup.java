@@ -7,9 +7,6 @@ public class Setup  {
     private boolean[] clickdone;
     private boolean[] clickable;
     private GridLayout layout;
-    private JFrame fenetre;
-    private Mine newrandMine;
-    private FillNumber newsetnumber;
     private JPanel p;
     private int ligne;
     private int colonne;
@@ -18,23 +15,26 @@ public class Setup  {
     private boolean lost;
     private JLabel mineLabel;
     private JMenuItem reglage;
+    private JMenuItem newGameButton;
+    private JFrame fenetre;
 
-    public void setSetup(JButton[] buttons,boolean[] presencemines,boolean[] clickdone,boolean[] clickable,GridLayout layout,JFrame fenetre,
-    Mine newrandMine,FillNumber newsetnumber,JPanel p,int ligne,int colonne,int nbrMines,int[] numbers,JLabel mineLabel){
+    public void setSetup(JButton[] buttons,boolean[] presencemines,boolean[] clickdone,boolean[] clickable,GridLayout layout,JPanel p,
+    int ligne,int colonne,int nbrMines,int[] numbers,boolean lost,JLabel mineLabel,JMenuItem reglage,JMenuItem newGameButton,JFrame fenetre){
         this.buttons=buttons;
         this.presencemines=presencemines;
         this.clickdone=clickdone;
         this.clickable=clickable;
         this.layout=layout;
-        this.fenetre=fenetre;
-        this.newrandMine=newrandMine;
-        this.newsetnumber=newsetnumber;
         this.p=p;
         this.ligne=ligne;
         this.colonne=colonne;
         this.nbrMines=nbrMines;
         this.numbers=numbers;
+        this.lost=lost;
         this.mineLabel=mineLabel;
+        this.reglage=reglage;
+        this.newGameButton=newGameButton;
+        this.fenetre=fenetre;
     }
 
     public void setupI() {
@@ -46,17 +46,15 @@ public class Setup  {
                 buttons[(ligne * y) + x] = new JButton( "" + ( x * y ));
                 buttons[(ligne * y) + x].setPreferredSize(new Dimension(
                         45, 45));
-                        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, reglage, newGameButton, layout, fenetre, newrandMine, newsetnumber, p, mineLabel);
+                        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, reglage, newGameButton, layout, p, mineLabel);
                 buttons[(ligne * y) + x].addActionListener(newbut); //ajoute les actions des boutons
                 buttons[(ligne * y) + x].addMouseListener(newbut);  //ajoute les actions de la souris
             }
         }
-        Mine newrandMine = new Mine();
-    newrandMine.setMine( nbrMines,ligne,colonne,presencemines);
-    newrandMine.Mine1();
-    FillNumber newsetnumber = new FillNumber();
-    newsetnumber.setFillNumber(ligne, colonne, presencemines, numbers);
-    newsetnumber.fillnumbers();
+    Case b = new Case();
+    b.setCase(colonne,ligne,presencemines,numbers,nbrMines);
+    b.Mine();
+    b.fillnumbers();
     }
 
 
@@ -76,10 +74,10 @@ public class Setup  {
         }
         fenetre.add(p);
         fenetre.pack();
-        newrandMine.setMine( nbrMines,ligne,colonne,presencemines);
-    newrandMine.Mine1();
-    newsetnumber.setFillNumber(ligne, colonne, presencemines, numbers);
-    newsetnumber.fillnumbers();
+      Case b = new Case();
+      b.setCase(colonne,ligne,presencemines,numbers,nbrMines);
+    b.Mine();
+    b.fillnumbers();
     }
     public void setup() {
         for (int x = 0; x < ligne; x++) {
@@ -91,10 +89,10 @@ public class Setup  {
                 buttons[(ligne * y) + x].setText("");
             }
         }
-        newrandMine.setMine( nbrMines,ligne,colonne,presencemines);
-    newrandMine.Mine1();
-    newsetnumber.setFillNumber(ligne, colonne, presencemines, numbers);
-    newsetnumber.fillnumbers();
+     Case b = new Case();
+     b.setCase(colonne,ligne,presencemines,numbers,nbrMines);
+    b.Mine();
+    b.fillnumbers();
         lost = false;
         mineLabel.setText("mines: " + nbrMines + " marked: 0");
     }

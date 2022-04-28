@@ -6,12 +6,11 @@
 import java.awt.*;
 import javax.swing.*;
  
-public class Fenetre  {
+public class Fenetre   {
  
     private int ligne = 10;
     private int colonne = 10;
     private int nbrMines = 5;
-    JFrame fenetre = new JFrame();
     GridLayout layout = new GridLayout(ligne, colonne);
     /*type[][] name = new type[ligne][colonne];
      * type[x][y];
@@ -27,18 +26,19 @@ public class Fenetre  {
     JMenuItem reglage = new JMenuItem("options");
     JLabel mineLabel = new JLabel("mines: " + nbrMines + " marqué: 0" + " suposition: 0");
     JPanel p = new JPanel();
+   
  
-    public Fenetre() {
+    public void Fenetre() {
+         JFrame fenetre = new JFrame();
         p.setLayout(layout);
         Setup newsetup = new Setup();
-        newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,fenetre,p,ligne,colonne,nbrMines,numbers,mineLabel);
         newsetup.setupI();
         for (int i = 0; i < (ligne * colonne); i++) {
             p.add(buttons[i]);
         }
         JMenuBar mb = new JMenuBar();
         JMenu m = new JMenu("Menu");
-        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, reglage, newGameButton, layout, fenetre, p, mineLabel);
+        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, reglage, newGameButton, layout, p, mineLabel);
         newGameButton.addActionListener(newbut);
         m.add(newGameButton);
         reglage.addActionListener(newbut);
