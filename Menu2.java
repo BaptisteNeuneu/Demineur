@@ -1,39 +1,61 @@
+/**
+* @version 28/04/2022
+* @author Felix Brinet
+*/
+//inclusion des bibliothèques
 import javax.swing.*;
 import java.awt.*;
 
-public class Menu2{
+public class Menu2 {
+    private JFrame fenetre2 = new JFrame();
     public void Menu21(){
-		JFrame fenetre2 = new JFrame();
+
 		/*Un objet pour servir de fenetre*/
+		
         /*On configure la fenetre*/
         fenetre2.setSize(500,500);
-        fenetre2.setMinimumSize(new Dimension(300,300));
+        fenetre2.setMinimumSize(new Dimension(500,500));
         fenetre2.setLocation(200,200);
         fenetre2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JPanel panneauligne = new JPanel();
-		JButton panecritligne = new JButton();
-		JPanel panneaucolonne = new JPanel();
-		JButton panecritcolonne = new JButton();
-		JPanel panneaunbrMines = new JPanel();
-		JButton panecritnbrMines = new JButton();
-		JTextField newligne = new JTextField("10");
-		JTextField newcolonne = new JTextField("10");
+		fenetre2.setTitle("*** Réglages ***");
+
+		/*Configuration nombres de lignes entre 10 et 30*/
+		JPanel panLigne = new JPanel();									
+		JLabel txtLigne = new JLabel("Combien de lignes voulez vous ?");
+		JTextField newLigne = new JTextField("10");
+		newLigne.setBounds(250,100,200,28);
+		/*Configuration nombres de colonnes entre 10 et 30*/
+		JPanel panColonne = new JPanel();									
+		JLabel txtColonne = new JLabel("Combien de colonne voulez vous ?");
+		JTextField newColonne = new JTextField("10");
+		newColonne.setBounds(250,140,200,28);
+		/*Configuration nombres de mines entre (ligne*colonne)-1*/
+		JPanel panMines = new JPanel();									
+		JLabel txtMines = new JLabel("Combien de mines voulez vous ?");
 		JTextField newnbrMines = new JTextField("10");
-	 	ActionMenu2 amenu2 = new ActionMenu2();
-		GridLayout gestionnaire = new GridLayout(3, 3);
-		fenetre2.setLayout(gestionnaire);
-		fenetre2.add(panneauligne);
-		panecritligne.add(newligne);
-		fenetre2.add(panecritligne);
-		panecritligne.addActionListener(amenu2);
-		fenetre2.add(panneaucolonne);
-		panecritcolonne.add(newcolonne);
-		panecritcolonne.addActionListener(amenu2);
-		fenetre2.add(panecritcolonne);
-		fenetre2.add(panneaunbrMines);
-		panecritnbrMines.add(newnbrMines);
-		panecritnbrMines.addActionListener(amenu2);
-		fenetre2.add(panecritnbrMines);
+		newnbrMines.setBounds(250,180,200,28);
+		/*Configuration bouton Jouer nombre de : "lignes, colonnes, mines " à la fenetre*/
+		JPanel panJouer = new JPanel();									
+		JButton btJouer = new JButton();
+		btJouer.setText("Jouer");	
+		
+		ActionMenu2 amenu = new ActionMenu2(btJouer);
+		btJouer.addActionListener(amenu);
+
+		panLigne.add(txtLigne);
+		panLigne.add(newLigne);
+		fenetre2.add(panLigne);
+
+		panColonne.add(txtColonne);
+		panColonne.add(newColonne);
+		fenetre2.add(panColonne);
+
+		panMines.add(txtColonne);
+		panMines.add(newnbrMines);
+		fenetre2.add(panMines);
+        fenetre2.setLayout(new BorderLayout());
+		panJouer.add(btJouer);
+		fenetre2.add(panJouer, BorderLayout.SOUTH);
         fenetre2.setVisible(true); /*Afficher menu2*/
 }
 }	

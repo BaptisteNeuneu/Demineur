@@ -12,14 +12,12 @@ public class Setup  {
     private int colonne;
     private int nbrMines;
     private int[] numbers;
-    private boolean lost;
     private JLabel mineLabel;
-    private JMenuItem reglage;
-    private JMenuItem newGameButton;
+    JMenuItem reglage;
     private JFrame fenetre;
 
     public void setSetup(JButton[] buttons,boolean[] presencemines,boolean[] clickdone,boolean[] clickable,GridLayout layout,JPanel p,
-    int ligne,int colonne,int nbrMines,int[] numbers,boolean lost,JLabel mineLabel,JMenuItem reglage,JMenuItem newGameButton,JFrame fenetre){
+    int ligne,int colonne,int nbrMines,int[] numbers,boolean lost,JLabel mineLabel,JMenuItem newGameButton,JFrame fenetre){
         this.buttons=buttons;
         this.presencemines=presencemines;
         this.clickdone=clickdone;
@@ -30,10 +28,7 @@ public class Setup  {
         this.colonne=colonne;
         this.nbrMines=nbrMines;
         this.numbers=numbers;
-        this.lost=lost;
         this.mineLabel=mineLabel;
-        this.reglage=reglage;
-        this.newGameButton=newGameButton;
         this.fenetre=fenetre;
     }
 
@@ -46,7 +41,7 @@ public class Setup  {
                 buttons[(ligne * y) + x] = new JButton( "" + ( x * y ));
                 buttons[(ligne * y) + x].setPreferredSize(new Dimension(
                         45, 45));
-                        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, reglage, newGameButton, layout, p, mineLabel);
+                       ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, reglage, layout, p, mineLabel);
                 buttons[(ligne * y) + x].addActionListener(newbut); //ajoute les actions des boutons
                 buttons[(ligne * y) + x].addMouseListener(newbut);  //ajoute les actions de la souris
             }
@@ -93,7 +88,6 @@ public class Setup  {
      b.setCase(colonne,ligne,presencemines,numbers,nbrMines);
     b.Mine();
     b.fillnumbers();
-        lost = false;
         mineLabel.setText("mines: " + nbrMines + " marked: 0");
     }
 }

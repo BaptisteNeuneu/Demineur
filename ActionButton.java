@@ -17,7 +17,6 @@ public class ActionButton implements ActionListener, MouseListener{
     private JButton[] buttons;
     private int[] numbers;
     private boolean won = false;
-    private boolean lost;
     private JMenuItem reglage;
     private JMenuItem newGameButton;
     private GridLayout layout;
@@ -25,10 +24,10 @@ public class ActionButton implements ActionListener, MouseListener{
     private JLabel mineLabel;
     private Test newtest= new Test();
     private Setup newsetup;
-    private JFrame fenetre;
-    
+
+
     public ActionButton(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,
-    JButton[] buttons,boolean[] presencemines,int nbrMines,int[] numbers,JMenuItem reglage,
+    JButton[] buttons,boolean[] presencemines,int nbrMines,int[] numbers,
     JMenuItem newGameButton,GridLayout layout, JPanel p,JLabel mineLabel){
         this.ligne=ligne;
         this.colonne=colonne;
@@ -38,7 +37,6 @@ public class ActionButton implements ActionListener, MouseListener{
         this.presencemines=presencemines;
         this.nbrMines=nbrMines;
         this.numbers=numbers;
-        this.reglage=reglage;
         this.newGameButton=newGameButton;
         this.layout=layout;
         this.p=p;
@@ -48,16 +46,13 @@ public class ActionButton implements ActionListener, MouseListener{
     }
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == reglage) {
-            JOptionPane k = new JOptionPane();
-            ligne = Integer.parseInt((String) k.showInputDialog(
-                    fenetre, "ligne", "ligne", k.PLAIN_MESSAGE, null,
-                    null, 10));
-            colonne = Integer.parseInt((String) k.showInputDialog(
-                    fenetre, "Colonne", "Colonne", k.PLAIN_MESSAGE,
-                    null, null, 10));
-            nbrMines = Integer.parseInt((String) k.showInputDialog(fenetre, "Mines", "Mines",
-                    k.PLAIN_MESSAGE, null, null, 10));
-                    newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,reglage,newGameButton,fenetre);
+            ligne = Integer.parseInt((String) JOptionPane.showInputDialog(
+                    null,
+                    null));
+            colonne = Integer.parseInt((String) JOptionPane.showInputDialog(
+                    null, null));
+            nbrMines = Integer.parseInt((String) JOptionPane.showInputDialog(null, null));
+            newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel);
             newsetup.setupI2();
         }
         if (!won) {

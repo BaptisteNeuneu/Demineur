@@ -1,39 +1,22 @@
 /**
-* @version 25/04/2022
-* @author Felix Brinet
+* @version 28/04/2022
+* @author Brinet Félix
 */
 //inclusion des bibliothèques
-import javax.swing. *;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import javax.swing.*;
+public class ActionMenu2 implements ActionListener {
+private JFrame fenetre2;
+private JButton btJouer;
 
-public class ActionMenu2 implements ActionListener  {
-
-    JButton panecritligne;
-    JButton panecritcolonne;
-    JButton panecritnbrMines;
-
-    public void ActionMenue2(JButton panecritligne,JButton panecritcolonne,JButton panecritnbrMines){
-             this.panecritligne=panecritligne;
-             this.panecritcolonne=panecritcolonne;
-             this.panecritnbrMines=panecritnbrMines;
+public ActionMenu2(JButton btJouer){
+          this.btJouer=btJouer;
+      }
+    public void actionPerformed(ActionEvent menu2) {
+        if(menu2.getSource() == btJouer){
+            Fenetre newFenetre =new Fenetre();
+            newFenetre.fenetre1();
+            fenetre2.setVisible(false); /*Fait disparaître la fenêtre*/
     }
-
-    public void actionPerformed(ActionEvent xmenu2) {
-        if (xmenu2.getSource() == panecritligne){
-            int ligne = Integer.parseInt(panecritligne.getText());
-            System.out.println("Le nombre de lignes est de"+ligne);
-        }
-        if (xmenu2.getSource()== panecritcolonne){
-            int colonne = Integer.parseInt(panecritcolonne.getText());
-            System.out.println("Le nombre de colonne est de"+colonne);
-        }
-        if (xmenu2.getSource()== panecritnbrMines){
-            int nbrMines = Integer.parseInt(panecritnbrMines.getText());
-            System.out.println("Le nombre de mines"+nbrMines);
-
-        }
-    }
-    }
-
- 
+ }
+}
