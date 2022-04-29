@@ -75,6 +75,7 @@ public class ActionButton implements ActionListener, MouseListener{
             }
         }
         if (e.getSource() == newGameButton) {
+            newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel);
             newsetup.setup();
             won = false;
             return;
