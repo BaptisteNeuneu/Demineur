@@ -21,8 +21,23 @@ ActionMenu.class : ActionMenu.java Menu2.class
 Menu2.class : Menu2.java ActionMenu2.class
 	${JC} ${JCFLAGS} Menu2.java
 
-ActionMenu2.class : ActionMenu2.java
+ActionMenu2.class : ActionMenu2.java Fenetre.class
 	${JC} ${JCFLAGS} ActionMenu2.java
+
+Fenetre.class : Fenetre.java Setup.class
+	${JC} ${JCFLAGS} Fenetre.java
+
+Setup.class : Setup.java Case.class
+	${JC} ${JCFLAGS} Setup.java
+
+Case.class : Case.java Test.class
+	${JC} ${JCFLAGS} Case.java
+
+Test.class : Test.java ActionButton.class
+	${JC} ${JCFLAGS} Test.java
+
+ActionButton.class : ActionButton.java 
+	${JC} ${JCFLAGS} ActionButton.java
 	
 ### REGLES OPTIONNELLES ###
 
