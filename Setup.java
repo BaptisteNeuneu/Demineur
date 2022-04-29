@@ -17,7 +17,7 @@ public class Setup  {
     private JFrame fenetre;
 
     public void setSetup(JButton[] buttons,boolean[] presencemines,boolean[] clickdone,boolean[] clickable,GridLayout layout,JPanel p,
-    int ligne,int colonne,int nbrMines,int[] numbers,boolean lost,JLabel mineLabel,JMenuItem newGameButton,JFrame fenetre){
+    int ligne,int colonne,int nbrMines,int[] numbers,boolean lost,JLabel mineLabel,JMenuItem newGameButton,JFrame fenetre,JMenuItem reglage){
         this.buttons=buttons;
         this.presencemines=presencemines;
         this.clickdone=clickdone;
@@ -30,6 +30,7 @@ public class Setup  {
         this.numbers=numbers;
         this.mineLabel=mineLabel;
         this.fenetre=fenetre;
+        this.reglage=reglage;
     }
 
     public void setupI() {
@@ -40,8 +41,8 @@ public class Setup  {
                 clickable[(ligne * y) + x] = true;
                                buttons[(ligne * y) + x] = new JButton( "" );
                 buttons[(ligne * y) + x].setPreferredSize(new Dimension(
-                    30, 30));
-                       ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, reglage, layout, p, mineLabel);
+                    45, 45));
+                       ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, reglage, layout, p, mineLabel, fenetre,reglage);
                 buttons[(ligne * y) + x].addActionListener(newbut); //ajoute les actions des boutons
                 buttons[(ligne * y) + x].addMouseListener(newbut);  //ajoute les actions de la souris
             }

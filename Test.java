@@ -157,7 +157,7 @@ public class Test {
                     "you lose!nstarting a new game", "you lose",
                     JOptionPane.ERROR_MESSAGE);
                     Setup newsetup = new Setup();
-                    newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,reglage,fenetre);
+                    newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,reglage,fenetre,reglage);
             newsetup.setup();
         }
     }

@@ -8,9 +8,9 @@ import javax.swing.*;
  
 public class Fenetre   {
     private JFrame fenetre = new JFrame();
-    private int ligne;
-    private int colonne;
-    private int nbrMines;
+    private int ligne = 10;
+    private int colonne =10;
+    private int nbrMines =10;
     GridLayout layout = new GridLayout(ligne, colonne);
     /*type[][] name = new type[ligne][colonne];
      * type[x][y];
@@ -24,6 +24,7 @@ public class Fenetre   {
     private boolean lost;
     JButton[] buttons = new JButton[ligne * colonne];
     JMenuItem newGameButton = new JMenuItem("nouvelle partie");
+    JMenuItem reglage = new JMenuItem("option");
     JLabel mineLabel = new JLabel("mines: " + nbrMines + " marqué: 0" + " suposition: 0");
     JPanel p = new JPanel();
    public void setFenetre(int ligne,int colonne,int nbrMines){
@@ -35,15 +36,17 @@ public class Fenetre   {
     public void fenetre1() {
         p.setLayout(layout);
         Setup newsetup = new Setup();
-        newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,newGameButton,fenetre);
+        newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,newGameButton,fenetre,reglage);
         newsetup.setupI();
         for (int i = 0; i < (ligne * colonne); i++) {
             p.add(buttons[i]);
         }
         JMenuBar mb = new JMenuBar();
-        JMenu m = new JMenu("Menu");
-        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, newGameButton, layout, p, mineLabel);
+        JMenu m = new JMenu("Paramettre");
+        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, newGameButton, layout, p, mineLabel, fenetre,reglage);
+        reglage.addActionListener(newbut);
         newGameButton.addActionListener(newbut);
+        m.add(reglage);
         m.add(newGameButton);
         mb.add(m);
         fenetre.setJMenuBar(mb);
