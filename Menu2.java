@@ -8,6 +8,10 @@ import java.awt.*;
 
 public class Menu2 {
     private JFrame fenetre2 = new JFrame();
+	private JTextField newLigne = new JTextField("10");
+	private JTextField newColonne = new JTextField("10");
+	private JTextField newnbrMines = new JTextField("10");
+	private JButton btJouer = new JButton();
     public void Menu21(){
 
 		/*Un objet pour servir de fenetre*/
@@ -21,15 +25,15 @@ public class Menu2 {
 
 		/*Configuration nombres de lignes entre 10 et 30*/					
 		JLabel txtLigne = new JLabel("Combien de lignes voulez vous ?");
-		JTextField newLigne = new JTextField("10");
+		
 		/*Configuration nombres de colonnes entre 10 et 30*/			
 		JLabel txtColonne = new JLabel("Combien de colonnes voulez vous ?");
-		JTextField newColonne = new JTextField("10");
+		
 		/*Configuration nombres de mines entre (ligne*colonne)-1*/							
 		JLabel txtMines = new JLabel("Combien de mines voulez vous ?");
-		JTextField newnbrMines = new JTextField("10");
+		
 		/*Configuration bouton Jouer nombre de : "lignes, colonnes, mines " à la fenetre*/								
-		JButton btJouer = new JButton();
+		
 		btJouer.setText("Jouer");	
 
 		/*Ajout actionlistener pour récupérer actions boutons et JtextField*/

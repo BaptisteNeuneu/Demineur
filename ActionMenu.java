@@ -22,7 +22,7 @@ public ActionMenu(JButton newgame,JButton reprendregame,JButton quitter, JFrame 
             Menu2 newmenu2 =new Menu2();
             newmenu2.Menu21();
             fenetre1.setVisible(false); /*Fait disparaître la fenêtre*/
-        }else if(menu1.getSource()== reprendregame){
+        }else if(menu1.getSource() == reprendregame){
             System.out.println("la partie reprend");
             
         }else if(menu1.getSource() == quitter){

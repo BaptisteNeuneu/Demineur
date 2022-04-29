@@ -11,7 +11,9 @@ private JButton btJouer;
 private JTextField newLigne;
 private JTextField newColonne;
 private JTextField newnbrMines;
-
+private int ligne; 
+private int colonne;
+private int nbrMines;  
 public ActionMenu2(JTextField newLigne,JTextField newColonne,JTextField newnbrMines,JButton btJouer){
         this.newLigne=newLigne;
         this.newColonne=newColonne;
@@ -19,15 +21,23 @@ public ActionMenu2(JTextField newLigne,JTextField newColonne,JTextField newnbrMi
         this.btJouer=btJouer;
       }
     public void actionPerformed(ActionEvent menu2) {
-        
+        String sLigne = newLigne.getText(); 
+        String sColonne = newColonne.getText(); 
+        String sMines = newnbrMines.getText();
+        ligne = Integer.parseInt(sLigne);
+        colonne = Integer.parseInt(sColonne);
+        nbrMines = Integer.parseInt(sMines);
         if(menu2.getSource() == btJouer){
-            int ligne = Integer.parseInt(newLigne.getText());
-            int colonne = Integer.parseInt(newColonne.getText());
-            int nbrMines = Integer.parseInt(newnbrMines.getText());
+            System.out.println(ligne);  
+            System.out.println(colonne); 
+            System.out.println(nbrMines); 
             Fenetre newFenetre =new Fenetre();
             newFenetre.setFenetre(ligne,colonne,nbrMines);
             newFenetre.fenetre1();
             fenetre2.setVisible(false); /*Fait disparaître la fenêtre*/
     }
+    
+  
+    
  }
-}
+ }
