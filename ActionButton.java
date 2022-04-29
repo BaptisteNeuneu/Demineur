@@ -58,7 +58,6 @@ public class ActionButton implements ActionListener, MouseListener{
                 null, null, 10));
         nbrMines = Integer.parseInt((String) JOptionPane.showInputDialog(fenetre, "Mines", "Mines",
                 JOptionPane.PLAIN_MESSAGE, null, null, 10));
-            newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel);
             newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,newGameButton,fenetre,reglage);
             newsetup.setupI2();
         }
@@ -75,8 +74,10 @@ public class ActionButton implements ActionListener, MouseListener{
             }
         }
         if (e.getSource() == newGameButton) {
-            newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel);
-            newsetup.setup();
+            fenetre.setVisible(false);
+            Fenetre newfenetre = new Fenetre();
+            newfenetre.setFenetre(ligne, colonne, nbrMines);
+            newfenetre.fenetre1();
             won = false;
             return;
  
