@@ -38,9 +38,9 @@ public class Setup  {
                 presencemines[(ligne * y) + x] = false;
                 clickdone[(ligne * y) + x] = false;
                 clickable[(ligne * y) + x] = true;
-                buttons[(ligne * y) + x] = new JButton( "" + ( x * y ));
+                               buttons[(ligne * y) + x] = new JButton( "" );
                 buttons[(ligne * y) + x].setPreferredSize(new Dimension(
-                        45, 45));
+                    30, 30));
                        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, reglage, layout, p, mineLabel);
                 buttons[(ligne * y) + x].addActionListener(newbut); //ajoute les actions des boutons
                 buttons[(ligne * y) + x].addMouseListener(newbut);  //ajoute les actions de la souris
@@ -59,6 +59,7 @@ public class Setup  {
         layout = new GridLayout(ligne, colonne);
         p.setLayout(layout);
         buttons = new JButton[ligne * colonne];
+        buttons[ligne*colonne].setBackground(Color.LIGHT_GRAY);
         presencemines = new boolean[ligne * colonne];
         clickdone = new boolean[ligne * colonne];
         clickable = new boolean[ligne * colonne];

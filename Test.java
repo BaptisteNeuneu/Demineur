@@ -139,7 +139,7 @@ public class Test {
         if (!lost && !won) {
             won = true;
             JOptionPane.showMessageDialog(null,
-                    "you win!nstarting a new game", "you lose",
+                    "you win!nstarting a new game", "you win",
                     JOptionPane.INFORMATION_MESSAGE);
             newGameButton.doClick();
         }

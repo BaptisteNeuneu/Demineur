@@ -8,9 +8,9 @@ import javax.swing.*;
  
 public class Fenetre   {
     private JFrame fenetre = new JFrame();
-    private int ligne = 10;
-    private int colonne = 10;
-    private int nbrMines = 40;
+    private int ligne = 20;
+    private int colonne = 20;
+    private int nbrMines = 10;
     GridLayout layout = new GridLayout(ligne, colonne);
     /*type[][] name = new type[ligne][colonne];
      * type[x][y];
@@ -26,11 +26,11 @@ public class Fenetre   {
     JMenuItem newGameButton = new JMenuItem("nouvelle partie");
     JLabel mineLabel = new JLabel("mines: " + nbrMines + " marqué: 0" + " suposition: 0");
     JPanel p = new JPanel();
-   public void setFenetre(int ligne,int colonne,int nbrMines){
+  /* public void setFenetre(int ligne,int colonne,int nbrMines){
        this.ligne=ligne;
        this.colonne=colonne;
        this.nbrMines=nbrMines;
-   }
+   }*/
  
     public void fenetre1() {
         p.setLayout(layout);
