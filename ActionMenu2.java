@@ -28,9 +28,9 @@ public ActionMenu2(JTextField newLigne,JTextField newColonne,JTextField newnbrMi
         colonne = Integer.parseInt(sColonne);
         nbrMines = Integer.parseInt(sMines);
         if(menu2.getSource() == btJouer){
-            System.out.println(ligne);  
-            System.out.println(colonne); 
-            System.out.println(nbrMines); 
+            System.out.println("Lignes:"+ligne);  
+            System.out.println("Colonnes:"+colonne); 
+            System.out.println("Mines:"+nbrMines); 
             Fenetre newFenetre =new Fenetre();
             newFenetre.setFenetre(ligne,colonne,nbrMines);
             newFenetre.fenetre1();
