@@ -16,7 +16,7 @@ public ActionMenu2(JTextField newLigne,JTextField newColonne,JTextField newnbrMi
         this.newLigne=newLigne;
         this.newColonne=newColonne;
         this.newnbrMines=newnbrMines;
-          this.btJouer=btJouer;
+        this.btJouer=btJouer;
       }
     public void actionPerformed(ActionEvent menu2) {
         

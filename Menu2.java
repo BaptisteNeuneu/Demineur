@@ -19,43 +19,43 @@ public class Menu2 {
         fenetre2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre2.setTitle("*** Réglages ***");
 
-		/*Configuration nombres de lignes entre 10 et 30*/
-		JPanel panLigne = new JPanel();									
+		/*Configuration nombres de lignes entre 10 et 30*/					
 		JLabel txtLigne = new JLabel("Combien de lignes voulez vous ?");
 		JTextField newLigne = new JTextField("10");
-		newLigne.setBounds(250,100,200,28);
-		/*Configuration nombres de colonnes entre 10 et 30*/
-		JPanel panColonne = new JPanel();									
-		JLabel txtColonne = new JLabel("Combien de colonne voulez vous ?");
+		/*Configuration nombres de colonnes entre 10 et 30*/			
+		JLabel txtColonne = new JLabel("Combien de colonnes voulez vous ?");
 		JTextField newColonne = new JTextField("10");
-		newColonne.setBounds(250,140,200,28);
-		/*Configuration nombres de mines entre (ligne*colonne)-1*/
-		JPanel panMines = new JPanel();									
+		/*Configuration nombres de mines entre (ligne*colonne)-1*/							
 		JLabel txtMines = new JLabel("Combien de mines voulez vous ?");
 		JTextField newnbrMines = new JTextField("10");
-		newnbrMines.setBounds(250,180,200,28);
-		/*Configuration bouton Jouer nombre de : "lignes, colonnes, mines " à la fenetre*/
-		JPanel panJouer = new JPanel();									
+		/*Configuration bouton Jouer nombre de : "lignes, colonnes, mines " à la fenetre*/								
 		JButton btJouer = new JButton();
 		btJouer.setText("Jouer");	
-		
+
+		/*Ajout actionlistener pour récupérer actions boutons et JtextField*/
 		ActionMenu2 amenu = new ActionMenu2(newLigne,newColonne,newnbrMines,btJouer);
 		btJouer.addActionListener(amenu);
-
-		panLigne.add(txtLigne);
-		panLigne.add(newLigne);
-		fenetre2.add(panLigne);
-
-		panColonne.add(txtColonne);
-		panColonne.add(newColonne);
-		fenetre2.add(panColonne);
-
-		panMines.add(txtMines);
-		panMines.add(newnbrMines);
-		fenetre2.add(panMines);
-        fenetre2.setLayout(new BorderLayout());
-		panJouer.add(btJouer);
-		fenetre2.add(panJouer, BorderLayout.SOUTH);
-        fenetre2.setVisible(true); /*Afficher menu2*/
+		
+		/*Créer un JPanel et une grille dedans pour positionner les élements*/
+		JPanel panneau = new JPanel();	
+		GridLayout grille = new GridLayout(7, 1);
+		panneau.setLayout(grille);
+		panneau.add(txtLigne);
+		panneau.add(newLigne);
+		panneau.add(txtColonne);
+		panneau.add(newColonne);
+		panneau.add(txtMines);
+		panneau.add(newnbrMines);
+		panneau.add(btJouer);
+		/*Centre les éléments dans la grille*/
+		txtLigne.setHorizontalAlignment(JLabel.CENTER);
+		txtColonne.setHorizontalAlignment(JLabel.CENTER);
+		txtMines.setHorizontalAlignment(JLabel.CENTER);
+		newLigne.setHorizontalAlignment(JTextField.CENTER);
+		newColonne.setHorizontalAlignment(JTextField.CENTER);
+		newnbrMines.setHorizontalAlignment(JTextField.CENTER);
+		fenetre2.add(panneau);
+		/*Afficher menu2*/
+        fenetre2.setVisible(true); 
 }
-}	
+}
