@@ -21,6 +21,7 @@ public class Fenetre   {
     private boolean[] clickable = new boolean[ligne * colonne];
     private int[] numbers = new int[ligne * colonne];
     private boolean[] clickdone = new boolean[ligne * colonne];
+    JMenuItem quitter2 = new JMenuItem("quitter");
     private boolean lost;
     JButton[] buttons = new JButton[ligne * colonne];
     JMenuItem newGameButton = new JMenuItem("nouvelle partie");
@@ -36,20 +37,24 @@ public class Fenetre   {
     public void fenetre1() {
         p.setLayout(layout);
         Setup newsetup = new Setup();
-        newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,newGameButton,fenetre,reglage);
+        newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,newGameButton,fenetre,reglage, quitter2);
         newsetup.setupI();
         for (int i = 0; i < (ligne * colonne); i++) {
             p.add(buttons[i]);
         }
-        JMenuBar mb = new JMenuBar();
-        JMenu m = new JMenu("Paramettre");
-        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, newGameButton, layout, p, mineLabel, fenetre,reglage);
+        JMenuBar menubar = new JMenuBar();
+        JMenu menupara = new JMenu("Paramettre");
+        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage);
         reglage.addActionListener(newbut);
         newGameButton.addActionListener(newbut);
-        m.add(reglage);
-        m.add(newGameButton);
-        mb.add(m);
-        fenetre.setJMenuBar(mb);
+        quitter2.addActionListener(newbut);
+        menupara.add(reglage);
+        menupara.add(newGameButton);
+        menupara.add(quitter2);
+        menubar.add(menupara);
+  
+
+        fenetre.setJMenuBar(menubar);
         fenetre.add(p);
         fenetre.add(mineLabel, BorderLayout.SOUTH);
         fenetre.pack();

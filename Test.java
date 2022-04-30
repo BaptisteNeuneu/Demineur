@@ -14,6 +14,7 @@ public class Test {
     private boolean won = false;
     private JMenuItem reglage;
     private JMenuItem newGameButton;
+    private JMenuItem quitter2;
     private GridLayout layout;
     private JPanel p;
     private JLabel mineLabel;
@@ -141,7 +142,6 @@ public class Test {
             JOptionPane.showMessageDialog(null,
                     "you win!nstarting a new game", "you win",
                     JOptionPane.INFORMATION_MESSAGE);
-            newGameButton.doClick();
         }
     }
  
@@ -157,7 +157,7 @@ public class Test {
                     "you lose!nstarting a new game", "you lose",
                     JOptionPane.ERROR_MESSAGE);
                     Setup newsetup = new Setup();
-                    newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,reglage,fenetre,reglage);
+                    newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,reglage,fenetre, newGameButton, quitter2);
             newsetup.setup();
         }
     }

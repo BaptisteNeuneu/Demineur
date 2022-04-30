@@ -17,19 +17,20 @@ public class ActionButton implements ActionListener, MouseListener{
     private JButton[] buttons;
     private int[] numbers;
     private boolean won = false;
+    private JMenuItem quitter2;
     private JMenuItem reglage;
     private JMenuItem newGameButton;
     private GridLayout layout;
     private JPanel p;
     private JLabel mineLabel;
     private Test newtest= new Test();
-    private Setup newsetup;
+    //private Setup newsetup;
     private JFrame fenetre;
-    private boolean lost;
+   // private boolean lost;
 
 
     public ActionButton(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,
-    JButton[] buttons,boolean[] presencemines,int nbrMines,int[] numbers,
+    JButton[] buttons,boolean[] presencemines,int nbrMines,int[] numbers,JMenuItem quitter2,
     JMenuItem newGameButton,GridLayout layout, JPanel p,JLabel mineLabel,JFrame fenetre,JMenuItem reglage){
         this.ligne=ligne;
         this.colonne=colonne;
@@ -39,6 +40,7 @@ public class ActionButton implements ActionListener, MouseListener{
         this.presencemines=presencemines;
         this.nbrMines=nbrMines;
         this.numbers=numbers;
+        this.quitter2=quitter2;
         this.newGameButton=newGameButton;
         this.layout=layout;
         this.p=p;
@@ -58,8 +60,7 @@ public class ActionButton implements ActionListener, MouseListener{
                 null, null, 10));
         nbrMines = Integer.parseInt((String) JOptionPane.showInputDialog(fenetre, "Mines", "Mines",
                 JOptionPane.PLAIN_MESSAGE, null, null, 10));
-            newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,newGameButton,fenetre,reglage);
-            newsetup.setupI2();
+        newGameButton.doClick();
         }
         if (!won) {
             for (int x = 0; x < ligne; x++) {
@@ -72,6 +73,11 @@ public class ActionButton implements ActionListener, MouseListener{
                     }
                 }
             }
+        }
+        if(e.getSource() == quitter2){
+            Menu i = new Menu();
+            i.setMenu(buttons, clickable, clickable, clickable, layout, p, colonne, colonne, colonne, numbers, won, mineLabel, newGameButton, fenetre, newGameButton);
+            i.Menu1();
         }
         if (e.getSource() == newGameButton) {
             fenetre.setVisible(false);
@@ -94,7 +100,7 @@ public class ActionButton implements ActionListener, MouseListener{
     public void mousePressed(MouseEvent e) {
         if (e.getButton() == 3) {
             int n = 0;
-            /*int s = 0;*/
+           /* int s = 0;*/
             for (int x = 0; x < ligne; x++) {
                 for (int y = 0; y < colonne; y++) {
                     if (e.getSource() == buttons[(ligne * y) + x]) {
@@ -104,7 +110,7 @@ public class ActionButton implements ActionListener, MouseListener{
                     if (!clickdone[(ligne * y) + x]) {
                         if (!clickable[(ligne * y) + x]) {
     
-                            /*if(buttons[(ligne * y+x)] == ★){
+                            /*if(buttons[(ligne * y+x)] == ){
                             buttons[(ligne * y) + x].setText("?");
                             s++;
                        } else{*/

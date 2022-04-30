@@ -13,11 +13,13 @@ public class Setup  {
     private int nbrMines;
     private int[] numbers;
     private JLabel mineLabel;
-    JMenuItem reglage;
+    private JMenuItem reglage;
+    private JMenuItem quitter2;
     private JFrame fenetre;
 
     public void setSetup(JButton[] buttons,boolean[] presencemines,boolean[] clickdone,boolean[] clickable,GridLayout layout,JPanel p,
-    int ligne,int colonne,int nbrMines,int[] numbers,boolean lost,JLabel mineLabel,JMenuItem newGameButton,JFrame fenetre,JMenuItem reglage){
+    int ligne,int colonne,int nbrMines,int[] numbers,boolean lost,JLabel mineLabel,JMenuItem newGameButton,JFrame fenetre,JMenuItem reglage,
+    JMenuItem quitter2){
         this.buttons=buttons;
         this.presencemines=presencemines;
         this.clickdone=clickdone;
@@ -31,6 +33,7 @@ public class Setup  {
         this.mineLabel=mineLabel;
         this.fenetre=fenetre;
         this.reglage=reglage;
+        //this.quitter2=quitter2;
     }
 
     public void setupI() {
@@ -42,7 +45,7 @@ public class Setup  {
                                buttons[(ligne * y) + x] = new JButton( "" );
                 buttons[(ligne * y) + x].setPreferredSize(new Dimension(
                     45, 45));
-                       ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, reglage, layout, p, mineLabel, fenetre,reglage);
+                       ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, reglage, layout, p, mineLabel, fenetre,reglage);
                 buttons[(ligne * y) + x].addActionListener(newbut); //ajoute les actions des boutons
                 buttons[(ligne * y) + x].addMouseListener(newbut);  //ajoute les actions de la souris
             }
@@ -91,5 +94,10 @@ public class Setup  {
     b.Mine();
     b.fillnumbers();
         mineLabel.setText("mines: " + nbrMines + " marked: 0");
+    }
+
+    public void setSetup(JButton[] buttons2, boolean[] presencemines2, boolean[] clickdone2, boolean[] clickable2,
+            GridLayout layout2, JPanel p2, int ligne2, int colonne2, int nbrMines2, int[] numbers2, JLabel mineLabel2,
+            JFrame fenetre2, JMenuItem reglage2, JMenuItem newGameButton, JMenuItem quitter22) {
     }
 }
