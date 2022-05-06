@@ -1,40 +1,34 @@
 import java.awt.*;
 import javax.swing.*;
 
+//import java.util.TimerTask;
+//import java.util.Timer;
+
 public class Test {
     private int ligne;
     private int colonne;
     private boolean[] clickdone;
-    private boolean[] clickable;
+    //private boolean[] clickable;
     private boolean[] presencemines;
-    private int nbrMines;
     private JButton[] buttons;
     private int[] numbers;
     private boolean lost = false;
     private boolean won = false;
-    private JMenuItem reglage;
-    private JMenuItem newGameButton;
-    private JMenuItem quitter2;
-    private GridLayout layout;
-    private JPanel p;
-    private JLabel mineLabel;
-    private JFrame fenetre;
 
     public void setTest(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,boolean[] presencemines,int nbrMines,
     JButton[] buttons,int[] numbers,JMenuItem reglage,JMenuItem newGameButton,GridLayout layout,JPanel p,JLabel mineLabel){
         this.ligne=ligne;
         this.colonne=colonne;
         this.clickdone=clickdone;
-        this.clickable=clickable;
+        //this.clickable=clickable;
         this.presencemines=presencemines;
-        this.nbrMines=nbrMines;
         this.buttons=buttons;
         this.numbers=numbers;
-        this.reglage=reglage;
-        this.newGameButton=newGameButton;
-        this.layout=layout;
-        this.p=p;
-        this.mineLabel=mineLabel;
+
+        
+    }
+    public void doClose(){
+        System.exit(0);
     }
     public void doCheck(int x, int y) {
         int cur = (ligne * y) + x;
@@ -142,6 +136,9 @@ public class Test {
             JOptionPane.showMessageDialog(null,
                     "you win!nstarting a new game", "you win",
                     JOptionPane.INFORMATION_MESSAGE);
+                    /*Timer timer = new Timer();
+                    doClose task = extracted();
+                    timer.schedule(task,18000);*/
         }
     }
  
@@ -156,9 +153,8 @@ public class Test {
             JOptionPane.showMessageDialog(null,
                     "you lose!nstarting a new game", "you lose",
                     JOptionPane.ERROR_MESSAGE);
-                    Setup newsetup = new Setup();
-                    newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,reglage,fenetre, newGameButton, quitter2);
-            newsetup.setup();
+                 Menu newm = new Menu();
+                 newm.Menu1();
         }
     }
 }

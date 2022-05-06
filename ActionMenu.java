@@ -60,7 +60,7 @@ private JLabel mineLabel;
         }else if(menu1.getSource() == reprendregame){
            Setup reprise = new Setup();
            reprise.setSetup(buttons, presencemines, clickdone, clickable, layout, p, ligne, colonne, nbrMines, numbers, mineLabel, fenetre, reglage, newGameButton,quitter2);
-           reprise.setup();
+           reprise.setupI2();
             
         }else if(menu1.getSource() == quitter){
             System.exit(0);

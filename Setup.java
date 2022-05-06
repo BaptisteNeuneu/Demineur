@@ -33,7 +33,7 @@ public class Setup  {
         this.mineLabel=mineLabel;
         this.fenetre=fenetre;
         this.reglage=reglage;
-        //this.quitter2=quitter2;
+        this.quitter2=quitter2;
     }
 
     public void setupI() {
@@ -96,8 +96,4 @@ public class Setup  {
         mineLabel.setText("mines: " + nbrMines + " marked: 0");
     }
 
-    public void setSetup(JButton[] buttons2, boolean[] presencemines2, boolean[] clickdone2, boolean[] clickable2,
-            GridLayout layout2, JPanel p2, int ligne2, int colonne2, int nbrMines2, int[] numbers2, JLabel mineLabel2,
-            JFrame fenetre2, JMenuItem reglage2, JMenuItem newGameButton, JMenuItem quitter22) {
     }
-}

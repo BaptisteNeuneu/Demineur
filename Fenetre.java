@@ -11,6 +11,7 @@ public class Fenetre   {
     private int ligne = 10;
     private int colonne =10;
     private int nbrMines =10;
+
     GridLayout layout = new GridLayout(ligne, colonne);
     /*type[][] name = new type[ligne][colonne];
      * type[x][y];
@@ -28,6 +29,7 @@ public class Fenetre   {
     JMenuItem reglage = new JMenuItem("option");
     JLabel mineLabel = new JLabel("mines: " + nbrMines + " marqué: 0" + " suposition: 0");
     JPanel p = new JPanel();
+    private JButton sauvquit= new JButton("Sauvegarder Quitter");
    public void setFenetre(int ligne,int colonne,int nbrMines){
        this.ligne=ligne;
        this.colonne=colonne;
@@ -48,6 +50,7 @@ public class Fenetre   {
         reglage.addActionListener(newbut);
         newGameButton.addActionListener(newbut);
         quitter2.addActionListener(newbut);
+        sauvquit.addActionListener(newbut);
         menupara.add(reglage);
         menupara.add(newGameButton);
         menupara.add(quitter2);
@@ -57,6 +60,7 @@ public class Fenetre   {
         fenetre.setJMenuBar(menubar);
         fenetre.add(p);
         fenetre.add(mineLabel, BorderLayout.SOUTH);
+        fenetre.add(sauvquit,BorderLayout.NORTH);
         fenetre.pack();
         fenetre.setVisible(true);
     }
