@@ -57,10 +57,10 @@ private JLabel mineLabel;
             Menu2 newmenu2 =new Menu2();
             newmenu2.Menu21();
             fenetre1.setVisible(false); /*Fait disparaître la fenêtre*/
-        }else if(menu1.getSource() == reprendregame){
-           Setup reprise = new Setup();
-           reprise.setSetup(buttons, presencemines, clickdone, clickable, layout, p, ligne, colonne, nbrMines, numbers, mineLabel, fenetre, reglage, newGameButton,quitter2);
-           reprise.setupI2();
+        //}else if(menu1.getSource() == reprendregame){
+           //Setup reprise = new Setup();
+           //reprise.setSetup(buttons, presencemines, clickdone, clickable, layout, p, ligne, colonne, nbrMines, numbers, mineLabel, fenetre, reglage, newGameButton,quitter2);
+           //reprise.setupI2();
             
         }else if(menu1.getSource() == quitter){
             System.exit(0);

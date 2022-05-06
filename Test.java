@@ -134,7 +134,7 @@ public class Test {
         if (!lost && !won) {
             won = true;
             JOptionPane.showMessageDialog(null,
-                    "you win!nstarting a new game", "you win",
+                    "Tu as gagné! Recommence une nouvelle partie", "Victory",
                     JOptionPane.INFORMATION_MESSAGE);
                     /*Timer timer = new Timer();
                     doClose task = extracted();
@@ -151,7 +151,7 @@ public class Test {
                 }
             }
             JOptionPane.showMessageDialog(null,
-                    "you lose!nstarting a new game", "you lose",
+                    "Tu as perdues! Recommence une nouvelle partie", "Game over",
                     JOptionPane.ERROR_MESSAGE);
                  Menu newm = new Menu();
                  newm.Menu1();

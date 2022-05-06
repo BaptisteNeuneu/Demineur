@@ -1,7 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
  
-/**MineSweeper by SciWizEH*/
 public class TestFenetre extends JFrame  {
  
     private int rows;
