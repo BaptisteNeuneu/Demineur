@@ -6,37 +6,10 @@
 import javax.swing.*;
 import java.awt.*;
 public class Menu{
- private JButton[] buttons;
-    private boolean[] presencemines;
-    private boolean[] clickdone;
-    private boolean[] clickable;
-    private GridLayout layout;
-    private JPanel p;
-    private int ligne;
-    private int colonne;
-    private int nbrMines;
-    private int[] numbers;
-    private JLabel mineLabel;
-    private JMenuItem reglage;
     private JFrame fenetre;
-    private JMenuItem newGameButton;
-    private JMenuItem quitter2;
 
-    public void setMenu(JButton[] buttons,boolean[] presencemines,boolean[] clickdone,boolean[] clickable,GridLayout layout,JPanel p,
-    int ligne,int colonne,int nbrMines,int[] numbers,boolean lost,JLabel mineLabel,JMenuItem newGameButton,JFrame fenetre,JMenuItem reglage){
-        this.buttons=buttons;
-        this.presencemines=presencemines;
-        this.clickdone=clickdone;
-        this.clickable=clickable;
-        this.layout=layout;
-        this.p=p;
-        this.ligne=ligne;
-        this.colonne=colonne;
-        this.nbrMines=nbrMines;
-        this.numbers=numbers;
-        this.mineLabel=mineLabel;
+    public void setMenu(JFrame fenetre){
         this.fenetre=fenetre;
-        this.reglage=reglage;
     }
     /*Un objet pour servir de fenetre1*/
     public void Menu1(){
@@ -61,7 +34,7 @@ public class Menu{
         fenetre1.add(rpgame);
         fenetre1.add(quit);
         fenetre1.setTitle("*** Menu ***");	
-        ActionMenu amenu = new ActionMenu(newgame,reprendregame,quitter,fenetre1,ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,layout, newGameButton, p, mineLabel, fenetre,reglage,quitter2);
+        ActionMenu amenu = new ActionMenu(fenetre,newgame,reprendregame,quitter);
         newgame.addActionListener(amenu);
         reprendregame.addActionListener(amenu);
         quitter.addActionListener(amenu);

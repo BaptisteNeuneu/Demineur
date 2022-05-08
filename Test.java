@@ -139,6 +139,8 @@ public class Test {
                     /*Timer timer = new Timer();
                     doClose task = extracted();
                     timer.schedule(task,18000);*/
+                    Menu newm =new Menu();
+                    newm.Menu1();
         }
     }
  
