@@ -2,16 +2,16 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Setup  {
-    private JButton[] buttons;
-    private boolean[] presencemines;
+    private int ligne;
+    private int colonne;
     private boolean[] clickdone;
+    private boolean[] presencemines;
+    private JButton[] buttons;
+    private int[] numbers;
     private boolean[] clickable;
     private GridLayout layout;
     private JPanel p;
-    private int ligne;
-    private int colonne;
     private int nbrMines;
-    private int[] numbers;
     private JLabel mineLabel;
     private JMenuItem reglage;
     private JMenuItem quitter2;
