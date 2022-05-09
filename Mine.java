@@ -19,13 +19,13 @@ public class Mine {
 
     //On ajoute les mines aléatoirement en vérifiant si elles sont déjà présente où non
     public void Mine1(){
-    int minerestant = nbrMines;
-        while (minerestant > 0) {
+    int minerestante = nbrMines;
+        while (minerestante > 0) {
             int x = (int) Math.floor(Math.random() * ligne);
             int y = (int) Math.floor(Math.random() * colonne);
             if (!presencemines[(ligne * y) + x]) {
                 presencemines[(colonne * y) + x] = true;
-                minerestant--;
+                minerestante--;
             }
         }
     
