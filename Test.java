@@ -18,9 +18,10 @@ public class Test {
     private int[] numbers;
     private boolean lost = false;
     private boolean won = false;
+    private JFrame fenetre;
 
     public void setTest(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,boolean[] presencemines,int nbrMines,
-    JButton[] buttons,int[] numbers,JMenuItem reglage,JMenuItem newGameButton,GridLayout layout,JPanel p,JLabel mineLabel){
+    JButton[] buttons,int[] numbers,JMenuItem reglage,JMenuItem newGameButton,GridLayout layout,JPanel p,JLabel mineLabel,JFrame fenetre){
         this.ligne=ligne;
         this.colonne=colonne;
         this.clickdone=clickdone;
@@ -28,6 +29,7 @@ public class Test {
         this.presencemines=presencemines;
         this.buttons=buttons;
         this.numbers=numbers;
+        this.fenetre=fenetre;
 
         
     }
@@ -105,10 +107,10 @@ public class Test {
                     buttons[right].doClick();
                 }
             }
-        } else {
+        } else {Épernon
             buttons[cur].setText("" + numbers[cur]);
             if (!presencemines[cur] && numbers[cur] == 0) {
-                buttons[cur].setText("");
+                buttons[cur].setText("");Épernon
             }
         }
         if (presencemines[cur] && !won) {
@@ -122,7 +124,7 @@ public class Test {
             for (int y = 0; y < colonne; y++) {
                 int cur = (ligne * y) + x;
                 if (!clickdone[cur]) {
-                    if (presencemines[cur]) {
+                    if (presencemines[cur] == false) {
                         continue;
                     } else {
                         return;
@@ -137,14 +139,17 @@ public class Test {
     public void doWin() {
         if (!lost && !won) {
             won = true;
-            JOptionPane.showMessageDialog(null,
+            JOptionPane panvic = new JOptionPane();
+            panvic.showMessageDialog(null,
                     "Tu as gagné! Recommence une nouvelle partie", "Victory",
-                    JOptionPane.INFORMATION_MESSAGE);
+                    panvic.INFORMATION_MESSAGE);
                     /*Timer timer = new Timer();
                     doClose task = extracted();
                     timer.schedule(task,18000);*/
                     Menu newm =new Menu();
                     newm.Menu1();
+                    panvic.disable();
+                    fenetre.disable();
         }
     }
  
@@ -156,9 +161,12 @@ public class Test {
                     buttons[i].doClick(0);
                 }
             }
-            JOptionPane.showMessageDialog(null,
+            JOptionPane panlose = new JOptionPane();
+            panlose.showMessageDialog(null,
                     "Tu as perdues! Recommence une nouvelle partie", "Game over",
-                    JOptionPane.ERROR_MESSAGE);
+                    panlose.ERROR_MESSAGE);
+                    panlose.disable();
+                    fenetre.disable();
                  Menu newm = new Menu();
                  newm.Menu1();
         }

@@ -67,7 +67,7 @@ public class ActionButton implements ActionListener, MouseListener{
                 for (int y = 0; y < colonne; y++) {
                     if (e.getSource() == buttons[(ligne * y) + x]
                             && !won && clickable[(ligne * y) + x]) {
-                                newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel);
+                                newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel,fenetre);
                         newtest.doCheck(x, y);
                         break;
                     }
@@ -88,8 +88,8 @@ public class ActionButton implements ActionListener, MouseListener{
             return;
  
         }
-        newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel);
-        newtest.checkWin();
+         newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel,fenetre);
+         newtest.doCheck();
     }
     public void mouseEntered(MouseEvent e) {
     }
