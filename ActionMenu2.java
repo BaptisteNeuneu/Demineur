@@ -1,6 +1,6 @@
 /**
 * @version 28/04/2022
-* @author Brinet Félix
+* @author Brinet Félixa
 */
 //inclusion des bibliothèques
 import java.awt.event.*;

@@ -1,6 +1,6 @@
 /**
 * @version 26/04/2022
-* @author Baptiste Nevejans
+* @author Baptiste Nevejansa
 */
 //inclusion des bibliothèques
 public class FillNumber {

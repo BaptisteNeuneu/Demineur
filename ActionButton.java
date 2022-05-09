@@ -1,6 +1,6 @@
 /**
 * @version 26/04/2022
-* @author Félix Brinet
+* @author Félix Brineta
 */
 //inclusion des bibliothèques
 import java.awt.*;

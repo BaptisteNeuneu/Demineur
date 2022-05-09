@@ -1,3 +1,7 @@
+/**
+* @version 09/05/2022
+* @author Baptiste Nevejans
+*/
 import java.awt.*;
 import javax.swing.*;
 
