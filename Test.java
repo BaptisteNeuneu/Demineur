@@ -8,7 +8,7 @@ import javax.swing.*;
 //import java.util.TimerTask;
 //import java.util.Timer;
 
-public class Test {
+public class Test  {
     private int ligne;
     private int colonne;
     private boolean[] clickdone;
@@ -107,10 +107,10 @@ public class Test {
                     buttons[right].doClick();
                 }
             }
-        } else {Épernon
+        } else {
             buttons[cur].setText("" + numbers[cur]);
             if (!presencemines[cur] && numbers[cur] == 0) {
-                buttons[cur].setText("");Épernon
+                buttons[cur].setText("");
             }
         }
         if (presencemines[cur] && !won) {
@@ -132,24 +132,21 @@ public class Test {
                 }
             }
         }
- 
         doWin();
     }
  
     public void doWin() {
         if (!lost && !won) {
             won = true;
-            JOptionPane panvic = new JOptionPane();
-            panvic.showMessageDialog(null,
+            JOptionPane.showMessageDialog(null,
                     "Tu as gagné! Recommence une nouvelle partie", "Victory",
-                    panvic.INFORMATION_MESSAGE);
+                    JOptionPane.INFORMATION_MESSAGE);
                     /*Timer timer = new Timer();
                     doClose task = extracted();
                     timer.schedule(task,18000);*/
                     Menu newm =new Menu();
                     newm.Menu1();
-                    panvic.disable();
-                    fenetre.disable();
+                    fenetre.setVisible(false);
         }
     }
  
@@ -161,14 +158,12 @@ public class Test {
                     buttons[i].doClick(0);
                 }
             }
-            JOptionPane panlose = new JOptionPane();
-            panlose.showMessageDialog(null,
-                    "Tu as perdues! Recommence une nouvelle partie", "Game over",
-                    panlose.ERROR_MESSAGE);
-                    panlose.disable();
-                    fenetre.disable();
+            JOptionPane.showMessageDialog(null,
+                    "Tu as perdue! Recommence une nouvelle partie", "Game over",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+                    fenetre.setVisible(false);
                  Menu newm = new Menu();
                  newm.Menu1();
-        }
     }
 }
