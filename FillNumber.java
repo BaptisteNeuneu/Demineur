@@ -8,7 +8,6 @@ public class FillNumber {
     private int colonne;
     private boolean[] presencemines;
     private int[] numbers;
-    private Mine newrandmine;
     private int nbrMines;
     private Mine newrandMine;
 
