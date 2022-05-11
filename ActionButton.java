@@ -65,8 +65,8 @@ public class ActionButton implements ActionListener, MouseListener{
         if (!won) {
             for (int x = 0; x < ligne; x++) {
                 for (int y = 0; y < colonne; y++) {
-                    if (e.getSource() == buttons[(ligne * y) + x]
-                            && !won && clickable[(ligne * y) + x]) {
+                    if (e.getSource() == buttons[y + x]
+                            && !won && clickable[ y + x]) {
                                 newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel,fenetre);
                         newtest.doCheck(x, y);
                         break;
@@ -103,21 +103,20 @@ public class ActionButton implements ActionListener, MouseListener{
            /* int s = 0;*/
             for (int x = 0; x < ligne; x++) {
                 for (int y = 0; y < colonne; y++) {
-                    if (e.getSource() == buttons[(ligne * y) + x]) {
-                        clickable[(ligne * y) + x] = !clickable[(ligne * y)
-                                + x];
+                    if (e.getSource() == buttons[y + x]) {
+                        clickable[y  + x] = !clickable[ y + x];
                     }
-                    if (!clickdone[(ligne * y) + x]) {
-                        if (!clickable[(ligne * y) + x]) {
+                    if (!clickdone[ y + x]) {
+                        if (!clickable[ y + x]) {
     
                             /*if(buttons[(ligne * y+x)] == ){
                             buttons[(ligne * y) + x].setText("?");
                             s++;
                        } else{*/
-                            buttons[(ligne * y) + x].setText("★");
+                            buttons[ y + x].setText("★");
                             n++;
                         } else {
-                            buttons[(ligne * y) + x].setText("");
+                            buttons[ y + x].setText("");
                         }
                         mineLabel.setText("mines: " + nbrMines + " marked: "
                                 + n /*+ "supposition: " + s*/);

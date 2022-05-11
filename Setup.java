@@ -61,7 +61,7 @@ public class Setup  {
     }
 
 
-    public void setupI2() {
+   /* public void setupI2() {
         fenetre.remove(p);
         p = new JPanel();
         layout = new GridLayout(ligne, colonne);
@@ -98,6 +98,6 @@ public class Setup  {
     b.Mine();
     b.fillnumbers();
         mineLabel.setText("mines: " + nbrMines + " marked: 0");
-    }
+    }*/
 
     }

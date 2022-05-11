@@ -33,23 +33,20 @@ public class Test  {
 
         
     }
-    public void doClose(){
-        System.exit(0);
-    }
     public void doCheck(int x, int y) {
         int cur = (ligne * y) + x;
         boolean l = (x - 1) >= 0;
         boolean r = (x + 1) < ligne;
         boolean u = (y - 1) >= 0;
         boolean d = (y + 1) < colonne;
-        int left = (ligne * (y)) + (x - 1);
-        int right = (ligne * (y)) + (x + 1);
-        int up = (ligne * (y - 1)) + (x);
-        int upleft = (ligne * (y - 1)) + (x - 1);
-        int upright = (ligne * (y - 1)) + (x + 1);
-        int down = (ligne * (y + 1)) + (x);
-        int downleft = (ligne * (y + 1)) + (x - 1);
-        int downright = (ligne * (y + 1)) + (x + 1);
+        int left = y + (x - 1);
+        int right = y + (x + 1);
+        int up = (y - 1) + x;
+        int upleft = (y - 1) + (x - 1);
+        int upright =  (y - 1) + (x + 1);
+        int down = (y + 1) + x;
+        int downleft = (y + 1) + (x - 1);
+        int downright = (y + 1) + (x + 1);
  
         clickdone[cur] = true;
         buttons[cur].setEnabled(false);
@@ -122,12 +119,12 @@ public class Test  {
     public void checkWin() {
         for (int x = 0; x < ligne; x++) {
             for (int y = 0; y < colonne; y++) {
-                int cur = (ligne * y) + x;
+                int cur =  y + x;
                 if (!clickdone[cur]) {
                     if (presencemines[cur]) {
-                        return;
-                    } else {
                         continue;
+                    } else {
+                        return;
                     }
                 }
             }
