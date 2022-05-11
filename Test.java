@@ -124,10 +124,10 @@ public class Test  {
             for (int y = 0; y < colonne; y++) {
                 int cur = (ligne * y) + x;
                 if (!clickdone[cur]) {
-                    if (presencemines[cur] == false) {
-                        continue;
-                    } else {
+                    if (presencemines[cur]) {
                         return;
+                    } else {
+                        continue;
                     }
                 }
             }
