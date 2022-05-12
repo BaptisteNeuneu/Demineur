@@ -14,12 +14,16 @@ public class Menu2 {
 	private JButton btJouer = new JButton();
     public void Menu21(){
 
-		/*Un objet pour servir de fenetre*/
 		
-        /*On configure la fenetre*/
-        fenetre2.setSize(500,500);
-        fenetre2.setMinimumSize(new Dimension(500,500));
-        fenetre2.setLocation(200,200);
+        /*On configure la fenetre2*/
+		/*On récupère la taille de la fenêtre2*/
+		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
+		int longueur = tailleEcran.width / 2;
+		int hauteur = tailleEcran.height;
+        fenetre2.setSize(+longueur,+hauteur);
+		/*On empèche de réduire la fenêtre2*/
+        fenetre2.setMinimumSize(new Dimension(+longueur,+hauteur));
+        fenetre2.setLocation(0,0);
         fenetre2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre2.setTitle("*** Réglages ***");
 

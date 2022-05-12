@@ -20,9 +20,14 @@ public class Menu{
     /*Un objet pour servir de fenetre1*/
     public void Menu1(){		
         /*On configure la fenetre1*/
-        fenetre1.setSize(500,500);
-        fenetre1.setMinimumSize(new Dimension(300,300));
-        fenetre1.setLocation(200,200);
+        /*On récupère la taille de la fenêtre1*/
+        Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
+		int longueur = tailleEcran.width / 2;
+		int hauteur = tailleEcran.height;
+        fenetre1.setSize(+longueur,+hauteur);
+        /*On empèche de réduire la fenêtre2*/
+        fenetre1.setMinimumSize(new Dimension(+longueur,+hauteur));
+        fenetre1.setLocation(0,0);
         fenetre1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GridLayout r = new GridLayout(3,2);
         fenetre1.setLayout(r);
