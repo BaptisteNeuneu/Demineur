@@ -25,8 +25,8 @@ public class Case {
         while (minerestant > 0) {
             int x = (int) Math.floor(Math.random() * ligne);
             int y = (int) Math.floor(Math.random() * colonne);
-            if (!presencemines[(ligne * y) + x]) {
-                presencemines[(colonne * y) + x] = true;
+            if (!presencemines[y + x]) {
+                presencemines[y + x] = true;
                 minerestant--;
             }
         }
@@ -35,7 +35,7 @@ public class Case {
     public void fillnumbers() {
         for (int x = 0; x < ligne; x++) {
             for (int y = 0; y < colonne; y++) {
-                int cur = (ligne * y) + x;
+                int cur = (y) + x;
                 if (presencemines[cur]) {
                     numbers[cur] = 0;
                     continue;
@@ -51,7 +51,7 @@ public class Case {
                 int upleft = (y - 1) + (x - 1);
                 int upright = (y - 1) + (x + 1);
                 int down = (y + 1) + x;
-                int downleft = (y+1) + (x - 1);
+                int downleft = (y + 1) + (x - 1);
                 int downright = (y + 1) + (x + 1);
                 if (u) {
                     if (presencemines[up]) {

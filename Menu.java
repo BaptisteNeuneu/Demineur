@@ -34,7 +34,7 @@ public class Menu{
         fenetre1.add(rpgame);
         fenetre1.add(quit);
         fenetre1.setTitle("*** Menu ***");	
-        ActionMenu amenu = new ActionMenu(fenetre,newgame,reprendregame,quitter);
+        ActionMenu amenu = new ActionMenu(fenetre,newgame,reprendregame,quitter,fenetre1);
         newgame.addActionListener(amenu);
         reprendregame.addActionListener(amenu);
         quitter.addActionListener(amenu);

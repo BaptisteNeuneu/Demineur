@@ -43,15 +43,15 @@ public class Setup  {
     public void setupI() {
         for (int x = 0; x < ligne; x++) {
             for (int y = 0; y < colonne; y++) {
-                presencemines[(ligne * y) + x] = false;
-                clickdone[(ligne * y) + x] = false;
-                clickable[(ligne * y) + x] = true;
-                               buttons[(ligne * y) + x] = new JButton( "" );
-                buttons[(ligne * y) + x].setPreferredSize(new Dimension(
+                presencemines[(y) + x] = false;
+                clickdone[(y) + x] = false;
+                clickable[(y) + x] = true;
+                               buttons[(y) + x] = new JButton( "" );
+                buttons[(y) + x].setPreferredSize(new Dimension(
                     45, 45));
                        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, reglage, layout, p, mineLabel, fenetre,reglage);
-                buttons[(ligne * y) + x].addActionListener(newbut); //ajoute les actions des boutons
-                buttons[(ligne * y) + x].addMouseListener(newbut);  //ajoute les actions de la souris
+                buttons[(y) + x].addActionListener(newbut); //ajoute les actions des boutons
+                buttons[(y) + x].addMouseListener(newbut);  //ajoute les actions de la souris
             }
         }
     Case b = new Case();
@@ -61,7 +61,7 @@ public class Setup  {
     }
 
 
-   /* public void setupI2() {
+    public void setupI2() {
         fenetre.remove(p);
         p = new JPanel();
         layout = new GridLayout(ligne, colonne);
@@ -98,6 +98,6 @@ public class Setup  {
     b.Mine();
     b.fillnumbers();
         mineLabel.setText("mines: " + nbrMines + " marked: 0");
-    }*/
+    }
 
     }

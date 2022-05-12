@@ -37,7 +37,7 @@ public class Menu2 {
 		btJouer.setText("Jouer");	
 
 		/*Ajout actionlistener pour récupérer actions boutons et JtextField*/
-		ActionMenu2 amenu = new ActionMenu2(newLigne,newColonne,newnbrMines,btJouer);
+		ActionMenu2 amenu = new ActionMenu2(newLigne,newColonne,newnbrMines,btJouer,fenetre2);
 		btJouer.addActionListener(amenu);
 		
 		/*Créer un JPanel et une grille dedans pour positionner les élements*/

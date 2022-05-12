@@ -14,8 +14,9 @@ private JFrame fenetre;
 
 
 
-    public ActionMenu(JFrame fenetre,JButton newgame,JButton reprendregame,JButton quitter){
+    public ActionMenu(JFrame fenetre,JButton newgame,JButton reprendregame,JButton quitter,JFrame fenetre1){
         this.fenetre=fenetre;
+        this.fenetre1=fenetre1;
         this.newgame=newgame;
         this.reprendregame=reprendregame;
         this.quitter=quitter;

@@ -34,7 +34,7 @@ public class Test  {
         
     }
     public void doCheck(int x, int y) {
-        int cur = (ligne * y) + x;
+        int cur = y + x;
         boolean l = (x - 1) >= 0;
         boolean r = (x + 1) < ligne;
         boolean u = (y - 1) >= 0;
