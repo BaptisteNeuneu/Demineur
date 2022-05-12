@@ -26,7 +26,6 @@ public class Menu{
         fenetre1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GridLayout r = new GridLayout(3,2);
         fenetre1.setLayout(r);
-
         newgam.add(newgame);
         rpgame.add(reprendregame);
         quit.add(quitter);
