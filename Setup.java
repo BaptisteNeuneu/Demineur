@@ -87,10 +87,10 @@ public class Setup  {
         for (int x = 0; x < ligne; x++) {
             for (int y = 0; y < colonne; y++) {
                 presencemines[(ligne * y) + x] = false;
-                clickdone[(ligne * y) + x] = false;
-                clickable[(ligne * y) + x] = true;
-                buttons[(ligne * y) + x].setEnabled(true);
-                buttons[(ligne * y) + x].setText("");
+                clickdone[(y) + x] = false;
+                clickable[(y) + x] = true;
+                buttons[(y) + x].setEnabled(true);
+                buttons[(y) + x].setText("");
             }
         }
      Case b = new Case();
