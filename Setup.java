@@ -43,10 +43,10 @@ public class Setup  {
     public void setupI() {
         for (int x = 0; x < ligne; x++) {
             for (int y = 0; y < colonne; y++) {
-                presencemines[(y) + x] = false;
+                presencemines[y + x] = false;
                 clickdone[(y) + x] = false;
                 clickable[(y) + x] = true;
-                               buttons[(y) + x] = new JButton( "" );
+                               buttons[y + x] = new JButton( "" );
                 buttons[(y) + x].setPreferredSize(new Dimension(
                     45, 45));
                        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, reglage, layout, p, mineLabel, fenetre,reglage);
