@@ -41,12 +41,17 @@ public class Fenetre   {
         Setup newsetup = new Setup();
         newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,newGameButton,fenetre,reglage, quitter2);
         newsetup.setupI();
+        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage);
         for (int i = 0; i < (ligne * colonne); i++) {
+            buttons[i] = new JButton("");
+            buttons[i].addActionListener(newbut);
+            buttons[i].setPreferredSize(new Dimension(
+                    50, 50));
             p.add(buttons[i]);
         }
         JMenuBar menubar = new JMenuBar();
         JMenu menupara = new JMenu("Paramettre");
-        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage);
+        
         reglage.addActionListener(newbut);
         newGameButton.addActionListener(newbut);
         quitter2.addActionListener(newbut);
@@ -66,7 +71,7 @@ public class Fenetre   {
     }
     public static void main(String[] args){
      Fenetre u = new Fenetre();
-     u.fenetre1();
+    u.fenetre1();
     }
 
 }
