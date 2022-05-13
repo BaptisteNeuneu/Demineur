@@ -37,20 +37,19 @@ public class Fenetre   {
    }
 
    public void setupI() {
-       int y;
     for (int x = 0; x < ligne; x++) {
-        for (y = 0; y < colonne; y++) {
-            presencemines[y + x] = false;
-            clickdone[y + x] = false;
-            clickable[y + x] = true;
-                           buttons[y + x] = new JButton( "" );
-            buttons[y + x].setPreferredSize(new Dimension(
-                50, 50));
-                   ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, reglage, layout, p, mineLabel, fenetre,reglage);
-            buttons[y + x].addActionListener(newbut); //ajoute les actions des boutons
-            buttons[y + x].addMouseListener(newbut);  //ajoute les actions de la souris
-        }  
-    }
+        for (int y = 0; y < colonne; y++) {
+            presencemines[(ligne * y) + x] = false;
+            clickdone[(ligne * y) + x] = false;
+            clickable[(ligne * y) + x] = true;
+            buttons[(ligne * y) + x] = new JButton( /*"" + ( x * y )*/);
+            buttons[(ligne * y) + x].setPreferredSize(new Dimension(
+                    45, 45));
+                    ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage);
+            buttons[(ligne * y) + x].addActionListener(newbut);
+            buttons[(ligne * y) + x].addMouseListener(newbut);
+        }
+    } 
 Case b = new Case();
 b.setCase(colonne,ligne,presencemines,numbers,nbrMines);
 b.Mine();
@@ -65,11 +64,8 @@ b.fillnumbers();
         setupI();
 
         ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage);
-        int y;
-        for (int x = 0; x < ligne; x++) {
-            for ( y = 0; y < colonne; y++) {
-                p.add(buttons[x+y]);
-            }
+        for (int i = 0; i < (ligne * colonne); i++) {
+            p.add(buttons[i]);
         }
         JMenuBar menubar = new JMenuBar();
         JMenu menupara = new JMenu("Paramettre");
