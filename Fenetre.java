@@ -23,7 +23,7 @@ public class Fenetre   {
     private int[] numbers = new int[ligne * colonne];
     private boolean[] clickdone = new boolean[ligne * colonne];
     JMenuItem quitter2 = new JMenuItem("quitter");
-    private boolean lost;
+   // private boolean lost;
     JButton[] buttons = new JButton[ligne * colonne];
     JMenuItem newGameButton = new JMenuItem("nouvelle partie");
     JMenuItem reglage = new JMenuItem("option");
@@ -35,19 +35,41 @@ public class Fenetre   {
        this.colonne=colonne;
        this.nbrMines=nbrMines;
    }
+
+   public void setupI() {
+       int y;
+    for (int x = 0; x < ligne; x++) {
+        for (y = 0; y < colonne; y++) {
+            presencemines[y + x] = false;
+            clickdone[y + x] = false;
+            clickable[y + x] = true;
+                           buttons[y + x] = new JButton( "" );
+            buttons[y + x].setPreferredSize(new Dimension(
+                50, 50));
+                   ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, reglage, layout, p, mineLabel, fenetre,reglage);
+            buttons[y + x].addActionListener(newbut); //ajoute les actions des boutons
+            buttons[y + x].addMouseListener(newbut);  //ajoute les actions de la souris
+        }  
+    }
+Case b = new Case();
+b.setCase(colonne,ligne,presencemines,numbers,nbrMines);
+b.Mine();
+b.fillnumbers();
+}
  
     public void fenetre1() {
         p.setLayout(layout);
-        Setup newsetup = new Setup();
-        newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,newGameButton,fenetre,reglage, quitter2);
-        newsetup.setupI();
+       /* Setup newsetup = new Setup();
+       newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,newGameButton,fenetre,reglage, quitter2);
+        newsetup.setupI();*/
+        setupI();
+
         ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage);
-        for (int i = 0; i < (ligne * colonne); i++) {
-            buttons[i] = new JButton("");
-            buttons[i].addActionListener(newbut);
-            buttons[i].setPreferredSize(new Dimension(
-                    50, 50));
-            p.add(buttons[i]);
+        int y;
+        for (int x = 0; x < ligne; x++) {
+            for ( y = 0; y < colonne; y++) {
+                p.add(buttons[x+y]);
+            }
         }
         JMenuBar menubar = new JMenuBar();
         JMenu menupara = new JMenu("Paramettre");

@@ -24,9 +24,7 @@ public class ActionButton implements ActionListener, MouseListener{
     private JPanel p;
     private JLabel mineLabel;
     private Test newtest= new Test();
-    //private Setup newsetup;
     private JFrame fenetre;
-   // private boolean lost;
 
 
     public ActionButton(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,
