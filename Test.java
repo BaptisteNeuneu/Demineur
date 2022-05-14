@@ -116,13 +116,15 @@ public class Test  {
         }
     }
  
+
+
     public void checkWin() {
         for (int x = 0; x < ligne; x++) {
-            for (int y = 0; y < colonne; y++) {
+            for (int y = 0; y < colonne; y++ ) {
                 int cur = (ligne * y) + x;
                 if (!clickdone[cur]) {
                     if (presencemines[cur]) {
-                        continue;
+                        doLose();
                     } else {
                         return;
                     }
@@ -130,6 +132,22 @@ public class Test  {
             }
         }
         doWin();
+    }
+    public void doLose() {
+        if (!lost && !won) {
+            lost = true;
+            for (int i = 0; i < ligne * colonne; i++) {
+                if (!clickdone[i]) {
+                    buttons[i].doClick(0);
+                }
+            }
+            JOptionPane.showMessageDialog(null,
+                    "Tu as perdue! Recommence une nouvelle partie", "Game over",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+                    fenetre.setVisible(false);
+                 Menu newm = new Menu();
+                 newm.Menu1();
     }
  
     public void doWin() {
@@ -147,20 +165,5 @@ public class Test  {
         }
     }
  
-    public void doLose() {
-        if (!lost && !won) {
-            lost = true;
-            for (int i = 0; i < ligne * colonne; i++) {
-                if (!clickdone[i]) {
-                    buttons[i].doClick(0);
-                }
-            }
-            JOptionPane.showMessageDialog(null,
-                    "Tu as perdue! Recommence une nouvelle partie", "Game over",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-                    fenetre.setVisible(false);
-                 Menu newm = new Menu();
-                 newm.Menu1();
-    }
+
 }

@@ -67,7 +67,6 @@ public class ActionButton implements ActionListener, MouseListener{
                             && !won && clickable[(ligne * y) + x]) {
                                 newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel,fenetre);     
                         newtest.doCheck(x, y);
-                        break;
                             }
                 }
             }
@@ -82,7 +81,6 @@ public class ActionButton implements ActionListener, MouseListener{
             Fenetre newfenetre = new Fenetre();
             newfenetre.setFenetre(ligne, colonne, nbrMines);
             newfenetre.fenetre1();
-            won = false;
             return;
  
         }
