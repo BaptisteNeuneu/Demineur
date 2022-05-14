@@ -35,7 +35,7 @@ public class Case {
     public void fillnumbers() {
         for (int x = 0; x < ligne; x++) {
             for (int y = 0; y < colonne; y++) {
-                int cur = (y) + x;
+                int cur = (ligne * y) + x;
                 if (presencemines[cur]) {
                     numbers[cur] = 0;
                     continue;

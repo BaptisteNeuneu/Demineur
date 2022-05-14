@@ -119,7 +119,7 @@ public class Test  {
     public void checkWin() {
         for (int x = 0; x < ligne; x++) {
             for (int y = 0; y < colonne; y++) {
-                int cur =  y + x;
+                int cur = (ligne * y) + x;
                 if (!clickdone[cur]) {
                     if (presencemines[cur]) {
                         continue;
