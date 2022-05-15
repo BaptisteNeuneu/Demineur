@@ -25,11 +25,13 @@ public class ActionButton implements ActionListener, MouseListener{
     private JLabel mineLabel;
     private Test newtest= new Test();
     private JFrame fenetre;
+    private boolean lost = false;
+
 
 
     public ActionButton(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,
     JButton[] buttons,boolean[] presencemines,int nbrMines,int[] numbers,JMenuItem quitter2,
-    JMenuItem newGameButton,GridLayout layout, JPanel p,JLabel mineLabel,JFrame fenetre,JMenuItem reglage){
+    JMenuItem newGameButton,GridLayout layout, JPanel p,JLabel mineLabel,JFrame fenetre,JMenuItem reglage,boolean lost){
         this.ligne=ligne;
         this.colonne=colonne;
         this.clickdone=clickdone;
@@ -45,6 +47,7 @@ public class ActionButton implements ActionListener, MouseListener{
         this.mineLabel=mineLabel;
         this.fenetre=fenetre;
         this.reglage=reglage;
+        this.lost=lost;
 
        
     }
@@ -65,11 +68,13 @@ public class ActionButton implements ActionListener, MouseListener{
                 for (int y = 0; y < colonne; y++) {
                     if (e.getSource() == buttons[(ligne * y) + x]
                             && !won && clickable[(ligne * y) + x]) {
-                                newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel,fenetre);     
+                                newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel,fenetre,lost);     
                         newtest.doCheck(x, y);
                             }
                 }
             }
+            newtest.setTest(ligne, colonne, clickdone, clickable, presencemines, nbrMines, buttons, numbers, reglage, newGameButton, layout, p, mineLabel, fenetre, lost);
+       newtest.checkWin();
         }
         if(e.getSource() == quitter2){
             Menu i = new Menu();
@@ -84,8 +89,6 @@ public class ActionButton implements ActionListener, MouseListener{
             return;
  
         }
-         newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel,fenetre);
-         newtest.checkWin();
     }
     public void mouseEntered(MouseEvent e) {
     }

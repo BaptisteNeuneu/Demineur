@@ -12,24 +12,32 @@ public class Test  {
     private int ligne;
     private int colonne;
     private boolean[] clickdone;
-    //private boolean[] clickable;
+    private boolean[] clickable;
     private boolean[] presencemines;
     private JButton[] buttons;
     private int[] numbers;
-    private boolean lost = false;
+    private boolean lost=false;
     private boolean won = false;
     private JFrame fenetre;
+    private int nbrMines;
+    private JMenuItem quitter2;
+    private JMenuItem newGameButton;
+    private GridLayout layout;
+    private JPanel p;
+    private JLabel mineLabel;
+    private JMenuItem reglage;
 
     public void setTest(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,boolean[] presencemines,int nbrMines,
-    JButton[] buttons,int[] numbers,JMenuItem reglage,JMenuItem newGameButton,GridLayout layout,JPanel p,JLabel mineLabel,JFrame fenetre){
+    JButton[] buttons,int[] numbers,JMenuItem reglage,JMenuItem newGameButton,GridLayout layout,JPanel p,JLabel mineLabel,JFrame fenetre,boolean lost){
         this.ligne=ligne;
         this.colonne=colonne;
         this.clickdone=clickdone;
-        //this.clickable=clickable;
+        this.clickable=clickable;
         this.presencemines=presencemines;
         this.buttons=buttons;
         this.numbers=numbers;
         this.fenetre=fenetre;
+        this.lost=lost;
 
         
     }
@@ -50,6 +58,7 @@ public class Test  {
  
         clickdone[cur] = true;
         buttons[cur].setEnabled(false);
+        buttons[cur].setBackground(Color.LIGHT_GRAY);
         if (numbers[cur] == 0 && !presencemines[cur] && !lost && !won) {
             if (u && !won) {
                 if (!clickdone[up] && !presencemines[up]) {
@@ -113,6 +122,7 @@ public class Test  {
         if (presencemines[cur] && !won) {
             buttons[cur].setText("0");
             doLose();
+            return;
         }
     }
  
@@ -124,7 +134,7 @@ public class Test  {
                 int cur = (ligne * y) + x;
                 if (!clickdone[cur]) {
                     if (presencemines[cur]) {
-                        doLose();
+                        continue;
                     } else {
                         return;
                     }
@@ -136,8 +146,11 @@ public class Test  {
     public void doLose() {
         if (!lost && !won) {
             lost = true;
+            
             for (int i = 0; i < ligne * colonne; i++) {
                 if (!clickdone[i]) {
+                    ActionButton f = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, quitter2, newGameButton, layout, p, mineLabel, fenetre, reglage, lost);
+                    buttons[i].addActionListener(f);
                     buttons[i].doClick(0);
                 }
             }
