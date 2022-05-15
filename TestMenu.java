@@ -1,7 +1,7 @@
 
 /**
 * @version 25/04/2022
-* @author Felix Brineta
+* @author Felix Brinet
 */
 //inclusion des bibliothèques
 import javax.swing.*;

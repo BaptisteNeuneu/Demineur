@@ -1,6 +1,6 @@
 /**
 * @version 26/04/2022
-* @author Baptiste Nevejansa
+* @author Baptiste Nevejans
 */
 //inclusion des bibliothèques
 import java.awt.*;

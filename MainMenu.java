@@ -1,6 +1,6 @@
 /**
 * @version 25/04/2022
-* @author Felix Brineta
+* @author Felix Brinet
 */
 
 public class MainMenu{

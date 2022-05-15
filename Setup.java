@@ -49,7 +49,7 @@ public class Setup  {
                                buttons[y + x] = new JButton( "" );
                 buttons[y + x].setPreferredSize(new Dimension(
                     50, 50));
-                       ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, reglage, layout, p, mineLabel, fenetre,reglage);
+                       ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, layout, p, mineLabel, fenetre,reglage);
                 buttons[y + x].addActionListener(newbut); //ajoute les actions des boutons
                 buttons[y + x].addMouseListener(newbut);  //ajoute les actions de la souris
             }

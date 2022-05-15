@@ -1,6 +1,6 @@
 /**
 * @version 28/04/2022
-* @author Brinet Félixa
+* @author Brinet Félix
 */
 //inclusion des bibliothèques
 import java.awt.event.*;
@@ -29,13 +29,28 @@ public ActionMenu2(JTextField newLigne,JTextField newColonne,JTextField newnbrMi
         colonne = Integer.parseInt(sColonne);
         nbrMines = Integer.parseInt(sMines);
         if(menu2.getSource() == btJouer){
-            System.out.println("Lignes:"+ligne);  
-            System.out.println("Colonnes:"+colonne); 
-            System.out.println("Mines:"+nbrMines); 
-            Fenetre newFenetre =new Fenetre();
-            newFenetre.setFenetre(ligne,colonne,nbrMines);
-            newFenetre.fenetre1();
-     fenetre2.setVisible(false);/*Fait disparaître la fenêtre*/
+            /*Batterie de test pour vérifier que l'utilisateur met entre 10 et 30 lignes/colonnes
+             et moins de bombes que de mines*/
+            if (ligne == 69 && colonne == 69 && nbrMines == 69){
+              System.out.println("Nice");
+            }else if(ligne>30 || ligne <10 ){
+              System.out.println("Veuillez mettre entre 10 et 30 lignes");
+            }else if (colonne > 30 || colonne < 10){
+              System.out.println("Veuillez mettre entre 10 et 30 colonnes");
+            }else if (nbrMines >= ligne * colonne ){
+              System.out.println("Veuillez mettre moins de bombes que de cases");
+            }else {
+              Fenetre newFenetre =new Fenetre();
+              newFenetre.setFenetre(ligne,colonne,nbrMines);
+              newFenetre.fenetre1();
+              fenetre2.setVisible(false);/*Fait disparaître la fenêtre de réglage*/
+              /*Impression du nombre de ligne et colonne dans le terminal*/
+              System.out.println("Lignes:"+ligne);
+              System.out.println("Colonnes:"+colonne); 
+              System.out.println("Mines:"+nbrMines); 
+              }
+            
+    
     }
    
   

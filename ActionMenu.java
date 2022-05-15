@@ -1,10 +1,11 @@
 /**
 * @version 25/04/2022
-* @author Baptiste Nevejansa
+* @author Baptiste Nevejans
 */
 //inclusion des bibliothèques
 import java.awt.event.*;
 import javax.swing.*;
+
 public class ActionMenu implements ActionListener {
 private JButton quitter;
 private JButton newgame;

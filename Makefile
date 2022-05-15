@@ -24,11 +24,8 @@ Menu2.class : Menu2.java ActionMenu2.class
 ActionMenu2.class : ActionMenu2.java Fenetre.class
 	${JC} ${JCFLAGS} ActionMenu2.java
 
-Fenetre.class : Fenetre.java Setup.class
+Fenetre.class : Fenetre.java Case.class
 	${JC} ${JCFLAGS} Fenetre.java
-
-Setup.class : Setup.java Case.class
-	${JC} ${JCFLAGS} Setup.java
 
 Case.class : Case.java Test.class
 	${JC} ${JCFLAGS} Case.java
