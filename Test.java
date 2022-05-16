@@ -168,6 +168,7 @@ public class Test  {
             f.add(def);
             f.add(remenudef);
             fendefaite.add(f);
+            
             fendefaite.setVisible(true);
         }
     }
