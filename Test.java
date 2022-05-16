@@ -18,6 +18,10 @@ public class Test  {
     private boolean lost=false;
     private boolean won = false;
     private JFrame fenetre;
+    private JFrame fendefaite;
+    private JFrame fenvictoire;
+    private JButton remenudef;
+    private JButton remenuvic;
 
     public void setTest(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,boolean[] presencemines,int nbrMines,
     JButton[] buttons,int[] numbers,JMenuItem reglage,JMenuItem newGameButton,GridLayout layout,JPanel p,JLabel mineLabel,JFrame fenetre,boolean lost){
@@ -148,27 +152,49 @@ public class Test  {
                     buttons[i].doClick(0);
                 }
             }
-            JOptionPane.showMessageDialog(null,
-                    "Tu as perdue! Recommence une nouvelle partie", "Game over",
+            fendefaite = new JFrame("Defaite");
+            GridLayout apparence = new GridLayout(1,2);
+            JPanel f = new JPanel();
+            f.setLayout(apparence);
+            JLabel def = new JLabel("Tu as perdue! Retour au menu");
+            remenudef = new JButton("OK");
+            ActionVdDF clique = ActionVdDF(remenudef,remenuvic,fendefaite,fenvictoire,fenetre);
+            remenudef.addActionListener(clique);
+            f.add(def);
+            f.add(remenudef);
+            fendefaite.add(f);
+        }
+    }
+
+            /*JOptionPane.showMessageDialog(null,
+                    "Tu as perdue! Retour au menu", "Game over",
                     JOptionPane.ERROR_MESSAGE);
         }
                     fenetre.setVisible(false);
                  Menu newm = new Menu();
                  newm.Menu1();
-    }
+    }*/
  
     public void doWin() {
         if (lost == false && won == false) {
             won = true;
-            JOptionPane.showMessageDialog(null,
-                    "Tu as gagné! Recommence une nouvelle partie", "Victory",
-                    JOptionPane.INFORMATION_MESSAGE);
+            fenvictoire = new JFrame("Victoire");
+            JLabel vic = new JLabel("Tu as gagné!Retour au menu");
+            remenuvic = new JButton("OK");
+            GridLayout apparence = new GridLayout(1,2);
+            JPanel f = new JPanel();
+            f.setLayout(apparence);
+            ActionVdDF clique = ActionVdDF(remenudef,remenuvic,fendefaite,fenvictoire,fenetre);
+            f.add(vic);
+            f.add(remenuvic);
+            
+            
                     /*Timer timer = new Timer();
                     doClose task = extracted();
                     timer.schedule(task,18000);*/
-                    Menu newm =new Menu();
+                    /*Menu newm =new Menu();
                     newm.Menu1();
-                    fenetre.setVisible(false);
+                    fenetre.setVisible(false);*/
         }
     }
  
