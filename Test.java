@@ -158,7 +158,7 @@ public class Test  {
             f.setLayout(apparence);
             JLabel def = new JLabel("Tu as perdue! Retour au menu");
             remenudef = new JButton("OK");
-            ActionVdDF clique = ActionVdDF(remenudef,remenuvic,fendefaite,fenvictoire,fenetre);
+            ActionVdDf clique = ActionVdDf(remenudef,remenuvic,fendefaite,fenvictoire,fenetre);
             remenudef.addActionListener(clique);
             f.add(def);
             f.add(remenudef);
@@ -184,9 +184,11 @@ public class Test  {
             GridLayout apparence = new GridLayout(1,2);
             JPanel f = new JPanel();
             f.setLayout(apparence);
-            ActionVdDF clique = ActionVdDF(remenudef,remenuvic,fendefaite,fenvictoire,fenetre);
+            ActionVdDf clique = ActionVdDf(remenudef,remenuvic,fenvictoire,fendefaite,fenetre);
             f.add(vic);
+            remenuvic.addActionListener(clique);
             f.add(remenuvic);
+            fenvictoire.add(f);
             
             
                     /*Timer timer = new Timer();
@@ -196,6 +198,10 @@ public class Test  {
                     newm.Menu1();
                     fenetre.setVisible(false);*/
         }
+    }
+    private ActionVdDf ActionVdDf(JButton remenudef2, JButton remenuvic2, JFrame fenvictoire2, JFrame fendefaite2,
+            JFrame fenetre2) {
+        return null;
     }
  
 

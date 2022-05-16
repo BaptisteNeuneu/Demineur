@@ -1,16 +1,14 @@
-import java.awt.*;
+
 import java.awt.event.*;
 import javax.swing.*;
 
-private JButton remenudef;
+public class ActionVdDf implements ActionListener {
+	private JButton remenudef;
 private JButton remenuvic;
 private JFrame fenvictoire;
 private JFrame fendefaite;
 private JFrame fenetre;
-
-
-public class ActionVdDf implements ActionListener {
-	public ActionVdVf(JButton remenudef,JButton remenuvic,JFrame fenvictoire,JFrame fendefaite,JFrame fenetre){
+	public ActionVdDf(JButton remenudef,JButton remenuvic,JFrame fenvictoire,JFrame fendefaite,JFrame fenetre){
 		this.remenudef=remenudef;
 		this.remenuvic=remenuvic;
 		this.fenvictoire=fenvictoire;
@@ -21,13 +19,14 @@ public class ActionVdDf implements ActionListener {
 		if(e.getSource()== remenudef){
 			Menu i = new Menu();
 			i.Menu1();
-			fendefaite.disable();
-			fenetre.disable();
+			fendefaite.setVisible(false);
+			fenetre.setVisible(false);
 		}
 		if(e.getSource() == remenuvic){
 			Menu i = new Menu();
 			i.Menu1();
-			fenvictoire.disable();
-			fenetre.disable();
+			fenvictoire.setVisible(false);
+			fenetre.setVisible(false);
 		}
+}
 }
