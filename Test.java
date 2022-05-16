@@ -12,27 +12,18 @@ public class Test  {
     private int ligne;
     private int colonne;
     private boolean[] clickdone;
-    private boolean[] clickable;
     private boolean[] presencemines;
     private JButton[] buttons;
     private int[] numbers;
     private boolean lost=false;
     private boolean won = false;
     private JFrame fenetre;
-    private int nbrMines;
-    private JMenuItem quitter2;
-    private JMenuItem newGameButton;
-    private GridLayout layout;
-    private JPanel p;
-    private JLabel mineLabel;
-    private JMenuItem reglage;
 
     public void setTest(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,boolean[] presencemines,int nbrMines,
     JButton[] buttons,int[] numbers,JMenuItem reglage,JMenuItem newGameButton,GridLayout layout,JPanel p,JLabel mineLabel,JFrame fenetre,boolean lost){
         this.ligne=ligne;
         this.colonne=colonne;
         this.clickdone=clickdone;
-        this.clickable=clickable;
         this.presencemines=presencemines;
         this.buttons=buttons;
         this.numbers=numbers;
@@ -124,6 +115,7 @@ public class Test  {
             doLose();
             return;
         }
+        checkWin();
     }
  
 
@@ -138,6 +130,10 @@ public class Test  {
                     } else {
                         return;
                     }
+                } else {
+                    if(presencemines[cur]){
+                        return;
+                    }
                 }
             }
         }
@@ -149,8 +145,6 @@ public class Test  {
             
             for (int i = 0; i < ligne * colonne; i++) {
                 if (!clickdone[i]) {
-                    ActionButton f = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers, quitter2, newGameButton, layout, p, mineLabel, fenetre, reglage, lost);
-                    buttons[i].addActionListener(f);
                     buttons[i].doClick(0);
                 }
             }
@@ -164,7 +158,7 @@ public class Test  {
     }
  
     public void doWin() {
-        if (!lost && !won) {
+        if (lost == false && won == false) {
             won = true;
             JOptionPane.showMessageDialog(null,
                     "Tu as gagné! Recommence une nouvelle partie", "Victory",

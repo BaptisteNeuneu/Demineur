@@ -45,7 +45,7 @@ public class Fenetre   {
             buttons[(ligne * y) + x] = new JButton( );
             buttons[(ligne*y)+x].setBackground(Color.DARK_GRAY);
             buttons[(ligne * y) + x].setPreferredSize(new Dimension(
-                    30, 30));
+                    50, 50));
                     ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);
             buttons[(ligne * y) + x].addActionListener(newbut);
             buttons[(ligne * y) + x].addMouseListener(newbut);
