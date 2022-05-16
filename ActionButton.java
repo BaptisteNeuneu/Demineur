@@ -16,7 +16,7 @@ public class ActionButton implements ActionListener, MouseListener{
     private int nbrMines;
     private JButton[] buttons;
     private int[] numbers;
-    private boolean won = false;
+    private boolean won;
     private JMenuItem quitter2;
     private JMenuItem reglage;
     private JMenuItem newGameButton;
@@ -63,11 +63,12 @@ public class ActionButton implements ActionListener, MouseListener{
                 JOptionPane.PLAIN_MESSAGE, null, null, 10));
         newGameButton.doClick();
         }
-        if (!won) {
+        if (won == false) {
+            System.out.println(won);
             for (int x = 0; x < ligne; x++) {
                 for (int y = 0; y < colonne; y++) {
                     if (e.getSource() == buttons[(ligne * y) + x]
-                            && !won && clickable[(ligne * y) + x]) {
+                     && clickable[(ligne * y) + x]) {
                                 newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel,fenetre,lost);     
                         newtest.doCheck(x, y);
                             }
@@ -96,32 +97,30 @@ public class ActionButton implements ActionListener, MouseListener{
  
     public void mousePressed(MouseEvent e) {
         if (e.getButton() == 3) {
+           
             int n = 0;
-           /* int s = 0;*/
             for (int x = 0; x < ligne; x++) {
                 for (int y = 0; y < colonne; y++) {
                     if (e.getSource() == buttons[(ligne * y+x)]) {
                         clickable[(ligne * y+x)] = !clickable[(ligne * y+x)];
                     }
-                    if (!clickdone[(ligne * y+x)]) {
-                        if (!clickable[(ligne * y+x)]) {
-    
-                            /*if(buttons[(ligne * y+x)] == ){
-                            buttons[(ligne * y) + x].setText("?");
-                            s++;
-                       } else{*/
-                            buttons[(ligne * y+x)].setText("★");
+                        if (!clickable[(ligne * y+x)]){
+                        if (!clickable[(ligne * y+x)] && buttons[(ligne * y+x)].getText() == "★" ) {
+                            buttons[(ligne * y+x)].setText("?");
                             n++;
+                        }else if (!clickable[(ligne * y+x)]){
+                            buttons[(ligne * y+x)].setText("★");
+                        }
                         } else {
                             buttons[(ligne * y+x)].setText("");
                         }
-                        mineLabel.setText("mines: " + nbrMines + " marked: "
-                                + n /*+ "supposition: " + s*/);
+                        int k = nbrMines - n;
+                        mineLabel.setText("nombres de mines restantes : " + k);
                     }
                 }
             }
         }
-    }
+    //}
  
     public void mouseReleased(MouseEvent e) {
     }

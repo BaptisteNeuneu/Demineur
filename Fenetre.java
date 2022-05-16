@@ -9,14 +9,8 @@ import javax.swing.*;
 public class Fenetre   {
     private JFrame fenetre = new JFrame();
     private int ligne = 30;
-    private int colonne =30;
-    private int nbrMines =899;
-
-    /*type[][] name = new type[ligne][colonne];
-     * type[x][y];
-     * is 1d
-     * type[] name = new type[ligne*colonne];
-     * type[(ligne*y)+x];*/
+    private int colonne = 30;
+    private int nbrMines = 899;
     private boolean[] presencemines = new boolean[ligne * colonne];
     private boolean[] clickable = new boolean[ligne * colonne];
     private int[] numbers = new int[ligne * colonne];
@@ -36,7 +30,7 @@ public class Fenetre   {
 
    public void setupI() {
     GridLayout layout = new GridLayout(ligne, colonne);
-    JLabel mineLabel = new JLabel("mines: " + nbrMines + " marqué: 0" + " suposition: 0");
+    JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines );
     for (int x = 0; x < ligne; x++) {
         for (int y = 0; y < colonne; y++) {
             presencemines[(ligne * y) + x] = false;
@@ -58,12 +52,10 @@ b.fillnumbers();
 }
  
     public void fenetre1() {
-        JLabel mineLabel = new JLabel("mines: " + nbrMines + " marqué: 0" + " suposition: 0");
+        JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines);
          GridLayout layout = new GridLayout(ligne, colonne);
         p.setLayout(layout);
-       /* Setup newsetup = new Setup();
-       newsetup.setSetup(buttons,presencemines,clickdone,clickable,layout,p,ligne,colonne,nbrMines,numbers,lost,mineLabel,newGameButton,fenetre,reglage, quitter2);
-        newsetup.setupI();*/
+
         setupI();
 
         ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);

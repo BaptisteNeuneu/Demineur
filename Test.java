@@ -23,6 +23,13 @@ public class Test  {
     private JButton remenudef;
     private JButton remenuvic;
     private boolean[] clickable;
+    private int nbrMines;
+    private JMenuItem quitter2;
+    private JMenuItem newGameButton;
+    private JPanel p;
+    private GridLayout layout;
+    private JMenuItem reglage;
+    private JLabel mineLabel;
 
     public void setTest(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,boolean[] presencemines,int nbrMines,
     JButton[] buttons,int[] numbers,JMenuItem reglage,JMenuItem newGameButton,GridLayout layout,JPanel p,JLabel mineLabel,JFrame fenetre,boolean lost){
@@ -111,12 +118,14 @@ public class Test  {
                 }
             }
         } else {
+            //ajout distinction en fonction du nombres
+
             buttons[cur].setText("" + numbers[cur]);
             if (!presencemines[cur] && numbers[cur] == 0) {
                 buttons[cur].setText("");
             }
         }
-        if (presencemines[cur] && !won) {
+        if (presencemines[cur] && !won && !lost) {
             buttons[cur].setText("0");
             doLose();
             return;
@@ -148,8 +157,10 @@ public class Test  {
     public void doLose() {
         if (lost == false && !won) {
                 lost = true;
+                ActionButton newlisten = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);
             
             for (int i = 0; i < ligne * colonne; i++) {
+                buttons[i].addActionListener(newlisten);
                 if (!clickdone[i]) {
                     if(presencemines[i] && clickable[i]){
                     buttons[i].doClick(0);
@@ -166,7 +177,7 @@ public class Test  {
         fendefaite.setSize(500, 200);
                     fendefaite.setSize(500, 200);
             fendefaite.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            GridLayout apparence = new GridLayout(1,2);
+            GridLayout apparence = new GridLayout(2,1);
             JPanel f = new JPanel();
             f.setLayout(apparence);
             JLabel def = new JLabel("Tu as perdue! Retour au menu");
@@ -176,7 +187,6 @@ public class Test  {
             f.add(def);
             f.add(remenudef);
             fendefaite.add(f);
-
             fendefaite.setVisible(true);
         }
     }
@@ -192,6 +202,7 @@ public class Test  {
  
     public void doWin() {
         if (lost == false && won == false) {
+            System.out.println("won = true");
             won = true;
             fenvictoire = new JFrame("Victoire");
             fenvictoire.setLocation(0,0);
@@ -200,7 +211,7 @@ public class Test  {
         fenvictoire.setMinimumSize(new Dimension(500, 200));
             JLabel vic = new JLabel("Tu as gagné!Retour au menu");
             remenuvic = new JButton("OK");
-            GridLayout apparence = new GridLayout(1,2);
+            GridLayout apparence = new GridLayout(2,1);
             JPanel f = new JPanel();
             f.setLayout(apparence);
             ActionVdDf clique = new ActionVdDf(remenudef,remenuvic,fenvictoire,fendefaite,fenetre);
@@ -210,13 +221,6 @@ public class Test  {
             fenvictoire.add(f);
             fenvictoire.setVisible(true);
             
-            
-                    /*Timer timer = new Timer();
-                    doClose task = extracted();
-                    timer.schedule(task,18000);*/
-                    /*Menu newm =new Menu();
-                    newm.Menu1();
-                    fenetre.setVisible(false);*/
         }
     }
  
