@@ -153,16 +153,22 @@ public class Test  {
                 }
             }
             fendefaite = new JFrame("Defaite");
+            fendefaite.setLocation(0,0);
+
+        fendefaite.setSize(500, 200);
+                    fendefaite.setSize(500, 200);
+            fendefaite.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             GridLayout apparence = new GridLayout(1,2);
             JPanel f = new JPanel();
             f.setLayout(apparence);
             JLabel def = new JLabel("Tu as perdue! Retour au menu");
             remenudef = new JButton("OK");
-            ActionVdDf clique = ActionVdDf(remenudef,remenuvic,fendefaite,fenvictoire,fenetre);
+            ActionVdDf clique = new ActionVdDf(remenudef,remenuvic,fendefaite,fenvictoire,fenetre);
             remenudef.addActionListener(clique);
             f.add(def);
             f.add(remenudef);
             fendefaite.add(f);
+            fendefaite.setVisible(true);
         }
     }
 
@@ -179,16 +185,21 @@ public class Test  {
         if (lost == false && won == false) {
             won = true;
             fenvictoire = new JFrame("Victoire");
+            fenvictoire.setLocation(0,0);
+            fenvictoire.setSize(500, 200);
+            fenvictoire.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fenvictoire.setMinimumSize(new Dimension(500, 200));
             JLabel vic = new JLabel("Tu as gagné!Retour au menu");
             remenuvic = new JButton("OK");
             GridLayout apparence = new GridLayout(1,2);
             JPanel f = new JPanel();
             f.setLayout(apparence);
-            ActionVdDf clique = ActionVdDf(remenudef,remenuvic,fenvictoire,fendefaite,fenetre);
+            ActionVdDf clique = new ActionVdDf(remenudef,remenuvic,fenvictoire,fendefaite,fenetre);
             f.add(vic);
             remenuvic.addActionListener(clique);
             f.add(remenuvic);
             fenvictoire.add(f);
+            fenvictoire.setVisible(true);
             
             
                     /*Timer timer = new Timer();
@@ -198,10 +209,6 @@ public class Test  {
                     newm.Menu1();
                     fenetre.setVisible(false);*/
         }
-    }
-    private ActionVdDf ActionVdDf(JButton remenudef2, JButton remenuvic2, JFrame fenvictoire2, JFrame fendefaite2,
-            JFrame fenetre2) {
-        return null;
     }
  
 

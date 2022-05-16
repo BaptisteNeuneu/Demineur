@@ -8,6 +8,7 @@ private JButton remenuvic;
 private JFrame fenvictoire;
 private JFrame fendefaite;
 private JFrame fenetre;
+
 	public ActionVdDf(JButton remenudef,JButton remenuvic,JFrame fenvictoire,JFrame fendefaite,JFrame fenetre){
 		this.remenudef=remenudef;
 		this.remenuvic=remenuvic;
@@ -15,6 +16,7 @@ private JFrame fenetre;
 		this.fendefaite=fendefaite;
 		this.fenetre=fenetre;
 	}
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()== remenudef){
 			Menu i = new Menu();
