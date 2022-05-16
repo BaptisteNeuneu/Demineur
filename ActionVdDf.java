@@ -16,6 +16,7 @@ private JFrame fenetre;
 		this.fendefaite=fendefaite;
 		this.fenetre=fenetre;
 	}
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()== remenudef){
 			Menu i = new Menu();
