@@ -149,7 +149,11 @@ public class Test  {
             
             for (int i = 0; i < ligne * colonne; i++) {
                 if (!clickdone[i]) {
+                    if(presencemines[i] && clickable[i]){
                     buttons[i].doClick(0);
+                } else if(!clickable[i] && !presencemines[i]){
+                    buttons[i].doClick(0);
+                }
                 }
             }
             fendefaite = new JFrame("Defaite");
@@ -168,7 +172,7 @@ public class Test  {
             f.add(def);
             f.add(remenudef);
             fendefaite.add(f);
-            
+
             fendefaite.setVisible(true);
         }
     }
