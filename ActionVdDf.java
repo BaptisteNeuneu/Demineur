@@ -8,6 +8,7 @@ private JButton remenuvic;
 private JFrame fenvictoire;
 private JFrame fendefaite;
 private JFrame fenetre;
+
 	public ActionVdDf(JButton remenudef,JButton remenuvic,JFrame fenvictoire,JFrame fendefaite,JFrame fenetre){
 		this.remenudef=remenudef;
 		this.remenuvic=remenuvic;
@@ -19,11 +20,13 @@ private JFrame fenetre;
 		if(e.getSource()== remenudef){
 			Menu i = new Menu();
 			i.Menu1();
+			i.setMenu(fenetre);
 			fendefaite.setVisible(false);
 			fenetre.setVisible(false);
 		}
 		if(e.getSource() == remenuvic){
 			Menu i = new Menu();
+			i.setMenu(fenetre);
 			i.Menu1();
 			fenvictoire.setVisible(false);
 			fenetre.setVisible(false);

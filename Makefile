@@ -9,6 +9,7 @@ JVM = java
 
 ### REGLES ESSENTIELLES ###
 
+
 MainMenu.class : MainMenu.java Menu.class
 	${JC} ${JCFLAGS} MainMenu.java
 
@@ -33,8 +34,11 @@ Case.class : Case.java Test.class
 Test.class : Test.java ActionButton.class
 	${JC} ${JCFLAGS} Test.java
 
-ActionButton.class : ActionButton.java 
-	${JC} ${JCFLAGS} ActionButton.java
+ActionButton.class : ActionButton.java ActionVdDf.class 
+ 	${JC} ${JCFLAGS} ActionButton.java
+
+ActionVdDf.class : ActionVdDf.java 
+	${JC} ${JCFLAGS} ActionVdDf.java
 	
 ### REGLES OPTIONNELLES ###
 
