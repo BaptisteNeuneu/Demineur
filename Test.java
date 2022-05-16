@@ -22,6 +22,7 @@ public class Test  {
     private JFrame fenvictoire;
     private JButton remenudef;
     private JButton remenuvic;
+    private boolean[] clickable;
 
     public void setTest(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,boolean[] presencemines,int nbrMines,
     JButton[] buttons,int[] numbers,JMenuItem reglage,JMenuItem newGameButton,GridLayout layout,JPanel p,JLabel mineLabel,JFrame fenetre,boolean lost){
@@ -33,6 +34,7 @@ public class Test  {
         this.numbers=numbers;
         this.fenetre=fenetre;
         this.lost=lost;
+        this.clickable=clickable;
 
         
     }
@@ -144,14 +146,16 @@ public class Test  {
         doWin();
     }
     public void doLose() {
-        if (!lost && !won) {
-            lost = true;
+        if (lost == false && !won) {
+                lost = true;
             
             for (int i = 0; i < ligne * colonne; i++) {
                 if (!clickdone[i]) {
                     if(presencemines[i] && clickable[i]){
                     buttons[i].doClick(0);
-                } else if(!clickable[i] && !presencemines[i]){
+                } 
+                 if(!clickable[i] && !presencemines[i] && !clickdone[i]){
+                    buttons[i].doClick(3);
                     buttons[i].doClick(0);
                 }
                 }
