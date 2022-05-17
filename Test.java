@@ -119,7 +119,23 @@ public class Test  {
             }
         } else {
             //ajout distinction en fonction du nombres
-
+            switch(numbers[cur]){
+   
+                case 1: 
+                    System.out.println("Bonjour");
+                    break;
+            
+                case 2:
+                    System.out.println("Hello");
+                    break;
+            
+                case 3:
+                    System.out.println("Buenos dias");
+                    break;
+                default:
+                    System.out.println("Choix incorrect");
+                    break;
+            }
             buttons[cur].setText("" + numbers[cur]);
             if (!presencemines[cur] && numbers[cur] == 0) {
                 buttons[cur].setText("");

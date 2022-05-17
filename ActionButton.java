@@ -102,17 +102,16 @@ public class ActionButton implements ActionListener, MouseListener{
             for (int x = 0; x < ligne; x++) {
                 for (int y = 0; y < colonne; y++) {
                     if (e.getSource() == buttons[(ligne * y+x)]) {
-                        clickable[(ligne * y+x)] = !clickable[(ligne * y+x)];
                     }
-                        if (!clickable[(ligne * y+x)]){
-                        if (!clickable[(ligne * y+x)] && buttons[(ligne * y+x)].getText() == "★" ) {
-                            buttons[(ligne * y+x)].setText("?");
-                            n++;
-                        }else if (!clickable[(ligne * y+x)]){
+                        if(buttons[(ligne * y+x)].getText() == ""){
                             buttons[(ligne * y+x)].setText("★");
-                        }
-                        } else {
+                            clickable[(ligne * y+x)]= false;
+                            n++;
+                        } else if(buttons[(ligne * y+x)].getText() == "★") {
+                            buttons[(ligne * y+x)].setText("?");
+                        } else if(buttons[(ligne * y+x)].getText() == "?"){
                             buttons[(ligne * y+x)].setText("");
+                            clickable[(ligne * y+x)]= true;
                         }
                         int k = nbrMines - n;
                         mineLabel.setText("nombres de mines restantes : " + k);
