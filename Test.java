@@ -62,7 +62,6 @@ public class Test  {
  
         clickdone[cur] = true;
         buttons[cur].setEnabled(false);
-        buttons[cur].setBackground(Color.LIGHT_GRAY);
         if (numbers[cur] == 0 && !presencemines[cur] && !lost && !won) {
             if (u && !won) {
                 if (!clickdone[up] && !presencemines[up]) {
@@ -122,27 +121,58 @@ public class Test  {
             switch(numbers[cur]){
    
                 case 1: 
-                    System.out.println("Bonjour");
+                    ImageIcon icon1 = new ImageIcon("Images/1.png");
+                    Image image1 = icon1.getImage(); // transform it 
+                    Image newimg1 = image1.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    icon1 = new ImageIcon(newimg1);  // transform it back
+                    buttons[cur].setOpaque(false);
+                    buttons[cur].setContentAreaFilled(false);
+                    buttons[cur].setBorderPainted(false);
+                    buttons[cur].setIcon(icon1);
                     break;
             
                 case 2:
-                    System.out.println("Hello");
+                    ImageIcon icon2 = new ImageIcon("Images/2.png");
+                    buttons[cur].setIcon(icon2);
                     break;
             
+            
                 case 3:
-                    System.out.println("Buenos dias");
+                    ImageIcon icon3 = new ImageIcon("Images/3.png");
+                    buttons[cur].setIcon(icon3);
                     break;
-                default:
-                    System.out.println("Choix incorrect");
+            
+                case 4:
+                    ImageIcon icon4 = new ImageIcon("Images/4.png");
+                    buttons[cur].setIcon(icon4);
                     break;
+                case 5:
+                ImageIcon icon5 = new ImageIcon("Images/5.png");
+                buttons[cur].setIcon(icon5);
+                break;
+
+                case 6:
+                ImageIcon icon6 = new ImageIcon("Images/6.png");
+                buttons[cur].setIcon(icon6);
+                break;
+                
+                case 7:
+                ImageIcon icon7 = new ImageIcon("Images/7.png");
+                buttons[cur].setIcon(icon7);
+                break;
+
+                case 8:
+                ImageIcon icon8 = new ImageIcon("Images/8.png");
+                buttons[cur].setIcon(icon8);
+                break;
             }
-            buttons[cur].setText("" + numbers[cur]);
             if (!presencemines[cur] && numbers[cur] == 0) {
                 buttons[cur].setText("");
             }
         }
         if (presencemines[cur] && !won && !lost) {
-            buttons[cur].setText("0");
+            ImageIcon iconbombe = new ImageIcon("Images\\bombe.png");
+            buttons[cur].setIcon(iconbombe);
             doLose();
             return;
         }
@@ -180,9 +210,8 @@ public class Test  {
                 if (!clickdone[i]) {
                     if(presencemines[i] && clickable[i]){
                     buttons[i].doClick(0);
-                } 
+                }  
                  if(!clickable[i] && !presencemines[i] && !clickdone[i]){
-                    buttons[i].doClick(3);
                     buttons[i].doClick(0);
                 }
                 }

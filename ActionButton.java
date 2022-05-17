@@ -63,8 +63,7 @@ public class ActionButton implements ActionListener, MouseListener{
                 JOptionPane.PLAIN_MESSAGE, null, null, 10));
         newGameButton.doClick();
         }
-        if (won == false) {
-            System.out.println(won);
+        if (!won) {
             for (int x = 0; x < ligne; x++) {
                 for (int y = 0; y < colonne; y++) {
                     if (e.getSource() == buttons[(ligne * y) + x]
@@ -102,8 +101,7 @@ public class ActionButton implements ActionListener, MouseListener{
             for (int x = 0; x < ligne; x++) {
                 for (int y = 0; y < colonne; y++) {
                     if (e.getSource() == buttons[(ligne * y+x)]) {
-                    }
-                        if(buttons[(ligne * y+x)].getText() == ""){
+                            if(buttons[(ligne * y+x)].getText() == ""){
                             buttons[(ligne * y+x)].setText("★");
                             clickable[(ligne * y+x)]= false;
                             n++;
@@ -113,6 +111,8 @@ public class ActionButton implements ActionListener, MouseListener{
                             buttons[(ligne * y+x)].setText("");
                             clickable[(ligne * y+x)]= true;
                         }
+
+                    }
                         int k = nbrMines - n;
                         mineLabel.setText("nombres de mines restantes : " + k);
                     }
