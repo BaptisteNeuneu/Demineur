@@ -15,7 +15,7 @@ public class Test  {
     private boolean[] presencemines;
     private JButton[] buttons;
     private int[] numbers;
-    private boolean lost=false;
+    private boolean lost;
     private boolean won = false;
     private JFrame fenetre;
     private JFrame fendefaite;
@@ -123,7 +123,7 @@ public class Test  {
                 case 1: 
                     ImageIcon icon1 = new ImageIcon("Images/1.png");
                     Image image1 = icon1.getImage(); // transform it 
-                    Image newimg1 = image1.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    Image newimg1 = image1.getScaledInstance(40, 40,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
                     icon1 = new ImageIcon(newimg1);  // transform it back
                     buttons[cur].setOpaque(false);
                     buttons[cur].setContentAreaFilled(false);
@@ -133,36 +133,85 @@ public class Test  {
             
                 case 2:
                     ImageIcon icon2 = new ImageIcon("Images/2.png");
+                    Image image2 = icon2.getImage(); // transform it 
+                    Image newimg2 = image2.getScaledInstance(40, 40,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    icon2 = new ImageIcon(newimg2);  // transform it back
+                    buttons[cur].setOpaque(false);
+                    buttons[cur].setContentAreaFilled(false);
+                    buttons[cur].setBorderPainted(false);
+
                     buttons[cur].setIcon(icon2);
                     break;
             
             
                 case 3:
                     ImageIcon icon3 = new ImageIcon("Images/3.png");
+                    Image image3 = icon3.getImage(); // transform it 
+                    Image newimg3 = image3.getScaledInstance(40, 40,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    icon3= new ImageIcon(newimg3);  // transform it back
+                    buttons[cur].setOpaque(false);
+                    buttons[cur].setContentAreaFilled(false);
+                    buttons[cur].setBorderPainted(false);
+
                     buttons[cur].setIcon(icon3);
                     break;
             
                 case 4:
                     ImageIcon icon4 = new ImageIcon("Images/4.png");
+                    Image image4 = icon4.getImage(); // transform it 
+                    Image newimg4 = image4.getScaledInstance(40, 40,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    icon4 = new ImageIcon(newimg4);  // transform it back
+                    buttons[cur].setOpaque(false);
+                    buttons[cur].setContentAreaFilled(false);
+                    buttons[cur].setBorderPainted(false);
+
                     buttons[cur].setIcon(icon4);
                     break;
                 case 5:
                 ImageIcon icon5 = new ImageIcon("Images/5.png");
+                                    Image image5 = icon5.getImage(); // transform it 
+                    Image newimg5 = image5.getScaledInstance(40, 40,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    icon5 = new ImageIcon(newimg5);  // transform it back
+                    buttons[cur].setOpaque(false);
+                    buttons[cur].setContentAreaFilled(false);
+                    buttons[cur].setBorderPainted(false);
+
                 buttons[cur].setIcon(icon5);
                 break;
 
                 case 6:
                 ImageIcon icon6 = new ImageIcon("Images/6.png");
+                                    Image image6 = icon6.getImage(); // transform it 
+                    Image newimg6 = image6.getScaledInstance(40, 40,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    icon6 = new ImageIcon(newimg6);  // transform it back
+                    buttons[cur].setOpaque(false);
+                    buttons[cur].setContentAreaFilled(false);
+                    buttons[cur].setBorderPainted(false);
+
                 buttons[cur].setIcon(icon6);
                 break;
                 
                 case 7:
                 ImageIcon icon7 = new ImageIcon("Images/7.png");
+                                    Image image7 = icon7.getImage(); // transform it 
+                    Image newimg7 = image7.getScaledInstance(40, 40,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    icon7 = new ImageIcon(newimg7);  // transform it back
+                    buttons[cur].setOpaque(false);
+                    buttons[cur].setContentAreaFilled(false);
+                    buttons[cur].setBorderPainted(false);
+
                 buttons[cur].setIcon(icon7);
                 break;
 
                 case 8:
                 ImageIcon icon8 = new ImageIcon("Images/8.png");
+                    Image image8 = icon8.getImage(); // transform it 
+                    Image newimg8 = image8.getScaledInstance(40, 40,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    icon8 = new ImageIcon(newimg8);  // transform it back
+                    buttons[cur].setOpaque(false);
+                    buttons[cur].setContentAreaFilled(false);
+                    buttons[cur].setBorderPainted(false);
+
                 buttons[cur].setIcon(icon8);
                 break;
             }
@@ -170,8 +219,15 @@ public class Test  {
                 buttons[cur].setText("");
             }
         }
-        if (presencemines[cur] && !won && !lost) {
-            ImageIcon iconbombe = new ImageIcon("Images\\bombe.png");
+        if (presencemines[cur] && won == false && lost == false) {
+            ImageIcon iconbombe = new ImageIcon("Images/bombe.png");
+                    Image imagebombe = iconbombe.getImage(); // transform it 
+                    Image newimgbombe = imagebombe.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                    iconbombe = new ImageIcon(newimgbombe);  // transform it back
+                    buttons[cur].setOpaque(false);
+                    buttons[cur].setContentAreaFilled(false);
+                    buttons[cur].setBorderPainted(false);
+
             buttons[cur].setIcon(iconbombe);
             doLose();
             return;
@@ -182,6 +238,7 @@ public class Test  {
 
 
     public void checkWin() {
+        if(won == false){
         for (int x = 0; x < ligne; x++) {
             for (int y = 0; y < colonne; y++ ) {
                 int cur = (ligne * y) + x;
@@ -200,11 +257,11 @@ public class Test  {
         }
         doWin();
     }
+    }
     public void doLose() {
         if (lost == false && !won) {
                 lost = true;
-                ActionButton newlisten = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);
-            
+            ActionButton newlisten = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);
             for (int i = 0; i < ligne * colonne; i++) {
                 buttons[i].addActionListener(newlisten);
                 if (!clickdone[i]) {
