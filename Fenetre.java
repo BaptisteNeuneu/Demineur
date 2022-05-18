@@ -22,6 +22,8 @@ public class Fenetre   {
     JMenuItem reglage = new JMenuItem("option");
     JPanel p = new JPanel();
     private JButton sauvquit= new JButton("Sauvegarder Quitter");
+
+    
    public void setFenetre(int ligne,int colonne,int nbrMines){
        this.ligne=ligne;
        this.colonne=colonne;
@@ -54,7 +56,6 @@ b.fillnumbers();
         JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines);
          GridLayout layout = new GridLayout(ligne, colonne);
         p.setLayout(layout);
-
         setupI();
 
         ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);
