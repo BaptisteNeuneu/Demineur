@@ -232,7 +232,6 @@ public class Test  {
             doLose();
             return;
         }
-        checkWin();
     }
  
 
@@ -268,8 +267,12 @@ public class Test  {
                     if(presencemines[i] && clickable[i]){
                     buttons[i].doClick(0);
                 }  
-                 if(!clickable[i] && !presencemines[i] && !clickdone[i]){
+                 else if(!clickable[i] && !presencemines[i]){
+                    clickable[i] = true;
                     buttons[i].doClick(0);
+                } else {
+                    clickable[i] = false;
+                    clickdone[i] = true;
                 }
                 }
             }

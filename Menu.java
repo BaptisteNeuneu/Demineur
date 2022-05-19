@@ -5,6 +5,7 @@
 //inclusion des bibliothèques
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
 public class Menu{
     private JFrame fenetre;
     private JPanel newgam = new JPanel();
@@ -37,7 +38,11 @@ public class Menu{
         fenetre1.add(newgam);
         fenetre1.add(rpgame);
         fenetre1.add(quit);
-        fenetre1.setTitle("*** Menu ***");	
+        fenetre1.setTitle("*** Menu ***");
+        File fichier = new File("save.dat");
+        if(!fichier.exists()){
+            reprendregame.setEnabled(false);
+        }	
         ActionMenu amenu = new ActionMenu(fenetre,newgame,reprendregame,quitter,fenetre1);
         newgame.addActionListener(amenu);
         reprendregame.addActionListener(amenu);

@@ -74,6 +74,8 @@ public class ActionButton implements ActionListener, MouseListener{
                 }
             }
         }
+        newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel,fenetre,lost);
+        newtest.checkWin();
         if(e.getSource() == quitter2){
             Menu i = new Menu();
             i.setMenu(fenetre);
