@@ -44,6 +44,7 @@ public void windowClosed(WindowEvent evenement) {
 public void windowClosing(WindowEvent evenement) {
     int n=0;
     String a;
+
     try {
         File delete = new File("save.dat");
         delete.delete();
@@ -52,6 +53,7 @@ public void windowClosing(WindowEvent evenement) {
         flux.writeInt(colonne);
         flux.writeInt(ligne);
         flux.writeInt(nbrMines);
+        
         for(int x=0;x<ligne ;x++){
             for(int y= 0;y<colonne;y++) {
             a = buttons[(ligne * y+x)].getText();
@@ -62,6 +64,7 @@ public void windowClosing(WindowEvent evenement) {
             }       
         }
         flux.writeInt(n);
+
         for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
                 switch(numbers[(ligne * y+x)]) {

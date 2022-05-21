@@ -5,6 +5,7 @@
 /**inclusion des bibliothèques*/
 import java.awt.event.*;
 import javax.swing.*;
+
 public class ActionMenu2 implements ActionListener {
 private JFrame fenetre2;
 private JButton btJouer;
@@ -13,7 +14,8 @@ private JTextField newColonne;
 private JTextField newnbrMines;
 private int ligne; 
 private int colonne;
-private int nbrMines;  
+private int nbrMines;
+
 public ActionMenu2(JTextField newLigne,JTextField newColonne,JTextField newnbrMines,JButton btJouer,JFrame fenetre2) {
         this.newLigne=newLigne;
         this.newColonne=newColonne;
@@ -21,6 +23,7 @@ public ActionMenu2(JTextField newLigne,JTextField newColonne,JTextField newnbrMi
         this.btJouer=btJouer;
         this.fenetre2=fenetre2;
       }
+      
     public void actionPerformed(ActionEvent menu2) {
         String sLigne = newLigne.getText(); 
         String sColonne = newColonne.getText(); 
