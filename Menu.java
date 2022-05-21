@@ -8,6 +8,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+
 public class Menu {
     private JFrame fenetre;
     private JPanel newgam = new JPanel();
@@ -52,7 +53,8 @@ public class Menu {
         File fichier = new File("save.dat");
         if(!fichier.exists()) {
             reprendregame.setEnabled(false);
-        }	
+        }
+        	
         ActionMenu amenu = new ActionMenu(fenetre,newgame,reprendregame,quitter,fenetre1);
         newgame.addActionListener(amenu);
         reprendregame.addActionListener(amenu);
