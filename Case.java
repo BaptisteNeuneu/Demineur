@@ -1,9 +1,7 @@
 /**
 * @version 26/04/2022
 * @author Felix Brinet
-*/
-
-
+**/
 public class Case {
 
 	private int ligne;
@@ -12,7 +10,7 @@ public class Case {
     private int[] numbers;
     private int nbrMines;
 
-	public void setCase(int colonne,int ligne,boolean[] presencemines,int[] numbers,int nbrMines){
+	public void setCase(int colonne,int ligne,boolean[] presencemines,int[] numbers,int nbrMines) {
 		this.ligne=ligne;
 		this.colonne=colonne;
 		this.presencemines=presencemines;
@@ -20,7 +18,7 @@ public class Case {
 		this.nbrMines=nbrMines;
 	}
 
-    public void Mine(){
+    public void Mine() {
     int minerestant = nbrMines;
         while (minerestant > 0) {
             int x = (int) Math.floor(Math.random() * ligne);

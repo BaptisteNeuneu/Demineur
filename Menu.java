@@ -2,11 +2,13 @@
 * @version 25/04/2022
 * @author Felix Brinet
 */
-//inclusion des bibliothèques
+/**
+ * inclusion des bibliothèques
+ * */
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-public class Menu{
+public class Menu {
     private JFrame fenetre;
     private JPanel newgam = new JPanel();
     private JPanel rpgame = new JPanel();
@@ -15,18 +17,26 @@ public class Menu{
     private JButton reprendregame = new JButton("Reprendre la partie");
     private JButton quitter = new JButton("Quitter la partie");
     private JFrame fenetre1 = new JFrame();
-    public void setMenu(JFrame fenetre){
+    public void setMenu(JFrame fenetre) {
         this.fenetre=fenetre;
     }
-    /*Un objet pour servir de fenetre1*/
+    /**
+     * Un objet pour servir de fenetre1
+     */
     public void Menu1(){		
-        /*On configure la fenetre1*/
-        /*On récupère la taille de la fenêtre1*/
+        /**
+         * On configure la fenetre1
+         */
+        /**
+         * On récupère la taille de la fenêtre1
+         */
         Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
 		int longueur = tailleEcran.width / 2;
 		int hauteur = tailleEcran.height;
         fenetre1.setSize(+longueur,+hauteur);
-        /*On empèche de réduire la fenêtre2*/
+        /**
+         * On empèche de réduire la fenêtre2
+         */
         fenetre1.setMinimumSize(new Dimension(+longueur,+hauteur));
         fenetre1.setLocation(0,0);
         fenetre1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,14 +50,17 @@ public class Menu{
         fenetre1.add(quit);
         fenetre1.setTitle("*** Menu ***");
         File fichier = new File("save.dat");
-        if(!fichier.exists()){
+        if(!fichier.exists()) {
             reprendregame.setEnabled(false);
         }	
         ActionMenu amenu = new ActionMenu(fenetre,newgame,reprendregame,quitter,fenetre1);
         newgame.addActionListener(amenu);
         reprendregame.addActionListener(amenu);
         quitter.addActionListener(amenu);
-        fenetre1.setVisible(true); /*Afficher la fenêtre*/
+        fenetre1.setVisible(true); 
+        /**
+         * Afficher la fenêtre
+         */
 		}
 
 }

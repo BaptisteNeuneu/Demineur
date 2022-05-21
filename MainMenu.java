@@ -3,7 +3,7 @@
 * @author Felix Brinet
 */
 
-public class MainMenu{
+public class MainMenu {
 
     public static void main(String[] args) {
     	Menu u = new Menu();
