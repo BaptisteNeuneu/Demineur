@@ -5,6 +5,7 @@
 /**inclusion des bibliothèques*/
 import java.awt.*;
 import javax.swing.*;
+import java.io.*;
  
 public class Fenetre {
     private JFrame fenetre = new JFrame();
@@ -21,13 +22,15 @@ public class Fenetre {
     JMenuItem newGameButton = new JMenuItem("nouvelle partie");
     JMenuItem reglage = new JMenuItem("option");
     JPanel p = new JPanel();
+    boolean nouveau;
     private JButton sauvquit= new JButton("Sauvegarder Quitter");
 
     
-   public void setFenetre(int ligne,int colonne,int nbrMines) {
+   public void setFenetre(int ligne,int colonne,int nbrMines,boolean nouveau) {
        this.ligne=ligne;
        this.colonne=colonne;
        this.nbrMines=nbrMines;
+       this.nouveau=nouveau;
    }
 
    public void setupI() {
@@ -56,7 +59,50 @@ b.fillnumbers();
         JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines);
          GridLayout layout = new GridLayout(ligne, colonne);
         p.setLayout(layout);
+        if(!nouveau){
+            try{
+                FileInputStream fichier = new FileInputStream("save.dat");
+                DataInputStream flux = new DataInputStream(fichier);
+                colonne=flux.readInt();
+                ligne=flux.readInt(); 
+                char a;
+                char b= ?;
+                char c= ★;
+                for(int x=0;x<ligne ;x++){
+                    for(int y= 0;y<colonne;y++) {
+                    a = flux.readChar();
+                    if(a == b ){
+                        buttons[(ligne*y+x)].setText("?");
+                    } else if(a == c){
+                        buttons[(ligne*y+x)].setText("★");
+                    } else {
+                        buttons[ligne *y+x].setText("");
+                    }
+                    }       
+                }
+                nbrMines = flux.readInt();
+                for(int x=0;x<ligne ;x++){
+                    for(int y= 0;y<colonne;y++) {
+                        numbers[(ligne*y+x)] = flux.readInt();
+                        if(flux.readBoolean() == true){
+                            presencemines[ligne*y+x]=true;
+                            clickdone[ligne*y+x]=true;
+                            clickable[ligne*y+x]=true;
+                        } else {
+                            presencemines[ligne*y+x]=false;
+                            clickdone[ligne*y+x]=false;
+                            clickable[ligne*y+x]=false;
+                        }
+                    }
+                }
+        }catch(FileNotFoundException e3){
+            System.err.println("FileNotFoundException");
+        }catch(IOException e2){
+            System.err.println("IOException");
+        }}	
+        else{
         setupI();
+        }
 
         ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
         nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);

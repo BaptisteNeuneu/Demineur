@@ -266,8 +266,6 @@ public class Test {
     public void doLose() {
         if (lost == false && !won) {
                 lost = true;
-            
-           setTest(ligne, colonne, clickdone, clickable, presencemines, buttons, numbers, fenetre, lost);
             fendefaite = new JFrame("Defaite");
             fendefaite.setLocation(0,0);
 

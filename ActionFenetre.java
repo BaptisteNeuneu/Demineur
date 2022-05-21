@@ -52,7 +52,7 @@ public void windowClosing(WindowEvent evenement) {
         DataOutputStream flux = new DataOutputStream(fichier);
         flux.writeInt(colonne);
         flux.writeInt(ligne);
-        flux.writeInt(nbrMines);
+       
         
         for(int x=0;x<ligne ;x++){
             for(int y= 0;y<colonne;y++) {
@@ -63,7 +63,8 @@ public void windowClosing(WindowEvent evenement) {
             flux.writeChars(a); 
             }       
         }
-        flux.writeInt(n);
+        nbrMines = nbrMines - n;
+         flux.writeInt(nbrMines);
 
         for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
@@ -88,19 +89,19 @@ public void windowClosing(WindowEvent evenement) {
                     flux.writeInt(8);
                 }
                 if(presencemines[(ligne * y+x)] == true) {
-                    flux.writeByte(1);
+                    flux.writeBoolean(true);
                 } else {
-                    flux.writeByte(0);
+                    flux.writeBoolean(false);
                 }
                 if(clickable[(ligne * y+x)] == true) {
-                    flux.writeByte(1);
+                    flux.writeBoolean(true);
                 } else {
-                    flux.writeByte(0);
+                    flux.writeBoolean(false);
                 }
                 if (clickdone[(ligne*y+x)] == true ) {
-                    flux.writeByte(1);
+                    flux.writeBoolean(true);
                 } else {
-                    flux.writeByte(0);
+                    flux.writeBoolean(false);
                 }
             }
         }

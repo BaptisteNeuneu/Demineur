@@ -43,7 +43,8 @@ public ActionMenu2(JTextField newLigne,JTextField newColonne,JTextField newnbrMi
               System.out.println("Veuillez mettre moins de bombes que de cases");
             }else {
               Fenetre newFenetre =new Fenetre();
-              newFenetre.setFenetre(ligne,colonne,nbrMines);
+              boolean nouveau = true;
+              newFenetre.setFenetre(ligne,colonne,nbrMines,nouveau);
               newFenetre.fenetre1();
               fenetre2.dispose();/**Fait disparaître la fenêtre de réglage**/
               /**Impression du nombre de ligne et colonne dans le terminal**/

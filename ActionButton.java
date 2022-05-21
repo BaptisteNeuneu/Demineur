@@ -37,6 +37,7 @@ public class ActionButton implements ActionListener, MouseListener {
     private Test newtest= new Test();
     private JFrame fenetre;
     private boolean lost;
+    private boolean nouveau = true;
 
 
 
@@ -98,7 +99,7 @@ public class ActionButton implements ActionListener, MouseListener {
         if (e.getSource() == newGameButton) {
             fenetre.setVisible(false);
             Fenetre newfenetre = new Fenetre();
-            newfenetre.setFenetre(ligne, colonne, nbrMines);
+            newfenetre.setFenetre(ligne, colonne, nbrMines,nouveau);
             newfenetre.fenetre1();
             return;
  
