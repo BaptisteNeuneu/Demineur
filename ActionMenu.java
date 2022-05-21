@@ -11,12 +11,10 @@ private JButton quitter;
 private JButton newgame;
 private JButton reprendregame;
 private JFrame fenetre1;
-private JFrame fenetre;
 
 
 
-    public ActionMenu(JFrame fenetre,JButton newgame,JButton reprendregame,JButton quitter,JFrame fenetre1){
-        this.fenetre=fenetre;
+    public ActionMenu(JButton newgame,JButton reprendregame,JButton quitter,JFrame fenetre1){
         this.fenetre1=fenetre1;
         this.newgame=newgame;
         this.reprendregame=reprendregame;
@@ -30,9 +28,8 @@ private JFrame fenetre;
             newmenu2.Menu21();
             fenetre1.setVisible(false); /*Fait disparaître la fenêtre*/
         }else if(menu1.getSource() == reprendregame){
-            Sauvegarde j = new Sauvegarde();
-            j.setSauvegarde(fenetre);
-            j.restoresave();
+            Fenetre j = new Fenetre();
+            j.fenetre1();
             fenetre1.dispose();
            //Setup reprise = new Setup();
            //reprise.setSetup(buttons, presencemines, clickdone, clickable, layout, p, ligne, colonne, nbrMines, numbers, mineLabel, fenetre, reglage, newGameButton,quitter2);

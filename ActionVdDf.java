@@ -20,14 +20,12 @@ private JFrame fenetre;
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()== remenudef){
 			Menu i = new Menu();
-			i.setMenu(fenetre);
 			i.Menu1();
 			fendefaite.setVisible(false);
 			fenetre.dispose();
 		}
 		if(e.getSource() == remenuvic){
 			Menu i = new Menu();
-			i.setMenu(fenetre);
 			i.Menu1();
 			fenvictoire.setVisible(false);
 			fenetre.dispose();

@@ -74,7 +74,6 @@ public class ActionButton implements ActionListener, MouseListener{
         newtest.checkWin();
         if(e.getSource() == quitter2){
             Menu i = new Menu();
-            i.setMenu(fenetre);
             i.Menu1();
         }
         if (e.getSource() == newGameButton) {

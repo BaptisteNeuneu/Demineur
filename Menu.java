@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 public class Menu{
-    private JFrame fenetre;
     private JPanel newgam = new JPanel();
     private JPanel rpgame = new JPanel();
     private JPanel quit = new JPanel();
@@ -15,9 +14,6 @@ public class Menu{
     private JButton reprendregame = new JButton("Reprendre la partie");
     private JButton quitter = new JButton("Quitter la partie");
     private JFrame fenetre1 = new JFrame();
-    public void setMenu(JFrame fenetre){
-        this.fenetre=fenetre;
-    }
     /*Un objet pour servir de fenetre1*/
     public void Menu1(){		
         /*On configure la fenetre1*/
@@ -43,7 +39,7 @@ public class Menu{
         if(!fichier.exists()){
             reprendregame.setEnabled(false);
         }	
-        ActionMenu amenu = new ActionMenu(fenetre,newgame,reprendregame,quitter,fenetre1);
+        ActionMenu amenu = new ActionMenu(newgame,reprendregame,quitter,fenetre1);
         newgame.addActionListener(amenu);
         reprendregame.addActionListener(amenu);
         quitter.addActionListener(amenu);
