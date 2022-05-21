@@ -20,8 +20,6 @@ public class ActionButton implements ActionListener, MouseListener{
     private JMenuItem quitter2;
     private JMenuItem reglage;
     private JMenuItem newGameButton;
-    private GridLayout layout;
-    private JPanel p;
     private JLabel mineLabel;
     private Test newtest= new Test();
     private JFrame fenetre;
@@ -42,8 +40,6 @@ public class ActionButton implements ActionListener, MouseListener{
         this.numbers=numbers;
         this.quitter2=quitter2;
         this.newGameButton=newGameButton;
-        this.layout=layout;
-        this.p=p;
         this.mineLabel=mineLabel;
         this.fenetre=fenetre;
         this.reglage=reglage;
@@ -68,13 +64,13 @@ public class ActionButton implements ActionListener, MouseListener{
                 for (int y = 0; y < colonne; y++) {
                     if (e.getSource() == buttons[(ligne * y) + x]
                      && clickable[(ligne * y) + x]) {
-                                newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel,fenetre,lost);     
+                                newtest.setTest(ligne, colonne, clickdone, clickable, presencemines, buttons, numbers, fenetre, lost);     
                         newtest.doCheck(x, y);
                             }
                 }
             }
         }
-        newtest.setTest(ligne,colonne,clickdone,clickable,presencemines,nbrMines,buttons,numbers,reglage,newGameButton,layout,p,mineLabel,fenetre,lost);
+        newtest.setTest(ligne, colonne, clickdone, clickable, presencemines, buttons, numbers, fenetre, lost);
         newtest.checkWin();
         if(e.getSource() == quitter2){
             Menu i = new Menu();

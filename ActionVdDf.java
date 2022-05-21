@@ -20,8 +20,8 @@ private JFrame fenetre;
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()== remenudef){
 			Menu i = new Menu();
-			i.Menu1();
 			i.setMenu(fenetre);
+			i.Menu1();
 			fendefaite.setVisible(false);
 			fenetre.setVisible(false);
 		}

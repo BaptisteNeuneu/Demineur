@@ -23,16 +23,9 @@ public class Test  {
     private JButton remenudef;
     private JButton remenuvic;
     private boolean[] clickable;
-    private int nbrMines;
-    private JMenuItem quitter2;
-    private JMenuItem newGameButton;
-    private JPanel p;
-    private GridLayout layout;
-    private JMenuItem reglage;
-    private JLabel mineLabel;
 
-    public void setTest(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,boolean[] presencemines,int nbrMines,
-    JButton[] buttons,int[] numbers,JMenuItem reglage,JMenuItem newGameButton,GridLayout layout,JPanel p,JLabel mineLabel,JFrame fenetre,boolean lost){
+    public void setTest(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,boolean[] presencemines,
+    JButton[] buttons,int[] numbers,JFrame fenetre,boolean lost){
         this.ligne=ligne;
         this.colonne=colonne;
         this.clickdone=clickdone;
@@ -229,8 +222,21 @@ public class Test  {
                     buttons[cur].setBorderPainted(false);
 
             buttons[cur].setIcon(iconbombe);
-            doLose();
-            return;
+            if(presencemines[cur]){
+                doLose();
+                }
+            for (int i = 0; i < ligne * colonne; i++) {
+                if (!clickdone[i]) {
+                    if(presencemines[i] && clickable[i]){
+                    buttons[i].doClick(0);
+                }  
+                 else if(!clickable[i] && !presencemines[i]){
+                    clickable[i] = true;
+                    buttons[i].doClick(0);
+                }
+                }
+            }
+
         }
     }
  
@@ -260,22 +266,8 @@ public class Test  {
     public void doLose() {
         if (lost == false && !won) {
                 lost = true;
-            ActionButton newlisten = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);
-            for (int i = 0; i < ligne * colonne; i++) {
-                buttons[i].addActionListener(newlisten);
-                if (!clickdone[i]) {
-                    if(presencemines[i] && clickable[i]){
-                    buttons[i].doClick(0);
-                }  
-                 else if(!clickable[i] && !presencemines[i]){
-                    clickable[i] = true;
-                    buttons[i].doClick(0);
-                } else {
-                    clickable[i] = false;
-                    clickdone[i] = true;
-                }
-                }
-            }
+            
+           setTest(ligne, colonne, clickdone, clickable, presencemines, buttons, numbers, fenetre, lost);
             fendefaite = new JFrame("Defaite");
             fendefaite.setLocation(0,0);
 
