@@ -1,4 +1,3 @@
-
 ### VARIABLES ###
 
 JC = javac
@@ -6,12 +5,7 @@ JCFLAGS = -encoding UTF-8 -implicit:none
 
 JVM = java
 
-
 ### REGLES ESSENTIELLES ###
-
-
-ActionButton.class : ActionButton.java MainMenu.class
- 	${JC} ${JCFLAGS} ActionButton.java
 
 MainMenu.class : MainMenu.java Menu.class
 	${JC} ${JCFLAGS} MainMenu.java
@@ -34,17 +28,17 @@ Fenetre.class : Fenetre.java Case.class
 Case.class : Case.java Test.class
 	${JC} ${JCFLAGS} Case.java
 
-Test.class : Test.java 
+Test.class : Test.java ActionVdDf.class
 	${JC} ${JCFLAGS} Test.java
 
+ActionVdDf.class : ActionVdDf.java
+	${JC} ${JCFLAGS} ActionVdDf.java
 
-
-
-	
 ### REGLES OPTIONNELLES ###
 
 run : MainMenu.class
-	${JVM} ${JVMFLAGS} MainMenu
+	${JVM} MainMenu
+
 
 clean :
 	-rm -f *.class
@@ -56,3 +50,4 @@ mrproper : clean MainMenu.class
 .PHONY : run clean mrproper
 
 ### FIN ###
+
