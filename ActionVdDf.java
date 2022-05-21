@@ -7,7 +7,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class ActionVdDf implements ActionListener {
-	 private JButton remenudef;
+private JButton remenudef;
 private JButton remenuvic;
 private JFrame fenvictoire;
 private JFrame fendefaite;

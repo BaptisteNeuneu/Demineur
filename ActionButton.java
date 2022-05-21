@@ -61,6 +61,7 @@ public class ActionButton implements ActionListener, MouseListener {
 
        
     }
+    
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == reglage) {
         ligne = Integer.parseInt((String) JOptionPane.showInputDialog(
