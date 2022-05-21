@@ -2,7 +2,9 @@
 * @version 28/04/2022
 * @author Felix Brinet
 */
-//inclusion des bibliothèques
+/**
+ * inclusion des bibliothèques
+ */
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,31 +14,43 @@ public class Menu2 {
 	private JTextField newColonne = new JTextField("10");
 	private JTextField newnbrMines = new JTextField("10");
 	private JButton btJouer = new JButton();
-    public void Menu21(){
-
-		
-        /*On configure la fenetre2*/
-		/*On récupère la taille de la fenêtre2*/
+    public void Menu21() {
+        /**
+		 * On configure la fenetre2
+		 */
+		/**
+		 * On récupère la taille de la fenêtre2
+		 */
 		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
 		int longueur = tailleEcran.width / 2;
 		int hauteur = tailleEcran.height;
         fenetre2.setSize(+longueur,+hauteur);
-		/*On empèche de réduire la fenêtre2*/
+		/**
+		 * On empèche de réduire la fenêtre2
+		 */
         fenetre2.setMinimumSize(new Dimension(+longueur,+hauteur));
         fenetre2.setLocation(0,0);
         fenetre2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre2.setTitle("*** Réglages ***");
 
-		/*Configuration nombres de lignes entre 10 et 30*/					
+		/**
+		 * Configuration nombres de lignes entre 10 et 30
+		 */					
 		JLabel txtLigne = new JLabel("Combien de lignes voulez vous ?");
 		
-		/*Configuration nombres de colonnes entre 10 et 30*/			
+		/**
+		 * Configuration nombres de colonnes entre 10 et 30
+		 */			
 		JLabel txtColonne = new JLabel("Combien de colonnes voulez vous ?");
 		
-		/*Configuration nombres de mines entre (ligne*colonne)-1*/							
+		/**
+		 * Configuration nombres de mines entre (ligne*colonne)-1
+		 */							
 		JLabel txtMines = new JLabel("Combien de mines voulez vous ?");
 		
-		/*Configuration bouton Jouer nombre de : "lignes, colonnes, mines " à la fenetre*/								
+		/**
+		 * Configuration bouton Jouer nombre de : "lignes, colonnes, mines " à la fenetre
+		 */								
 		
 		btJouer.setText("Jouer");	
 

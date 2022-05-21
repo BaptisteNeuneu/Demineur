@@ -9,9 +9,9 @@ import java.io.*;
 
 
 
-public class ActionFenetre implements WindowListener{
+public class ActionFenetre implements WindowListener {
 
-    private JButton[] buttons;
+private JButton[] buttons;
 private int[] numbers;
 private boolean[] presencemines;
 private boolean[] clickable;
@@ -33,9 +33,13 @@ public ActionFenetre(JButton[] buttons, int[] numbers,boolean[] presencemines,bo
 }
 
 
-public void windowActivated(WindowEvent evenement) {}     
+public void windowActivated(WindowEvent evenement) {
 
-public void windowClosed(WindowEvent evenement) {}       
+}     
+
+public void windowClosed(WindowEvent evenement) {
+
+}       
 
 public void windowClosing(WindowEvent evenement) {
     int n=0;
@@ -49,18 +53,18 @@ public void windowClosing(WindowEvent evenement) {
         flux.writeInt(ligne);
         flux.writeInt(nbrMines);
         for(int x=0;x<ligne ;x++){
-            for(int y= 0;y<colonne;y++){
+            for(int y= 0;y<colonne;y++) {
             a = buttons[(ligne * y+x)].getText();
-            if(buttons[(ligne * y + x)].getText() == "★"){
+            if(buttons[(ligne * y + x)].getText() == "★") {
                 n++;
             }
             flux.writeChars(a); 
             }       
         }
         flux.writeInt(n);
-        for(int x=0;x<ligne ;x++){
-            for(int y= 0;y<colonne;y++){
-                switch(numbers[(ligne * y+x)]){
+        for(int x=0;x<ligne ;x++) {
+            for(int y= 0;y<colonne;y++) {
+                switch(numbers[(ligne * y+x)]) {
                     case 0:
                     flux.writeInt(0);
                     case 1 :
@@ -80,17 +84,17 @@ public void windowClosing(WindowEvent evenement) {
                     case 8 :
                     flux.writeInt(8);
                 }
-                if(presencemines[(ligne * y+x)] == true){
+                if(presencemines[(ligne * y+x)] == true) {
                     flux.writeByte(1);
                 } else {
                     flux.writeByte(0);
                 }
-                if(clickable[(ligne * y+x)] == true){
+                if(clickable[(ligne * y+x)] == true) {
                     flux.writeByte(1);
                 } else {
                     flux.writeByte(0);
                 }
-                if (clickdone[(ligne*y+x)] == true ){
+                if (clickdone[(ligne*y+x)] == true ) {
                     flux.writeByte(1);
                 } else {
                     flux.writeByte(0);
@@ -109,18 +113,26 @@ public void windowClosing(WindowEvent evenement) {
 } 
 
 
-public void windowDeactivated(WindowEvent evenement){}  
+public void windowDeactivated(WindowEvent evenement) {
+
+}  
 
 
 
 
-public void windowDeiconified(WindowEvent evenement){}    
+public void windowDeiconified(WindowEvent evenement) {
+
+}    
 
 
 
 
-public void windowIconified(WindowEvent evenement){}     
+public void windowIconified(WindowEvent evenement) {
+
+}     
 
 
-public void windowOpened(WindowEvent evenement){}         
+public void windowOpened(WindowEvent evenement) {
+
+}         
 }

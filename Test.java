@@ -8,7 +8,7 @@ import javax.swing.*;
 //import java.util.TimerTask;
 //import java.util.Timer;
 
-public class Test  {
+public class Test {
     private int ligne;
     private int colonne;
     private boolean[] clickdone;

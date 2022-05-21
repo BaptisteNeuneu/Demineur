@@ -2,11 +2,11 @@
 * @version 26/04/2022
 * @author Baptiste Nevejans
 */
-//inclusion des bibliothèques
+/**inclusion des bibliothèques*/
 import java.awt.*;
 import javax.swing.*;
  
-public class Fenetre   {
+public class Fenetre {
     private JFrame fenetre = new JFrame();
     private int ligne = 30;
     private int colonne = 30;
@@ -24,7 +24,7 @@ public class Fenetre   {
     private JButton sauvquit= new JButton("Sauvegarder Quitter");
 
     
-   public void setFenetre(int ligne,int colonne,int nbrMines){
+   public void setFenetre(int ligne,int colonne,int nbrMines) {
        this.ligne=ligne;
        this.colonne=colonne;
        this.nbrMines=nbrMines;
@@ -39,9 +39,9 @@ public class Fenetre   {
             clickdone[(ligne * y) + x] = false;
             clickable[(ligne * y) + x] = true;
             buttons[(ligne * y) + x] = new JButton( );
-            buttons[(ligne * y) + x].setPreferredSize(new Dimension(
-                    30, 30));
-                    ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);
+            buttons[(ligne * y) + x].setPreferredSize(new Dimension(30, 30));
+                    ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
+                    nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);
             buttons[(ligne * y) + x].addActionListener(newbut);
             buttons[(ligne * y) + x].addMouseListener(newbut);
         }
@@ -58,7 +58,8 @@ b.fillnumbers();
         p.setLayout(layout);
         setupI();
 
-        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);
+        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
+        nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);
         for (int i = 0; i < (ligne * colonne); i++) {
             p.add(buttons[i]);
         }
@@ -82,7 +83,7 @@ b.fillnumbers();
         fenetre.pack();
         fenetre.setVisible(true);
     }
-    public static void main(String[] args){
+    public static void main(String[] args) {
      Fenetre u = new Fenetre();
     u.fenetre1();
     }

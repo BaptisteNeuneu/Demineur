@@ -1,4 +1,8 @@
-
+/**
+* @version 11/05/2022
+* @author Nevejans Baptiste
+*/
+/**inclusion des bibliothèques*/
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -9,7 +13,7 @@ private JFrame fenvictoire;
 private JFrame fendefaite;
 private JFrame fenetre;
 
-	public ActionVdDf(JButton remenudef,JButton remenuvic,JFrame fenvictoire,JFrame fendefaite,JFrame fenetre){
+	public ActionVdDf(JButton remenudef,JButton remenuvic,JFrame fenvictoire,JFrame fendefaite,JFrame fenetre) {
 		this.remenudef=remenudef;
 		this.remenuvic=remenuvic;
 		this.fenvictoire=fenvictoire;
@@ -24,7 +28,7 @@ private JFrame fenetre;
 			fendefaite.setVisible(false);
 			fenetre.dispose();
 		}
-		if(e.getSource() == remenuvic){
+		if(e.getSource() == remenuvic) {
 			Menu i = new Menu();
 			i.Menu1();
 			fenvictoire.setVisible(false);
