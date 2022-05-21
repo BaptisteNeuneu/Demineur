@@ -33,7 +33,7 @@ private JFrame fenetre;
             Sauvegarde j = new Sauvegarde();
             j.setSauvegarde(fenetre);
             j.restoresave();
-            fenetre1.setVisible(false);
+            fenetre1.dispose();
            //Setup reprise = new Setup();
            //reprise.setSetup(buttons, presencemines, clickdone, clickable, layout, p, ligne, colonne, nbrMines, numbers, mineLabel, fenetre, reglage, newGameButton,quitter2);
            //reprise.setupI2();  

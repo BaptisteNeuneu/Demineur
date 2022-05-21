@@ -23,14 +23,14 @@ private JFrame fenetre;
 			i.setMenu(fenetre);
 			i.Menu1();
 			fendefaite.setVisible(false);
-			fenetre.setVisible(false);
+			fenetre.dispose();
 		}
 		if(e.getSource() == remenuvic){
 			Menu i = new Menu();
 			i.setMenu(fenetre);
 			i.Menu1();
 			fenvictoire.setVisible(false);
-			fenetre.setVisible(false);
+			fenetre.dispose();
 		}
 }
 }

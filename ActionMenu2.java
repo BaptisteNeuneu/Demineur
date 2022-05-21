@@ -42,7 +42,7 @@ public ActionMenu2(JTextField newLigne,JTextField newColonne,JTextField newnbrMi
               Fenetre newFenetre =new Fenetre();
               newFenetre.setFenetre(ligne,colonne,nbrMines);
               newFenetre.fenetre1();
-              fenetre2.setVisible(false);/*Fait disparaître la fenêtre de réglage*/
+              fenetre2.dispose();/*Fait disparaître la fenêtre de réglage*/
               /*Impression du nombre de ligne et colonne dans le terminal*/
               System.out.println("Lignes:"+ligne);
               System.out.println("Colonnes:"+colonne); 
