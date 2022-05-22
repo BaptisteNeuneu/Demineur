@@ -59,7 +59,7 @@ b.fillnumbers();
         JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines);
          GridLayout layout = new GridLayout(ligne, colonne);
         p.setLayout(layout);
-        if(!nouveau){
+       /* if(!nouveau){
             try{
                 FileInputStream fichier = new FileInputStream("save.dat");
                 DataInputStream flux = new DataInputStream(fichier);
@@ -102,7 +102,8 @@ b.fillnumbers();
         }}	
         else{
         setupI();
-        }
+        }*/
+        setupI();
 
         ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
         nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);
