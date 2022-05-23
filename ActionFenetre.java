@@ -84,27 +84,27 @@ public void windowClosing(WindowEvent evenement) {
         for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if(presencemines[(ligne * y+x)] == true) {
-                    flux.writeBoolean(true);
+                    flux.writeByte(0);
                 } else {
-                    flux.writeBoolean(false);
+                    flux.writeByte(1);
                 }
             }
         }
                 for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if(clickable[(ligne * y+x)] == true) {
-                    flux.writeBoolean(true);
+                    flux.writeByte(0);
                 } else {
-                    flux.writeBoolean(false);
+                    flux.writeByte(1);
                 }
             }
         }
                 for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if (clickdone[(ligne*y+x)] == true ) {
-                    flux.writeBoolean(true);
+                    flux.writeByte(0);
                 } else {
-                    flux.writeBoolean(false);
+                    flux.writeByte(1);
                 }
             }
         }

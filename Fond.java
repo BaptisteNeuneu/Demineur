@@ -4,10 +4,6 @@
 */
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
-import java.io.*;
-import javax.imageio.*;
-import java.lang.*;
 
 public class Fond extends JComponent{
     /**

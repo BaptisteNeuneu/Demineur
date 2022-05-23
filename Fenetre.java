@@ -50,10 +50,10 @@ public class Fenetre {
                 }
                 for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
-                         if(data.readBoolean() == true){
+                         if(data.readByte() == 0){
                             presencemines[ligne*y+x]=true;
                             System.out.println("true");
-                        } else {
+                        } else if(data.readByte() == 1){
                             presencemines[ligne*y+x]=false;
                             System.out.println("false");
                         }
@@ -61,10 +61,10 @@ public class Fenetre {
                 }
                     for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
-                        if(data.readBoolean() == true){
+                        if(data.readByte() == 0){
                             clickable[ligne*y+x]=true;
                             System.out.println("true");
-                        } else {
+                        } else if(data.readByte() == 1){
                             clickable[ligne*y+x]=false;
                             System.out.println("false");
                         }
@@ -86,13 +86,14 @@ public class Fenetre {
 
                     for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
-                        if(data.readBoolean() == true && presencemines[ligne * y+x]== false){
+                        if(data.readByte() == 0){
                             buttons[ligne * y+x].doClick();
                             System.out.println("clique");
-                        }
+                        } else if(data.readByte() == 1){
                         System.out.println("pas clique");
                     }
                 }
+            }
                 for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
                     if(   data.readByte() == 9){
