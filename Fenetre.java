@@ -5,7 +5,6 @@
 /**inclusion des bibliothèques*/
 import java.awt.*;
 import javax.swing.*;
-import java.io.*;
  
 public class Fenetre {
     private JFrame fenetre = new JFrame();
@@ -40,12 +39,12 @@ public class Fenetre {
         Grille grille = new Grille();
        if(!nouveau){
         grille.reprisepartie();
-        else{
+       }else{
         grille.generationgrille(ligne,colonne,nbrMines);
         }
 
         ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
-        nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);
+        nbrMines, numbers,quitter2, newGameButton, layout, mineLabel, fenetre,reglage,lost);
         for (int i = 0; i < (ligne * colonne); i++) {
             p.add(buttons[i]);
         }
@@ -63,7 +62,7 @@ public class Fenetre {
         ActionFenetre doFenetre = new ActionFenetre(buttons,numbers,presencemines,clickable,clickdone,ligne,colonne,nbrMines);
         fenetre.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
   
-        fenetre.addWindowsListener(doFenetre);
+        fenetre.addWindowListener(doFenetre);
         fenetre.setJMenuBar(menubar);
         fenetre.add(p);
         fenetre.add(mineLabel, BorderLayout.SOUTH);

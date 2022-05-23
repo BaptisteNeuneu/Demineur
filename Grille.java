@@ -23,8 +23,12 @@ public class Grille {
     JPanel p = new JPanel();
     boolean nouveau;
     private JButton sauvquit= new JButton("Sauvegarder Quitter");
+    private GridLayout layout;
+    private JLabel mineLabel;
+    private JFrame fenetre;
 
     public void reprisepartie(){
+        int n = 0;
                     try{
                 FileInputStream fichier = new FileInputStream("save.dat");
                 DataInputStream flux = new DataInputStream(fichier);
@@ -67,11 +71,9 @@ public class Grille {
     }
             for(int x=0;x<ligne ;x++){
             for(int y= 0;y<colonne;y++) {
-            a = buttons[(ligne * y+x)].getText();
             if(buttons[(ligne * y + x)].getText() == "★") {
                 n++;
-            }
-            flux.writeChars(a); 
+            } 
             }       
         }
 
@@ -96,7 +98,7 @@ public class Grille {
                     }       
                 }
                 nbrMines = flux.readInt();
-                JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines );
+                mineLabel = new JLabel("nombre de mines restante : " + nbrMines );
         }catch(FileNotFoundException e3){
             System.err.println("FileNotFoundException");
         }catch(IOException e2){
@@ -125,3 +127,4 @@ b.setCase(colonne,ligne,presencemines,numbers,nbrMines);
 b.Mine();
 b.fillnumbers();
     }
+}

@@ -20,21 +20,29 @@ public class Menu{
         /*On configure la fenetre1*/
         /*On récupère la taille de la fenêtre1*/
         Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
-		int longueur = tailleEcran.width / 2;
-		int hauteur = tailleEcran.height;
+		int longueur = 750;
+		int hauteur = 520;
         fenetre1.setSize(+longueur,+hauteur);
-        /*On empèche de réduire la fenêtre2*/
+        /**
+         * On empèche de réduire  et agrandir la fenêtre1
+         */
         fenetre1.setMinimumSize(new Dimension(+longueur,+hauteur));
-        fenetre1.setLocation(0,0);
+        fenetre1.setResizable(false);
+        fenetre1.setLocation(100,100);
         fenetre1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GridLayout r = new GridLayout(3,2);
-        fenetre1.setLayout(r);
+        JPanel pan = new JPanel();
+        Fond image = new Fond("/Images/demineur_fond.jpg");
+		image.setLayout(null);
+        pan.setLayout(r);
         newgam.add(newgame);
         rpgame.add(reprendregame);
         quit.add(quitter);
-        fenetre1.add(newgam);
-        fenetre1.add(rpgame);
-        fenetre1.add(quit);
+        pan.add(newgam);
+        pan.add(rpgame);
+        pan.add(quit);
+        pan.add(image);
+        fenetre1.add(pan);
         fenetre1.setTitle("*** Menu ***");
         File fichier = new File("save.dat");
         if(!fichier.exists()){

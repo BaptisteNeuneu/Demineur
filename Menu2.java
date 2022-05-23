@@ -21,18 +21,18 @@ public class Menu2 {
 		/**
 		 * On récupère la taille de la fenêtre2
 		 */
-		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
-		int longueur = tailleEcran.width / 2;
-		int hauteur = tailleEcran.height;
+		int longueur = 1600;
+		int hauteur = 800;
         fenetre2.setSize(+longueur,+hauteur);
 		/**
-		 * On empèche de réduire la fenêtre2
+		 * On empèche de réduire ou agrandir la fenêtre2
 		 */
+		fenetre2.setResizable(false);
         fenetre2.setMinimumSize(new Dimension(+longueur,+hauteur));
-        fenetre2.setLocation(0,0);
+        fenetre2.setLocation(100,100);
         fenetre2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre2.setTitle("*** Réglages ***");
-
+		
 		/**
 		 * Configuration nombres de lignes entre 10 et 30
 		 */					
