@@ -33,23 +33,23 @@ public class Fenetre {
        this.nouveau=nouveau;
    }
 
-   public void reprisepartie(){
+   public void reprisepartie(JLabel mineLabel){
 
         int n = 0;
                     try{
                 FileInputStream fichier = new FileInputStream("save.dat");
-                DataInputStream flux = new DataInputStream(fichier);
-                colonne=flux.readInt();
-                ligne=flux.readInt(); 
+                DataInputStream data = new DataInputStream(fichier);
+                colonne=data.readInt();
+                ligne=data.readInt(); 
 
                 for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
-                        numbers[(ligne*y+x)] = flux.readInt();
+                        numbers[(ligne*y+x)] = data.readInt();
                     }
                 }
                                 for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
-                         if(flux.readBoolean() == true){
+                         if(data.readBoolean() == true){
                             presencemines[ligne*y+x]=true;
                         } else {
                             presencemines[ligne*y+x]=false;
@@ -58,7 +58,7 @@ public class Fenetre {
                 }
                     for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
-                        if(flux.readBoolean() == true){
+                        if(data.readBoolean() == true){
                             clickable[ligne*y+x]=true;
                         } else {
                             clickable[ligne*y+x]=false;
@@ -70,42 +70,37 @@ public class Fenetre {
                         clickdone[(ligne * y) + x] = false;
                         buttons[(ligne * y) + x] = new JButton( );
             buttons[(ligne * y) + x].setPreferredSize(new Dimension(30, 30));
-                    ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
+            ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
         nbrMines, numbers,quitter2, newGameButton, mineLabel, fenetre,reglage,lost);
             buttons[(ligne * y) + x].addActionListener(newbut);
             buttons[(ligne * y) + x].addMouseListener(newbut);
         }
     }
-            for(int x=0;x<ligne ;x++){
-            for(int y= 0;y<colonne;y++) {
-            if(buttons[(ligne * y + x)].getText() == "★") {
-                n++;
-            } 
-            }       
-        }
 
 
                     for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
-                        if(flux.readBoolean() == true){
+                        if(data.readBoolean() == true){
                             buttons[ligne * y+x].doClick();
                         }
                     }
                 }
                 for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
-                    flux.readInt();
-                    if(   flux.readInt() == 9){
+                    data.readInt();
+                    if(   data.readInt() == 9){
                         buttons[(ligne*y+x)].setText("");
-                    } else if(   flux.readInt() == 10){
+                    } else if(   data.readInt() == 10){
                         buttons[(ligne*y+x)].setText("?");
-                    } else if(   flux.readInt() == 11){
+                    } else if(   data.readInt() == 11){
                         buttons[ligne *y+x].setText("★");
+                        n++;
                     }
                     }       
                 }
-                nbrMines = flux.readInt();
-                mineLabel = new JLabel("nombre de mines restante : " + nbrMines );
+                nbrMines = nbrMines - n;
+                nbrMines = data.readInt();
+                mineLabel.setText("nombre de mines restante : " + nbrMines );
         }catch(FileNotFoundException e3){
             System.err.println("FileNotFoundException");
         }catch(IOException e2){
@@ -114,7 +109,6 @@ public class Fenetre {
         } 
 
    public void generationgrille(){
-        GridLayout layout = new GridLayout(ligne, colonne);
     JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines );
     for (int x = 0; x < ligne; x++) {
         for (int y = 0; y < colonne; y++) {
@@ -137,11 +131,11 @@ b.fillnumbers();
  
     public void fenetre1() {
         JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines);
+
          GridLayout layout = new GridLayout(ligne, colonne);
         p.setLayout(layout);
-        Grille grille = new Grille();
        if(!nouveau){
-        reprisepartie();
+        reprisepartie(mineLabel);
        }else{
         generationgrille();
         }

@@ -3,7 +3,6 @@
 * @author Félix Brinet
 */
 //inclusion des bibliothèques
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 

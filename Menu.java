@@ -19,10 +19,8 @@ public class Menu{
     public void Menu1(){		
         /*On configure la fenetre1*/
         /*On récupère la taille de la fenêtre1*/
-        Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
 		int longueur = 750;
 		int hauteur = 520;
-        JPanel pan = new JPanel();
         fenetre1.setSize(+longueur,+hauteur);
         /**
          * On empèche de réduire  et agrandir la fenêtre1
