@@ -37,9 +37,9 @@ public ActionMenu2(JTextField newLigne,JTextField newColonne,JTextField newnbrMi
              et moins de bombes que de mines**/
             if(ligne>30 || ligne < 4 ){
               System.out.println("Veuillez mettre entre 4 et 30 lignes");
-            }else if (colonne > 30 || colonne < 4){
+            } if (colonne > 30 || colonne < 4){
               System.out.println("Veuillez mettre entre 4 et 30 colonnes");
-            }else if (nbrMines >= ligne * colonne ){
+            } if (nbrMines >= ligne * colonne ){
               System.out.println("Veuillez mettre moins de bombes que de cases");
             }else {
               Fenetre newFenetre =new Fenetre();
