@@ -7,9 +7,19 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class ActionMenu implements ActionListener {
+    /**
+     * On appelle les "Nouvelle Partie", 
+     * "Reprendre la partie" et
+     * "Quitter la partie" pour pouvoir
+     * leur donner des actions.
+     */
 private JButton quitter;
 private JButton newgame;
 private JButton reprendregame;
+    /**
+     * On appelle la fenetre1 pour pouvoir
+     * la fermer plus tard
+     */
 private JFrame fenetre1;
 
 
