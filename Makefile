@@ -10,11 +10,8 @@ JVM = java
 MainMenu.class : MainMenu.java Menu.class
 	${JC} ${JCFLAGS} MainMenu.java
 
-Menu.class : Menu.java Fond.class
+Menu.class : Menu.java ActionMenu.class
 	${JC} ${JCFLAGS} Menu.java
-
-Fond.class : Fond.java ActionMenu.class
-	${JC} ${JCFLAGS} Fond.java
 
 ActionMenu.class : ActionMenu.java Menu2.class
 	${JC} ${JCFLAGS} ActionMenu.java
