@@ -11,6 +11,7 @@ import java.io.*;
 
 public class ActionFenetre implements WindowListener {
 
+private JFrame fenetre;
 private JButton[] buttons;
 private int[] numbers;
 private boolean[] presencemines;
@@ -20,8 +21,9 @@ private int ligne;
 private int colonne;
 private int nbrMines;
 
-public ActionFenetre(JButton[] buttons, int[] numbers,boolean[] presencemines,boolean[] clickable,boolean[] clickdone,int ligne, int colonne,int nbrMines) {
+public ActionFenetre(JFrame fenetre,JButton[] buttons, int[] numbers,boolean[] presencemines,boolean[] clickable,boolean[] clickdone,int ligne, int colonne,int nbrMines) {
     super();
+    this.fenetre=fenetre;
     this.colonne=colonne;
     this.ligne=ligne;
     this.numbers=numbers;
@@ -59,72 +61,73 @@ public void windowClosing(WindowEvent evenement) {
             for(int y= 0;y<colonne;y++) {
                 switch(numbers[(ligne * y+x)]) {
                     case 0:
-                    flux.writeInt(0);
+                    flux.writeByte(0);
                     case 1 :
-                    flux.writeInt(1); 
+                    flux.writeByte(1); 
                     case 2 :
-                    flux.writeInt(2);
+                    flux.writeByte(2);
                     case 3 :
-                    flux.writeInt(3);
+                    flux.writeByte(3);
                     case 4 :
-                    flux.writeInt(4);
+                    flux.writeByte(4);
                     case 5 :
-                    flux.writeInt(5);
+                    flux.writeByte(5);
                     case 6 :
-                    flux.writeInt(6);
+                    flux.writeByte(6);
                     case 7 :
-                    flux.writeInt(7);
+                    flux.writeByte(7);
                     case 8 :
-                    flux.writeInt(8);
+                    flux.writeByte(8);
                 }   
             }
         }
         for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if(presencemines[(ligne * y+x)] == true) {
-                    flux.writeBoolean(true);
+                    flux.writeByte(0);
                 } else {
-                    flux.writeBoolean(false);
+                    flux.writeByte(1);
                 }
             }
         }
                 for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if(clickable[(ligne * y+x)] == true) {
-                    flux.writeBoolean(true);
+                    flux.writeByte(0);
                 } else {
-                    flux.writeBoolean(false);
+                    flux.writeByte(1);
                 }
             }
         }
                 for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if (clickdone[(ligne*y+x)] == true ) {
-                    flux.writeBoolean(true);
+                    flux.writeByte(0);
                 } else {
-                    flux.writeBoolean(false);
+                    flux.writeByte(1);
                 }
             }
         }
                 for(int x=0;x<ligne ;x++){
             for(int y= 0;y<colonne;y++) {
             if(buttons[(ligne * y+x)].getText() == "" ){
-                flux.writeInt(9);
+                flux.writeByte(9);
             }
             if(buttons[(ligne * y+x)].getText() == "?" ){
-                flux.writeInt(10);
+                flux.writeByte(10);
             }
             if(buttons[(ligne * y + x)].getText() == "★") {
-                flux.writeInt(11);
+                flux.writeByte(11);
                 n++;
             }
             }       
         }
         nbrMines = nbrMines - n;
-         flux.writeInt(nbrMines);
+         flux.writeByte(nbrMines);
         flux.close();
         Menu retourmenu = new Menu();
         retourmenu.Menu1();
+        fenetre.dispose();
     } catch (FileNotFoundException e1) {
         System.err.println("Erreur pas de fichier");
     } catch (IOException e2) {
