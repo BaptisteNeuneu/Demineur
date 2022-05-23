@@ -14,6 +14,7 @@ private JFrame fendefaite = new JFrame();
 private JFrame fenetre = new JFrame();
 
 	public ActionVdDf(JButton remenudef,JButton remenuvic,JFrame fenvictoire,JFrame fendefaite,JFrame fenetre) {
+		super();
 		this.remenudef=remenudef;
 		this.remenuvic=remenuvic;
 		this.fenvictoire=fenvictoire;
