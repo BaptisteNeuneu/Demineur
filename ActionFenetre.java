@@ -43,7 +43,6 @@ public void windowClosed(WindowEvent evenement) {
 
 public void windowClosing(WindowEvent evenement) {
     int n=0;
-    String a;
 
     try {
         File delete = new File("save.dat");
@@ -54,17 +53,7 @@ public void windowClosing(WindowEvent evenement) {
         flux.writeInt(ligne);
        
         
-        for(int x=0;x<ligne ;x++){
-            for(int y= 0;y<colonne;y++) {
-            a = buttons[(ligne * y+x)].getText();
-            if(buttons[(ligne * y + x)].getText() == "★") {
-                n++;
-            }
-            flux.writeChars(a); 
-            }       
-        }
-        nbrMines = nbrMines - n;
-         flux.writeInt(nbrMines);
+
 
         for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
@@ -87,26 +76,52 @@ public void windowClosing(WindowEvent evenement) {
                     flux.writeInt(7);
                     case 8 :
                     flux.writeInt(8);
-                }
-                if(presencemines[(ligne * y+x)] == true) {
-                    flux.writeBoolean(true);
-                } else {
-                    flux.writeBoolean(false);
-                }
-                if(clickable[(ligne * y+x)] == true) {
-                    flux.writeBoolean(true);
-                } else {
-                    flux.writeBoolean(false);
-                }
-                if (clickdone[(ligne*y+x)] == true ) {
+                }   
+            }
+        }
+        for(int x=0;x<ligne ;x++) {
+            for(int y= 0;y<colonne;y++) {
+        if(presencemines[(ligne * y+x)] == true) {
                     flux.writeBoolean(true);
                 } else {
                     flux.writeBoolean(false);
                 }
             }
         }
-        
-
+                for(int x=0;x<ligne ;x++) {
+            for(int y= 0;y<colonne;y++) {
+        if(clickable[(ligne * y+x)] == true) {
+                    flux.writeBoolean(true);
+                } else {
+                    flux.writeBoolean(false);
+                }
+            }
+        }
+                for(int x=0;x<ligne ;x++) {
+            for(int y= 0;y<colonne;y++) {
+        if (clickdone[(ligne*y+x)] == true ) {
+                    flux.writeBoolean(true);
+                } else {
+                    flux.writeBoolean(false);
+                }
+            }
+        }
+                for(int x=0;x<ligne ;x++){
+            for(int y= 0;y<colonne;y++) {
+            if(buttons[(ligne * y+x)].getText() == "" ){
+                flux.writeInt(9);
+            }
+            if(buttons[(ligne * y+x)].getText() == "?" ){
+                flux.writeInt(10);
+            }
+            if(buttons[(ligne * y + x)].getText() == "★") {
+                flux.writeInt(11);
+                n++;
+            }
+            }       
+        }
+        nbrMines = nbrMines - n;
+         flux.writeInt(nbrMines);
         flux.close();
     } catch (FileNotFoundException e1) {
         System.err.println("Erreur pas de fichier");

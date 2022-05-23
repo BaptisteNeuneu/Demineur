@@ -43,7 +43,7 @@ public class ActionButton implements ActionListener, MouseListener {
 
     public ActionButton(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,
     JButton[] buttons,boolean[] presencemines,int nbrMines,int[] numbers,
-    JMenuItem quitter2,JMenuItem newGameButton,GridLayout layout, JPanel p,
+    JMenuItem quitter2,JMenuItem newGameButton,GridLayout layout,
     JLabel mineLabel,JFrame fenetre,JMenuItem reglage,boolean lost) {
         this.ligne=ligne;
         this.colonne=colonne;

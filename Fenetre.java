@@ -32,78 +32,17 @@ public class Fenetre {
        this.nbrMines=nbrMines;
        this.nouveau=nouveau;
    }
-
-   public void setupI() {
-    GridLayout layout = new GridLayout(ligne, colonne);
-    JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines );
-    for (int x = 0; x < ligne; x++) {
-        for (int y = 0; y < colonne; y++) {
-            presencemines[(ligne * y) + x] = false;
-            clickdone[(ligne * y) + x] = false;
-            clickable[(ligne * y) + x] = true;
-            buttons[(ligne * y) + x] = new JButton( );
-            buttons[(ligne * y) + x].setPreferredSize(new Dimension(30, 30));
-                    ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
-                    nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);
-            buttons[(ligne * y) + x].addActionListener(newbut);
-            buttons[(ligne * y) + x].addMouseListener(newbut);
-        }
-    } 
-Case b = new Case();
-b.setCase(colonne,ligne,presencemines,numbers,nbrMines);
-b.Mine();
-b.fillnumbers();
-}
  
     public void fenetre1() {
         JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines);
          GridLayout layout = new GridLayout(ligne, colonne);
         p.setLayout(layout);
-       /* if(!nouveau){
-            try{
-                FileInputStream fichier = new FileInputStream("save.dat");
-                DataInputStream flux = new DataInputStream(fichier);
-                colonne=flux.readInt();
-                ligne=flux.readInt(); 
-                char a;
-                char b= ?;
-                char c= ★;
-                for(int x=0;x<ligne ;x++){
-                    for(int y= 0;y<colonne;y++) {
-                    a = flux.readChar();
-                    if(a == b ){
-                        buttons[(ligne*y+x)].setText("?");
-                    } else if(a == c){
-                        buttons[(ligne*y+x)].setText("★");
-                    } else {
-                        buttons[ligne *y+x].setText("");
-                    }
-                    }       
-                }
-                nbrMines = flux.readInt();
-                for(int x=0;x<ligne ;x++){
-                    for(int y= 0;y<colonne;y++) {
-                        numbers[(ligne*y+x)] = flux.readInt();
-                        if(flux.readBoolean() == true){
-                            presencemines[ligne*y+x]=true;
-                            clickdone[ligne*y+x]=true;
-                            clickable[ligne*y+x]=true;
-                        } else {
-                            presencemines[ligne*y+x]=false;
-                            clickdone[ligne*y+x]=false;
-                            clickable[ligne*y+x]=false;
-                        }
-                    }
-                }
-        }catch(FileNotFoundException e3){
-            System.err.println("FileNotFoundException");
-        }catch(IOException e2){
-            System.err.println("IOException");
-        }}	
+        Grille grille = new Grille();
+       if(!nouveau){
+        grille.reprisepartie();
         else{
-        setupI();
-        }*/
-        setupI();
+        grille.generationgrille(ligne,colonne,nbrMines);
+        }
 
         ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
         nbrMines, numbers,quitter2, newGameButton, layout, p, mineLabel, fenetre,reglage,lost);
@@ -121,8 +60,10 @@ b.fillnumbers();
         menupara.add(newGameButton);
         menupara.add(quitter2);
         menubar.add(menupara);
+        ActionFenetre doFenetre = new ActionFenetre(buttons,numbers,presencemines,clickable,clickdone,ligne,colonne,nbrMines);
+        fenetre.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
   
-
+        fenetre.addWindowsListener(doFenetre);
         fenetre.setJMenuBar(menubar);
         fenetre.add(p);
         fenetre.add(mineLabel, BorderLayout.SOUTH);
