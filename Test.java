@@ -40,10 +40,10 @@ public class Test {
     }
     public void doCheck(int x, int y) {
         boolean l = (y - 1) >= 0;
-        boolean r = (y + 1) <= colonne;
-        boolean u = (x + 1) <= 0;
-        boolean d = (x - 1) >= ligne;
-        int left = (y - 1);
+        boolean r = (y + 1) < colonne;
+        boolean u = (x - 1) <= 0;
+        boolean d = (x + 1) > ligne;
+        int left = (y - 1);                                                                                                                                                                                                                                                                                                                                                                                                                                                             
         int right = y + 1;
         int up = x -1;
         int down = (x + 1);
