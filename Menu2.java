@@ -9,6 +9,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Menu2 {
+	/**
+     * Un objet pour servir de fenetre1
+     */
     private JFrame fenetre2 = new JFrame();
 	private JTextField newLigne = new JTextField("10");
 	private JTextField newColonne = new JTextField("10");
@@ -18,11 +21,11 @@ public class Menu2 {
         /**
 		 * On configure la fenetre2
 		 */
-		/**
-		 * On récupère la taille de la fenêtre2
-		 */
-		int longueur = 1600;
-		int hauteur = 800;
+        /**
+         * On définit la taille et la position de la fenêtre2
+         */
+		int longueur = 750;
+		int hauteur = 520;
         fenetre2.setSize(+longueur,+hauteur);
 		/**
 		 * On empèche de réduire ou agrandir la fenêtre2
@@ -32,7 +35,11 @@ public class Menu2 {
         fenetre2.setLocation(100,100);
         fenetre2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre2.setTitle("*** Réglages ***");
-		
+		/**
+         * Ajout du fond de la fenêtre1
+         */
+	    fenetre2.setContentPane(new JLabel(new ImageIcon("./Images/demineur_fond.jpg")));
+	    fenetre2.setLayout(new FlowLayout());
 		/**
 		 * Configuration nombres de lignes entre 10 et 30
 		 */					
@@ -70,7 +77,10 @@ public class Menu2 {
 		panneau.add(txtMines);
 		panneau.add(newnbrMines);
 		panneau.add(btJouer);
-		/*Centre les éléments dans la grille*/
+        panneau.setPreferredSize(new Dimension(375,260));
+		/**
+		 * Centre les éléments dans la grille
+		 */
 		txtLigne.setHorizontalAlignment(JLabel.CENTER);
 		txtColonne.setHorizontalAlignment(JLabel.CENTER);
 		txtMines.setHorizontalAlignment(JLabel.CENTER);
