@@ -20,11 +20,11 @@ public class ActionButton implements ActionListener, MouseListener {
      * les boutons clickable et
      * les mines
      */
-    private boolean[] clickdone;
-    private boolean[] clickable;
-    private boolean[] presencemines;
-    private JButton[] buttons;
-    private int[] numbers;
+    private boolean[][] clickdone;
+    private boolean[][] clickable;
+    private boolean[][] presencemines;
+    private JButton[][] buttons;
+    private int[][] numbers;
     private boolean won;
     private JMenuItem quitter2;
     private JMenuItem reglage;
@@ -40,8 +40,8 @@ public class ActionButton implements ActionListener, MouseListener {
 
 
 
-    public ActionButton(int ligne,int colonne,boolean[] clickdone,boolean[] clickable,
-    JButton[] buttons,boolean[] presencemines,int nbrMines,int[] numbers,
+    public ActionButton(int ligne,int colonne,boolean[][] clickdone,boolean[][] clickable,
+    JButton[][] buttons,boolean[][] presencemines,int nbrMines,int[][] numbers,
     JMenuItem quitter2,JMenuItem newGameButton,
     JLabel mineLabel,JFrame fenetre,JMenuItem reglage,boolean lost) {
         this.ligne=ligne;
@@ -78,8 +78,8 @@ public class ActionButton implements ActionListener, MouseListener {
         if (!won) {
             for (int x = 0; x < ligne; x++) {
                 for (int y = 0; y < colonne; y++) {
-                    if (e.getSource() == buttons[(ligne * y) + x]
-                     && clickable[(ligne * y) + x]) {
+                    if (e.getSource() == buttons[x][y]
+                     && clickable[x][y]) {
                                 newtest.setTest(ligne, colonne,clickdone, 
                                 clickable, presencemines, buttons, numbers,
                                   fenetre, lost);     
@@ -116,17 +116,17 @@ public class ActionButton implements ActionListener, MouseListener {
             int n = 0;
             for (int x = 0; x < ligne; x++) {
                 for (int y = 0; y < colonne; y++) {
-                    if (e.getSource() == buttons[(ligne * y+x)]) {
-                        if (!clickdone[(ligne * y) + x]) {
-                            if(buttons[(ligne * y+x)].getText() == "") {
-                            buttons[(ligne * y+x)].setText("★");
-                            clickable[(ligne * y+x)]= false;
+                    if (e.getSource() == buttons[(31 * y+x)]) {
+                        if (!clickdone[x][y]) {
+                            if(buttons[x][y].getText() == "") {
+                            buttons[x][y].setText("★");
+                            clickable[x][y]= false;
                             n++;
-                        } else if(buttons[(ligne * y+x)].getText() == "★") {
-                            buttons[(ligne * y+x)].setText("?");
-                        } else if(buttons[(ligne * y+x)].getText() == "?") {
-                            buttons[(ligne * y+x)].setText("");
-                            clickable[(ligne * y+x)]= true;
+                        } else if(buttons[x][y].getText() == "★") {
+                            buttons[x][y].setText("?");
+                        } else if(buttons[x][y].getText() == "?") {
+                            buttons[x][y].setText("");
+                            clickable[x][y]= true;
                         }
                     }
 
