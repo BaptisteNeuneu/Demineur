@@ -123,6 +123,8 @@ public void windowClosing(WindowEvent evenement) {
         nbrMines = nbrMines - n;
          flux.writeInt(nbrMines);
         flux.close();
+        Menu retourmenu = new Menu();
+        retourmenu.Menu1();
     } catch (FileNotFoundException e1) {
         System.err.println("Erreur pas de fichier");
     } catch (IOException e2) {
