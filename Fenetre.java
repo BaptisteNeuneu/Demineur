@@ -12,13 +12,13 @@ public class Fenetre {
     private int ligne = 30;
     private int colonne = 30;
     private int nbrMines = 899;
-    private boolean[] presencemines = new boolean[ligne * colonne];
-    private boolean[] clickable = new boolean[ligne * colonne];
-    private int[] numbers = new int[ligne * colonne];
-    private boolean[] clickdone = new boolean[ligne * colonne];
+    private boolean[][] presencemines = new boolean[ligne][colonne];
+    private boolean[][] clickable = new boolean[ligne][colonne];
+    private int[][] numbers = new int[ligne][colonne];
+    private boolean[][] clickdone = new boolean[ligne][colonne];
     private boolean lost;
     JMenuItem quitter2 = new JMenuItem("quitter");
-    JButton[] buttons = new JButton[ligne * colonne];
+    JButton[][] buttons = new JButton[ligne][colonne];
     JMenuItem newGameButton = new JMenuItem("nouvelle partie");
     JMenuItem reglage = new JMenuItem("option");
     JPanel p = new JPanel();
@@ -44,41 +44,41 @@ public class Fenetre {
 
                 for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
-                        numbers[(ligne*y+x)] = data.readByte();
+                        numbers[x][y] = data.readByte();
                         System.out.println("nombre");
                     }
                 }
                 for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
-                         if(data.readByte() == 0){
-                            presencemines[ligne*y+x]=true;
+                         if(data.readByte() == 10){
+                            presencemines[x][y]=true;
                             System.out.println("true");
-                        } else if(data.readByte() == 1){
-                            presencemines[ligne*y+x]=false;
+                        } else if(data.readByte() == 11){
+                            presencemines[x][y]=false;
                             System.out.println("false");
                         }
                     }
                 }
                     for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
-                        if(data.readByte() == 0){
-                            clickable[ligne*y+x]=true;
+                        if(data.readByte() == 12){
+                            clickable[x][y]=true;
                             System.out.println("true");
-                        } else if(data.readByte() == 1){
-                            clickable[ligne*y+x]=false;
+                        } else if(data.readByte() == 13){
+                            clickable[x][y]=false;
                             System.out.println("false");
                         }
                     }
                 }
                    for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
-                        clickdone[(ligne * y) + x] = false;
-                        buttons[(ligne * y) + x] = new JButton( );
-            buttons[(ligne * y) + x].setPreferredSize(new Dimension(35, 35));
+                        clickdone[x][y] = false;
+                        buttons[x][y] = new JButton( );
+            buttons[x][y].setPreferredSize(new Dimension(35, 35));
             ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
         nbrMines, numbers,quitter2, newGameButton, mineLabel, fenetre,reglage,lost);
-            buttons[(ligne * y) + x].addActionListener(newbut);
-            buttons[(ligne * y) + x].addMouseListener(newbut);
+            buttons[x][y].addActionListener(newbut);
+            buttons[x][y].addMouseListener(newbut);
             System.out.println("ajout");
         }
     }
@@ -86,24 +86,24 @@ public class Fenetre {
 
                     for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
-                        if(data.readByte() == 0){
-                            buttons[ligne * y+x].doClick();
+                        if(data.readByte() == 14){
+                            buttons[x][y].doClick();
                             System.out.println("clique");
-                        } else if(data.readByte() == 1){
+                        } else if(data.readByte() == 15){
                         System.out.println("pas clique");
                     }
                 }
             }
                 for(int x=0;x<ligne ;x++){
                     for(int y= 0;y<colonne;y++) {
-                    if(   data.readByte() == 9){
-                        buttons[(ligne*y+x)].setText("");
+                    if(   data.readByte() == 16){
+                        buttons[x][y].setText("");
                         System.out.println("espace");
-                    } else if(   data.readByte() == 10){
-                        buttons[(ligne*y+x)].setText("?");
+                    } else if(   data.readByte() == 17){
+                        buttons[x][y].setText("?");
                         System.out.println("?");
-                    } else if(   data.readByte() == 11){
-                        buttons[ligne *y+x].setText("★");
+                    } else if(   data.readByte() == 18){
+                        buttons[x][y].setText("★");
                         System.out.println("★");
                         n++;
                     }
@@ -125,15 +125,15 @@ public class Fenetre {
     JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines );
     for (int x = 0; x < ligne; x++) {
         for (int y = 0; y < colonne; y++) {
-            presencemines[(ligne * y) + x] = false;
-            clickdone[(ligne * y) + x] = false;
-            clickable[(ligne * y) + x] = true;
-            buttons[(ligne * y) + x] = new JButton( );
-            buttons[(ligne * y) + x].setPreferredSize(new Dimension(35, 35));
+            presencemines[x][y] = false;
+            clickdone[x][y] = false;
+            clickable[x][y] = true;
+            buttons[x][y] = new JButton( );
+            buttons[x][y].setPreferredSize(new Dimension(35, 35));
                     ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
         nbrMines, numbers,quitter2, newGameButton, mineLabel, fenetre,reglage,lost);
-            buttons[(ligne * y) + x].addActionListener(newbut);
-            buttons[(ligne * y) + x].addMouseListener(newbut);
+            buttons[x][y].addActionListener(newbut);
+            buttons[x][y].addMouseListener(newbut);
         }
     } 
 Case b = new Case();
@@ -148,16 +148,117 @@ b.fillnumbers();
          GridLayout layout = new GridLayout(ligne, colonne);
         p.setLayout(layout);
        if(!nouveau){
-        reprisepartie(mineLabel);
+        int n = 0;
+        try{
+    FileInputStream fichier = new FileInputStream("save.dat");
+    DataInputStream data = new DataInputStream(fichier);
+    colonne=data.readInt();
+    ligne=data.readInt(); 
+
+    for(int x=0;x<ligne ;x++){
+        for(int y= 0;y<colonne;y++) {
+            numbers[x][y] = data.readByte();
+            System.out.println("nombre");
+        }
+    }
+    for(int x=0;x<ligne ;x++){
+        for(int y= 0;y<colonne;y++) {
+             if(data.readByte() == 10){
+                presencemines[x][y]=true;
+                System.out.println("true");
+            } else if(data.readByte() == 11){
+                presencemines[x][y]=false;
+                System.out.println("false");
+            }
+        }
+    }
+        for(int x=0;x<ligne ;x++){
+        for(int y= 0;y<colonne;y++) {
+            if(data.readByte() == 12){
+                clickable[x][y]=true;
+                System.out.println("true");
+            } else if(data.readByte() == 13){
+                clickable[x][y]=false;
+                System.out.println("false");
+            }
+        }
+    }
+       for(int x=0;x<ligne ;x++){
+        for(int y= 0;y<colonne;y++) {
+            clickdone[x][y] = false;
+            buttons[x][y] = new JButton( );
+buttons[x][y].setPreferredSize(new Dimension(35, 35));
+ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
+nbrMines, numbers,quitter2, newGameButton, mineLabel, fenetre,reglage,lost);
+buttons[x][y].addActionListener(newbut);
+buttons[x][y].addMouseListener(newbut);
+System.out.println("ajout");
+}
+}
+
+
+        for(int x=0;x<ligne ;x++){
+        for(int y= 0;y<colonne;y++) {
+            if(data.readByte() == 14){
+                buttons[x][y].doClick();
+                System.out.println("clique");
+            } else if(data.readByte() == 15){
+            System.out.println("pas clique");
+        }
+    }
+}
+    for(int x=0;x<ligne ;x++){
+        for(int y= 0;y<colonne;y++) {
+        if(   data.readByte() == 16){
+            buttons[x][y].setText("");
+            System.out.println("espace");
+        } else if(   data.readByte() == 17){
+            buttons[x][y].setText("?");
+            System.out.println("?");
+        } else if(   data.readByte() == 18){
+            buttons[x][y].setText("★");
+            System.out.println("★");
+            n++;
+        }
+        }       
+    }
+    nbrMines = nbrMines - n;
+    nbrMines = data.readByte();
+
+    mineLabel.setText("nombre de mines restante : " + nbrMines );
+    data.close();
+}catch(FileNotFoundException e3){
+System.err.println("FileNotFoundException");
+}catch(IOException e2){
+System.err.println("IOException");
+}
        }else{
-        generationgrille();
+        for (int x = 0; x < ligne; x++) {
+            for (int y = 0; y < colonne; y++) {
+                presencemines[x][y] = false;
+                clickdone[x][y] = false;
+                clickable[x][y] = true;
+                buttons[x][y] = new JButton( );
+                buttons[x][y].setPreferredSize(new Dimension(35, 35));
+                        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
+            nbrMines, numbers,quitter2, newGameButton, mineLabel, fenetre,reglage,lost);
+                buttons[x][y].addActionListener(newbut);
+                buttons[x][y].addMouseListener(newbut);
+            }
+        } 
+    Case b = new Case();
+    b.setCase(colonne,ligne,presencemines,numbers,nbrMines);
+    b.Mine();
+    b.fillnumbers();
         }
 
         ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
         nbrMines, numbers,quitter2, newGameButton, mineLabel, fenetre,reglage,lost);
-        for (int i = 0; i < (ligne * colonne); i++) {
-            p.add(buttons[i]);
+        for (int x = 0; x < ligne ; x++) {
+            for(int y =0;y<colonne;y++){
+            p.add(buttons[x][y]);
         }
+    }
         JMenuBar menubar = new JMenuBar();
         JMenu menupara = new JMenu("Paramettre");
         

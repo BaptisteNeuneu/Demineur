@@ -12,16 +12,16 @@ import java.io.*;
 public class ActionFenetre implements WindowListener {
 
 private JFrame fenetre;
-private JButton[] buttons;
-private int[] numbers;
-private boolean[] presencemines;
-private boolean[] clickable;
-private boolean[] clickdone;
+private JButton[][] buttons;
+private int[][] numbers;
+private boolean[][] presencemines;
+private boolean[][] clickable;
+private boolean[][] clickdone;
 private int ligne;
 private int colonne;
 private int nbrMines;
 
-public ActionFenetre(JFrame fenetre,JButton[] buttons, int[] numbers,boolean[] presencemines,boolean[] clickable,boolean[] clickdone,int ligne, int colonne,int nbrMines) {
+public ActionFenetre(JFrame fenetre,JButton[][] buttons, int[][] numbers,boolean[][] presencemines,boolean[][] clickable,boolean[][] clickdone,int ligne, int colonne,int nbrMines) {
     super();
     this.fenetre=fenetre;
     this.colonne=colonne;
@@ -59,9 +59,9 @@ public void windowClosing(WindowEvent evenement) {
 
         for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
-                switch(numbers[(ligne * y+x)]) {
+                switch(numbers[x][y]) {
                     case 0:
-                    flux.writeByte(0);
+                    flux.writeByte(9);
                     case 1 :
                     flux.writeByte(1); 
                     case 2 :
@@ -83,41 +83,41 @@ public void windowClosing(WindowEvent evenement) {
         }
         for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
-        if(presencemines[(ligne * y+x)] == true) {
-                    flux.writeByte(0);
-                } else {
-                    flux.writeByte(1);
+        if(presencemines[x][y] == true) {
+                    flux.writeByte(10);
+                } else if ( presencemines[x][y] == false){
+                    flux.writeByte(11);
                 }
             }
         }
                 for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
-        if(clickable[(ligne * y+x)] == true) {
-                    flux.writeByte(0);
-                } else {
-                    flux.writeByte(1);
+        if(clickable[x][y] == true) {
+                    flux.writeByte(12);
+                } else if ( clickable[x][y] == false){
+                    flux.writeByte(13);
                 }
             }
         }
                 for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
-        if (clickdone[(ligne*y+x)] == true ) {
-                    flux.writeByte(0);
-                } else {
-                    flux.writeByte(1);
+        if (clickdone[x][y] == true ) {
+                    flux.writeByte(14);
+                } else if ( clickdone[x][y] == false){
+                    flux.writeByte(15);
                 }
             }
         }
                 for(int x=0;x<ligne ;x++){
             for(int y= 0;y<colonne;y++) {
-            if(buttons[(ligne * y+x)].getText() == "" ){
-                flux.writeByte(9);
+            if(buttons[x][y].getText() == "" ){
+                flux.writeByte(16);
             }
-            if(buttons[(ligne * y+x)].getText() == "?" ){
-                flux.writeByte(10);
+            if(buttons[x][y].getText() == "?" ){
+                flux.writeByte(17);
             }
-            if(buttons[(ligne * y + x)].getText() == "★") {
-                flux.writeByte(11);
+            if(buttons[x][y].getText() == "★") {
+                flux.writeByte(18);
                 n++;
             }
             }       
