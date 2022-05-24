@@ -52,10 +52,10 @@ public class Fenetre {
     }
     for(int x=0;x<ligne ;x++){
         for(int y= 0;y<colonne;y++) {
-             if(data.readByte() == 10){
+             if(data.readByte() == 1){
                 presencemines[x][y]=true;
                 System.out.println("true");
-            } else if(data.readByte() == 11){
+            } else if(data.readByte() == 2){
                 presencemines[x][y]=false;
                 System.out.println("false");
             }
@@ -63,15 +63,16 @@ public class Fenetre {
     }
         for(int x=0;x<ligne ;x++){
         for(int y= 0;y<colonne;y++) {
-            if(data.readByte() == 12){
+            if(data.readByte() == 1){
                 clickable[x][y]=true;
                 System.out.println("true");
-            } else if(data.readByte() == 13){
+            } else if(data.readByte() == 2){
                 clickable[x][y]=false;
                 System.out.println("false");
             }
         }
     }
+    int testplacementbouton = 0;
        for(int x=0;x<ligne ;x++){
         for(int y= 0;y<colonne;y++) {
             clickdone[x][y] = false;
@@ -81,40 +82,43 @@ ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, but
 nbrMines, numbers,quitter2, newGameButton, mineLabel, fenetre,reglage,lost);
 buttons[x][y].addActionListener(newbut);
 buttons[x][y].addMouseListener(newbut);
-mineLabel.setText("nombre de mines restante : " + nbrMines);
-System.out.println("ajout");
+testplacementbouton++;
+
+
 }
 }
+System.out.println("" + testplacementbouton);
 
 
         for(int x=0;x<ligne ;x++){
         for(int y= 0;y<colonne;y++) {
-            if(data.readByte() == 14){
+            if(data.readByte() == 1){
                 buttons[x][y].doClick();
                 System.out.println("clique");
-            } else if(data.readByte() == 15){
+            } else if(data.readByte() == 2){
             System.out.println("pas clique");
         }
     }
 }
     for(int x=0;x<ligne ;x++){
         for(int y= 0;y<colonne;y++) {
-        if(   data.readByte() == 16){
+        if(   data.readByte() == 1){
             buttons[x][y].setText("");
             System.out.println("espace");
-        } else if(   data.readByte() == 17){
+        } else if(   data.readByte() == 2){
             buttons[x][y].setText("?");
             System.out.println("?");
-        } else if(   data.readByte() == 18){
+        } else if(   data.readByte() == 3){
             buttons[x][y].setText("★");
             System.out.println("★");
             n++;
         }
         }       
     }
-    nbrMines = nbrMines - n;
+    
     nbrMines = data.readByte();
-
+    nbrMines = nbrMines - n;
+mineLabel.setText("nombre de mines restante : " + nbrMines);
     data.close();
 }catch(FileNotFoundException e3){
 System.err.println("FileNotFoundException");

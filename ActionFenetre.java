@@ -84,40 +84,40 @@ public void windowClosing(WindowEvent evenement) {
         for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if(presencemines[x][y] == true) {
-                    flux.writeByte(10);
+                    flux.writeByte(1);
                 } else if ( presencemines[x][y] == false){
-                    flux.writeByte(11);
+                    flux.writeByte(2);
                 }
             }
         }
                 for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if(clickable[x][y] == true) {
-                    flux.writeByte(12);
+                    flux.writeByte(1);
                 } else if ( clickable[x][y] == false){
-                    flux.writeByte(13);
+                    flux.writeByte(2);
                 }
             }
         }
                 for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if (clickdone[x][y] == true ) {
-                    flux.writeByte(14);
+                    flux.writeByte(1);
                 } else if ( clickdone[x][y] == false){
-                    flux.writeByte(15);
+                    flux.writeByte(2);
                 }
             }
         }
                 for(int x=0;x<ligne ;x++){
             for(int y= 0;y<colonne;y++) {
             if(buttons[x][y].getText() == "" ){
-                flux.writeByte(16);
+                flux.writeByte(1);
             }
             if(buttons[x][y].getText() == "?" ){
-                flux.writeByte(17);
+                flux.writeByte(2);
             }
             if(buttons[x][y].getText() == "★") {
-                flux.writeByte(18);
+                flux.writeByte(3);
                 n++;
             }
             }       
