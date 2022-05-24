@@ -41,8 +41,6 @@ private JFrame fenetre1;
         }else if(menu1.getSource() == reprendregame){
             Fenetre j = new Fenetre();
             j.fenetre1();
-
-        }else if(menu1.getSource() == reprendregame) {
             fenetre1.dispose();
            //Setup reprise = new Setup();
            //reprise.setSetup(buttons, presencemines, clickdone, clickable, layout, p, ligne, colonne, nbrMines, numbers, mineLabel, fenetre, reglage, newGameButton,quitter2);

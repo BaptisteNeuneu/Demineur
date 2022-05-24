@@ -5,6 +5,7 @@
 //inclusion des bibliothèques
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.*;
 
 public class ActionButton implements ActionListener, MouseListener {
     /**Trois variables, une pour le nombre de lignes
@@ -30,6 +31,7 @@ public class ActionButton implements ActionListener, MouseListener {
     private JMenuItem reglage;
     private JMenuItem newGameButton;
     private JLabel mineLabel;
+    private JButton sauvquit;
     /**Utilisation de la classe test pour
      * pour vérifier si la partie est terminé ou non
      */
@@ -43,7 +45,7 @@ public class ActionButton implements ActionListener, MouseListener {
     public ActionButton(int ligne,int colonne,boolean[][] clickdone,boolean[][] clickable,
     JButton[][] buttons,boolean[][] presencemines,int nbrMines,int[][] numbers,
     JMenuItem quitter2,JMenuItem newGameButton,
-    JLabel mineLabel,JFrame fenetre,JMenuItem reglage,boolean lost) {
+    JLabel mineLabel,JFrame fenetre,JMenuItem reglage,boolean lost,JButton sauvquit) {
         this.ligne=ligne;
         this.colonne=colonne;
         this.clickdone=clickdone;
@@ -58,12 +60,14 @@ public class ActionButton implements ActionListener, MouseListener {
         this.fenetre=fenetre;
         this.reglage=reglage;
         this.lost=lost;
-
+        this.sauvquit=sauvquit;
        
     }
     
     public void actionPerformed(ActionEvent e) {
+        //permet de relancer une partie avec un nombre de ligne,de colonne,de mines différend
         if (e.getSource() == reglage) {
+
         ligne = Integer.parseInt((String) JOptionPane.showInputDialog(
                 fenetre, "Ligne", "Ligne", JOptionPane.PLAIN_MESSAGE, null,
                 null, 10));
@@ -73,8 +77,49 @@ public class ActionButton implements ActionListener, MouseListener {
         nbrMines = Integer.parseInt((String) 
         JOptionPane.showInputDialog(fenetre, "Mines", "Mines",
                 JOptionPane.PLAIN_MESSAGE, null, null, 10));
+                String Sligne = Integer.toString(ligne);
+                   String Scolonne= Integer.toString(colonne);
+                   String SnbrMines= Integer.toString(nbrMines);
+                if(ligne>30 || ligne < 4 ){
+                    /**
+                    * affichage message erreur dans le terminal
+                    * et sur une fenetre d'erreur
+                    * pour trop ou pas assez de lignes
+                    */
+                   System.out.println("Veuillez mettre entre 4 et 30 lignes");
+                   int errorLigne = JOptionPane.ERROR_MESSAGE;
+                   
+                   JOptionPane.showMessageDialog(fenetre,"Veuillez mettre entre 4 et 30 lignes",Sligne ,errorLigne);
+                 } if (colonne > 30 || colonne < 4){
+                   /**
+                    * affichage message erreur dans le terminal
+                    * et sur une fenetre d'erreur
+                    * pour trop ou pas assez de colonnes
+                    */
+                   System.out.println("Veuillez mettre entre 4 et 30 colonnes");
+                   int errorColonne = JOptionPane.ERROR_MESSAGE;
+                   JOptionPane.showMessageDialog(fenetre,"Veuillez mettre entre 4 et 30 colonnes",Scolonne, errorColonne);
+                 } if (nbrMines >= ligne * colonne ){
+                   /**
+                    * affichage message erreur dans le terminal
+                    * et sur une fenetre d'erreur
+                    * pour trop de mines par 
+                    * rapport au nombre de case ou
+                    * si il y a autant de mines que de case
+                    */
+                   System.out.println("Veuillez mettre moins de bombes que de cases");
+                   int errorbombe = JOptionPane.ERROR_MESSAGE;
+                   JOptionPane.showMessageDialog(fenetre,"Veuillez mettre moins de bombes que de cases",SnbrMines, errorbombe);
+                 /**
+                  * Dernière vérification que tous les paramètres au dessus sont bons
+                  * en même temps sinon le programme se lance alors qu'il y a trop
+                  * de mines.
+                 */
+                 }else if(ligne<30 && ligne > 4 && colonne < 30 && colonne > 4 && nbrMines < ligne * colonne){
         newGameButton.doClick();
         }
+    }
+    //s'effectue à chaque clique gauche
         if (!won) {
             for (int x = 0; x < ligne; x++) {
                 for (int y = 0; y < colonne; y++) {
@@ -90,10 +135,13 @@ public class ActionButton implements ActionListener, MouseListener {
         newtest.setTest(ligne, colonne, clickdone, clickable, presencemines,
          buttons, numbers, fenetre, lost);
         newtest.checkWin();
+        //revient au menu sans sauvegarder
         if(e.getSource() == quitter2) {
             Menu i = new Menu();
             i.Menu1();
+            fenetre.dispose();
         }
+        //relance une partie avec les mêmes paramètres que la précédentes
         if (e.getSource() == newGameButton) {
             fenetre.setVisible(false);
             Fenetre newfenetre = new Fenetre();
@@ -101,6 +149,97 @@ public class ActionButton implements ActionListener, MouseListener {
             newfenetre.fenetre1();
             return;
  
+        }
+        if (e.getSource() == sauvquit){
+            int n=0;
+
+    try {
+        File delete = new File("save.dat");
+        delete.delete();
+        FileOutputStream fichier = new FileOutputStream("save.dat");
+        DataOutputStream flux = new DataOutputStream(fichier);
+        flux.writeInt(colonne);
+        flux.writeInt(ligne);
+       
+        
+
+
+        for(int x=0;x<ligne ;x++) {
+            for(int y= 0;y<colonne;y++) {
+                switch(numbers[x][y]) {
+                    case 0:
+                    flux.writeByte(9);
+                    case 1 :
+                    flux.writeByte(1); 
+                    case 2 :
+                    flux.writeByte(2);
+                    case 3 :
+                    flux.writeByte(3);
+                    case 4 :
+                    flux.writeByte(4);
+                    case 5 :
+                    flux.writeByte(5);
+                    case 6 :
+                    flux.writeByte(6);
+                    case 7 :
+                    flux.writeByte(7);
+                    case 8 :
+                    flux.writeByte(8);
+                }   
+            }
+        }
+        for(int x=0;x<ligne ;x++) {
+            for(int y= 0;y<colonne;y++) {
+        if(presencemines[x][y] == true) {
+                    flux.writeByte(1);
+                } else if ( presencemines[x][y] == false){
+                    flux.writeByte(2);
+                }
+            }
+        }
+                for(int x=0;x<ligne ;x++) {
+            for(int y= 0;y<colonne;y++) {
+        if(clickable[x][y] == true) {
+                    flux.writeByte(1);
+                } else if ( clickable[x][y] == false){
+                    flux.writeByte(2);
+                }
+            }
+        }
+                for(int x=0;x<ligne ;x++) {
+            for(int y= 0;y<colonne;y++) {
+        if (clickdone[x][y] == true ) {
+                    flux.writeByte(1);
+                } else if ( clickdone[x][y] == false){
+                    flux.writeByte(2);
+                }
+            }
+        }
+                for(int x=0;x<ligne ;x++){
+            for(int y= 0;y<colonne;y++) {
+            if(buttons[x][y].getText() == "" ){
+                flux.writeByte(1);
+            }
+            if(buttons[x][y].getText() == "?" ){
+                flux.writeByte(2);
+            }
+            if(buttons[x][y].getText() == "★") {
+                flux.writeByte(3);
+                n++;
+            }
+            }       
+        }
+        nbrMines = nbrMines - n;
+         flux.writeByte(nbrMines);
+        flux.close();
+        Menu retourmenu = new Menu();
+        retourmenu.Menu1();
+        fenetre.dispose();
+    } catch (FileNotFoundException e1) {
+        System.err.println("Erreur pas de fichier");
+    } catch (IOException e2) {
+        System.err.println("Erreur pas de fichier");
+    }
         }
     }
     public void mouseEntered(MouseEvent e) {
