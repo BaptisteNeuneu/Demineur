@@ -32,12 +32,8 @@ public class Fenetre {
        this.nbrMines=nbrMines;
        this.nouveau=nouveau;
    }
- 
-    public void fenetre1() {
-        JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines);
-
-       if(!nouveau){
-        int n = 0;
+   public void restaurationsauvegarde(JLabel mineLabel){
+   int n = 0;
         try{
     FileInputStream fichier = new FileInputStream("save.dat");
     DataInputStream data = new DataInputStream(fichier);
@@ -125,24 +121,34 @@ System.err.println("FileNotFoundException");
 }catch(IOException e2){
 System.err.println("IOException");
 }
+   }
+   public void generationgrille(JLabel mineLabel){
+   for (int x = 0; x < ligne; x++) {
+    for (int y = 0; y < colonne; y++) {
+        presencemines[x][y] = false;
+        clickdone[x][y] = false;
+        clickable[x][y] = true;
+        buttons[x][y] = new JButton( );
+        buttons[x][y].setPreferredSize(new Dimension(35, 35));
+                ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
+    nbrMines, numbers,quitter2, newGameButton, mineLabel, fenetre,reglage,lost);
+        buttons[x][y].addActionListener(newbut);
+        buttons[x][y].addMouseListener(newbut);
+    }
+} 
+Case b = new Case();
+b.Mine(ligne,colonne,nbrMines,presencemines);
+b.fillnumbers(colonne,ligne,presencemines,numbers,nbrMines);
+}
+ 
+    public void fenetre1() {
+        JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines);
+
+       if(!nouveau){
+        restaurationsauvegarde(mineLabel);
        }else{
-        for (int x = 0; x < ligne; x++) {
-            for (int y = 0; y < colonne; y++) {
-                presencemines[x][y] = false;
-                clickdone[x][y] = false;
-                clickable[x][y] = true;
-                buttons[x][y] = new JButton( );
-                buttons[x][y].setPreferredSize(new Dimension(35, 35));
-                        ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
-            nbrMines, numbers,quitter2, newGameButton, mineLabel, fenetre,reglage,lost);
-                buttons[x][y].addActionListener(newbut);
-                buttons[x][y].addMouseListener(newbut);
-            }
-        } 
-    Case b = new Case();
-    b.Mine(ligne,colonne,nbrMines,presencemines);
-    b.fillnumbers(colonne,ligne,presencemines,numbers,nbrMines);
-        }
+           generationgrille(mineLabel);
+       }
 
          GridLayout layout = new GridLayout(ligne, colonne);
         p.setLayout(layout);
