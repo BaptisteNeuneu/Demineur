@@ -34,6 +34,7 @@ public class Fenetre {
    }
  
     public void fenetre1() {
+        JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines);
 
        if(!nouveau){
         int n = 0;
@@ -80,6 +81,7 @@ ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, but
 nbrMines, numbers,quitter2, newGameButton, mineLabel, fenetre,reglage,lost);
 buttons[x][y].addActionListener(newbut);
 buttons[x][y].addMouseListener(newbut);
+mineLabel.setText("nombre de mines restante : " + nbrMines);
 System.out.println("ajout");
 }
 }
@@ -113,7 +115,6 @@ System.out.println("ajout");
     nbrMines = nbrMines - n;
     nbrMines = data.readByte();
 
-    mineLabel.setText("nombre de mines restante : " + nbrMines );
     data.close();
 }catch(FileNotFoundException e3){
 System.err.println("FileNotFoundException");
