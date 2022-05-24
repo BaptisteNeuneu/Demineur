@@ -61,12 +61,16 @@ public class Menu2 {
 		
 		btJouer.setText("Jouer");	
 
-		/*Ajout actionlistener pour récupérer actions boutons et JtextField*/
+		/**
+		 * Ajout actionlistener pour récupérer actions boutons et JtextField
+		 */
 		ActionMenu2 amenu = new ActionMenu2(newLigne,newColonne,newnbrMines,btJouer,fenetre2);
 		
 		btJouer.addActionListener(amenu);
 		
-		/*Créer un JPanel et une grille dedans pour positionner les élements*/
+		/**
+		 * Créer un JPanel et une grille dedans pour positionner les élements
+		 */
 		JPanel panneau = new JPanel();	
 		GridLayout grille = new GridLayout(7, 1);
 		panneau.setLayout(grille);
@@ -88,7 +92,9 @@ public class Menu2 {
 		newColonne.setHorizontalAlignment(JTextField.CENTER);
 		newnbrMines.setHorizontalAlignment(JTextField.CENTER);
 		fenetre2.add(panneau);
-		/*Afficher menu2*/
+		/**
+		 * Afficher menu2
+		 */
         fenetre2.setVisible(true); 
 }
 }

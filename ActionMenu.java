@@ -36,7 +36,10 @@ private JFrame fenetre1;
         if(menu1.getSource() == newgame) {
             Menu2 newmenu2 =new Menu2();
             newmenu2.Menu21();
-            fenetre1.setVisible(false); /*Fait disparaître la fenêtre*/
+            fenetre1.setVisible(false); 
+            /**
+             * Fait disparaître la fenêtre
+             * */
 
         }else if(menu1.getSource() == reprendregame){
             Fenetre j = new Fenetre();

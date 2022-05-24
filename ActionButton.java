@@ -65,7 +65,10 @@ public class ActionButton implements ActionListener, MouseListener {
     }
     
     public void actionPerformed(ActionEvent e) {
-        //permet de relancer une partie avec un nombre de ligne,de colonne,de mines différend
+        /**
+         * permet de relancer une partie avec un nombre de ligne,
+         * de colonne,de mines différend
+         */
         if (e.getSource() == reglage) {
 
         ligne = Integer.parseInt((String) JOptionPane.showInputDialog(
@@ -119,7 +122,9 @@ public class ActionButton implements ActionListener, MouseListener {
         newGameButton.doClick();
         }
     }
-    //s'effectue à chaque clique gauche
+    /**
+     * s'effectue à chaque clique gauche
+     */
         if (!won) {
             for (int x = 0; x < ligne; x++) {
                 for (int y = 0; y < colonne; y++) {
@@ -135,13 +140,18 @@ public class ActionButton implements ActionListener, MouseListener {
         newtest.setTest(ligne, colonne, clickdone, clickable, presencemines,
          buttons, numbers, fenetre, lost);
         newtest.checkWin();
-        //revient au menu sans sauvegarder
+        /**
+         * revient au menu sans sauvegarder
+         */
         if(e.getSource() == quitter2) {
             Menu i = new Menu();
             i.Menu1();
             fenetre.dispose();
         }
-        //relance une partie avec les mêmes paramètres que la précédentes
+        /**
+         * relance une partie avec 
+         * les mêmes paramètres que la précédentes
+         */
         if (e.getSource() == newGameButton) {
             fenetre.setVisible(false);
             Fenetre newfenetre = new Fenetre();
@@ -154,21 +164,33 @@ public class ActionButton implements ActionListener, MouseListener {
             int n=0;
 
     try {
-        //supprime le fichier existant
+        /**
+         * supprime le fichier existant
+         */
         File delete = new File("save.dat");
         delete.delete();
-        //crée un nouveau fichier
+        /**
+         * crée un nouveau fichier
+         */
         FileOutputStream fichier = new FileOutputStream("save.dat");
-        //permet de rajouter ce que l'on veut mettre dns ce fichier
+        /**
+         * permet de rajouter ce que l'on veut mettre dns ce fichier
+         */
         DataOutputStream flux = new DataOutputStream(fichier);
-        //ajoute le nombre de colonne
+        /**
+         * ajoute le nombre de colonne
+         */
         flux.writeInt(colonne);
-        //ajoute le nombre de ligne
+        /**
+         * ajoute le nombre de ligne
+         */
         flux.writeInt(ligne);
        
         
 
-        //enregistre le nombre présent dans les cases
+        /**
+         * enregistre le nombre présent dans les cases
+         */
         for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
                 switch(numbers[x][y]) {
@@ -193,7 +215,9 @@ public class ActionButton implements ActionListener, MouseListener {
                 }   
             }
         }
-        //enregistre la présence ou non de mine
+        /**
+         * enregistre la présence ou non de mine
+         */
         for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if(presencemines[x][y] == true) {
@@ -203,7 +227,9 @@ public class ActionButton implements ActionListener, MouseListener {
                 }
             }
         }
-        //enregistre si la case est cliquable ou non
+        /**
+         * enregistre si la case est cliquable ou non
+         */
                 for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if(clickable[x][y] == true) {
@@ -213,7 +239,9 @@ public class ActionButton implements ActionListener, MouseListener {
                 }
             }
         }
-        //enregistre si la case a été cliquée ou non
+        /**
+         * enregistre si la case a été cliquée ou non
+         */
                 for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if (clickdone[x][y] == true ) {
@@ -223,7 +251,9 @@ public class ActionButton implements ActionListener, MouseListener {
                 }
             }
         }
-        //enregistre le caractere contenue dans la case
+        /**
+         * enregistre le caractere contenue dans la case
+         */
                 for(int x=0;x<ligne ;x++){
             for(int y= 0;y<colonne;y++) {
             if(buttons[x][y].getText() == "" ){
@@ -238,7 +268,9 @@ public class ActionButton implements ActionListener, MouseListener {
             }
             }       
         }
-        //enregistre le nombre de mines
+        /**
+         * enregistre le nombre de mines
+         */
         nbrMines = nbrMines - n;
          flux.writeByte(nbrMines);
         flux.close();
