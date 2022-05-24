@@ -2,7 +2,9 @@
 * @version 26/04/2022
 * @author Baptiste Nevejans
 */
-/**inclusion des bibliothèques*/
+/**
+ * inclusion des bibliothèques
+ */
 import java.awt.*;
 import javax.swing.*;
 import java.io.*;
@@ -245,7 +247,9 @@ b.fillnumbers(colonne,ligne,presencemines,numbers,nbrMines);
      */
         JMenuBar menubar = new JMenuBar();
         JMenu menupara = new JMenu("Paramettre");
-        //on ajoute les éléments à la fenètre
+        /**
+         * on ajoute les éléments à la fenètre
+         */
         reglage.addActionListener(newbut);
         newGameButton.addActionListener(newbut);
         quitter2.addActionListener(newbut);

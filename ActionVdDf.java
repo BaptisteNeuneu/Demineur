@@ -2,7 +2,9 @@
 * @version 11/05/2022
 * @author Nevejans Baptiste
 */
-/**inclusion des bibliothèques*/
+/**
+ * inclusion des bibliothèques
+ */
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;

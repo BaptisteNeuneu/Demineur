@@ -7,7 +7,6 @@ public class MainMenu {
     /** 
      * Classe main qui exécute qui permet
      * seulement l'éxécution du menu1
-     * 
      */
     public static void main(String[] args) {
     	Menu u = new Menu();

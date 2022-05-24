@@ -2,6 +2,10 @@
 * @version 09/05/2022
 * @author Baptiste Nevejans
 */
+/**
+ * inclusion des bibliothèques
+ */
+
 import java.awt.event.WindowEvent;
 import javax.swing.*;
 import java.awt.event.WindowListener;

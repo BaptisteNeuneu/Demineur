@@ -2,7 +2,10 @@
 * @version 28/04/2022
 * @author Brinet Félix
 */
-/**inclusion des bibliothèques*/
+/**
+ * inclusion des bibliothèques
+ */
+
 import java.awt.event.*;
 import javax.swing.*;
 
