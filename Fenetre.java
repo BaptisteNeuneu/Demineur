@@ -139,7 +139,6 @@ System.err.println("IOException");
     b.Mine(ligne,colonne,nbrMines,presencemines);
     b.fillnumbers(colonne,ligne,presencemines,numbers,nbrMines);
         }
-                JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines);
 
          GridLayout layout = new GridLayout(ligne, colonne);
         p.setLayout(layout);
