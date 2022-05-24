@@ -154,16 +154,21 @@ public class ActionButton implements ActionListener, MouseListener {
             int n=0;
 
     try {
+        //supprime le fichier existant
         File delete = new File("save.dat");
         delete.delete();
+        //crée un nouveau fichier
         FileOutputStream fichier = new FileOutputStream("save.dat");
+        //permet de rajouter ce que l'on veut mettre dns ce fichier
         DataOutputStream flux = new DataOutputStream(fichier);
+        //ajoute le nombre de colonne
         flux.writeInt(colonne);
+        //ajoute le nombre de ligne
         flux.writeInt(ligne);
        
         
 
-
+        //enregistre le nombre présent dans les cases
         for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
                 switch(numbers[x][y]) {
@@ -188,6 +193,7 @@ public class ActionButton implements ActionListener, MouseListener {
                 }   
             }
         }
+        //enregistre la présence ou non de mine
         for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if(presencemines[x][y] == true) {
@@ -197,6 +203,7 @@ public class ActionButton implements ActionListener, MouseListener {
                 }
             }
         }
+        //enregistre si la case est cliquable ou non
                 for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if(clickable[x][y] == true) {
@@ -206,6 +213,7 @@ public class ActionButton implements ActionListener, MouseListener {
                 }
             }
         }
+        //enregistre si la case a été cliquée ou non
                 for(int x=0;x<ligne ;x++) {
             for(int y= 0;y<colonne;y++) {
         if (clickdone[x][y] == true ) {
@@ -215,6 +223,7 @@ public class ActionButton implements ActionListener, MouseListener {
                 }
             }
         }
+        //enregistre le caractere contenue dans la case
                 for(int x=0;x<ligne ;x++){
             for(int y= 0;y<colonne;y++) {
             if(buttons[x][y].getText() == "" ){
@@ -229,6 +238,7 @@ public class ActionButton implements ActionListener, MouseListener {
             }
             }       
         }
+        //enregistre le nombre de mines
         nbrMines = nbrMines - n;
          flux.writeByte(nbrMines);
         flux.close();

@@ -218,7 +218,7 @@ public class Test {
             buttons[x][y].setIcon(iconbombe);
             if(presencemines[x][y]){
                 doLose();
-                }
+                
             for ( x = 0; x < ligne; x++) {
                 for( y=0;y<colonne;y++){
                 if (!clickdone[x][y]) {
@@ -232,6 +232,7 @@ public class Test {
                 }
             }
             }
+        }
 
         }
     }

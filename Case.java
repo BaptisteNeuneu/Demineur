@@ -4,7 +4,7 @@
 **/
 public class Case {
 
-
+    //place les mines aleatoirement dans le tableau
     public void Mine(int ligne,int colonne,int nbrMines,boolean[][] presencemines) {
     int minerestant = nbrMines;
         while (minerestant > 0) {
@@ -15,7 +15,8 @@ public class Case {
                 minerestant--;
             }
         }
-}
+}   
+    //place les nombres dans les cases en fonctions du nobre de mines autour de celle-ci
     public void fillnumbers(int colonne,int ligne,boolean[][] presencemines,int[][] numbers,int nbrMines) {
         for (int x = 0; x < ligne; x++) {
             for (int y = 0; y < colonne; y++) {
