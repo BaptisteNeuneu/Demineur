@@ -10,8 +10,8 @@ public class Case {
         while (minerestant > 0) {
             int x = (int) Math.floor(Math.random() * ligne);
             int y = (int) Math.floor(Math.random() * colonne);
-            if (!presencemines[y][x] ) {
-                presencemines[y][x]= true;
+            if (!presencemines[x][y] ) {
+                presencemines[x][y]= true;
                 minerestant--;
             }
         }
