@@ -5,6 +5,7 @@
 /**inclusion des bibliothèques*/
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.*;
 
 public class ActionVdDf implements ActionListener {
 private JButton remenudef;
@@ -21,6 +22,20 @@ private JFrame fenetre = new JFrame();
 		this.fendefaite=fendefaite;
 		this.fenetre=fenetre;
 	}
+
+	// public void deleteSave (){
+	// 	try{
+	// 		File file = new File("save.dat");
+	// 		file.delete();
+	// 		if(file.delete()){
+	// 		 System.out.println(file.getName() + " est supprimé.");
+	// 		}else{
+	// 		 System.out.println("Opération de suppression echouée");
+	// 		}
+	// 	   }catch(Exception e){
+	// 		e.printStackTrace();
+	// 	   }
+	// }
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()== remenudef){
@@ -28,12 +43,19 @@ private JFrame fenetre = new JFrame();
 			i.Menu1();
 			fendefaite.dispose();
 			fenetre.dispose();
+			File delete = new File("save.dat");
+        	delete.delete();
+			// deleteSave();
+        	
 		}
 		if(e.getSource() == remenuvic) {
 			Menu i = new Menu();
 			i.Menu1();
 			fenvictoire.dispose();
 			fenetre.dispose();
+			File delete = new File("save.dat");
+        	delete.delete();
+			// deleteSave();
 		}
 }
 }
