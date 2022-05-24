@@ -17,12 +17,12 @@ public class Fenetre {
     private int[][] numbers = new int[ligne][colonne];
     private boolean[][] clickdone = new boolean[ligne][colonne];
     private boolean lost;
-    JMenuItem quitter2 = new JMenuItem("quitter");
-    JButton[][] buttons = new JButton[ligne][colonne];
-    JMenuItem newGameButton = new JMenuItem("nouvelle partie");
-    JMenuItem reglage = new JMenuItem("option");
-    JPanel p = new JPanel();
-    boolean nouveau;
+    private JMenuItem quitter2 = new JMenuItem("quitter");
+    private JButton[][] buttons = new JButton[ligne][colonne];
+    private JMenuItem newGameButton = new JMenuItem("nouvelle partie");
+    private JMenuItem reglage = new JMenuItem("option");
+    private JPanel p = new JPanel();
+    private boolean nouveau;
     private JButton sauvquit= new JButton("Sauvegarder Quitter");
 
     
@@ -32,120 +32,9 @@ public class Fenetre {
        this.nbrMines=nbrMines;
        this.nouveau=nouveau;
    }
-
-   public void reprisepartie(JLabel mineLabel){
-
-        int n = 0;
-                    try{
-                FileInputStream fichier = new FileInputStream("save.dat");
-                DataInputStream data = new DataInputStream(fichier);
-                colonne=data.readInt();
-                ligne=data.readInt(); 
-
-                for(int x=0;x<ligne ;x++){
-                    for(int y= 0;y<colonne;y++) {
-                        numbers[x][y] = data.readByte();
-                        System.out.println("nombre");
-                    }
-                }
-                for(int x=0;x<ligne ;x++){
-                    for(int y= 0;y<colonne;y++) {
-                         if(data.readByte() == 10){
-                            presencemines[x][y]=true;
-                            System.out.println("true");
-                        } else if(data.readByte() == 11){
-                            presencemines[x][y]=false;
-                            System.out.println("false");
-                        }
-                    }
-                }
-                    for(int x=0;x<ligne ;x++){
-                    for(int y= 0;y<colonne;y++) {
-                        if(data.readByte() == 12){
-                            clickable[x][y]=true;
-                            System.out.println("true");
-                        } else if(data.readByte() == 13){
-                            clickable[x][y]=false;
-                            System.out.println("false");
-                        }
-                    }
-                }
-                   for(int x=0;x<ligne ;x++){
-                    for(int y= 0;y<colonne;y++) {
-                        clickdone[x][y] = false;
-                        buttons[x][y] = new JButton( );
-            buttons[x][y].setPreferredSize(new Dimension(35, 35));
-            ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
-        nbrMines, numbers,quitter2, newGameButton, mineLabel, fenetre,reglage,lost);
-            buttons[x][y].addActionListener(newbut);
-            buttons[x][y].addMouseListener(newbut);
-            System.out.println("ajout");
-        }
-    }
-
-
-                    for(int x=0;x<ligne ;x++){
-                    for(int y= 0;y<colonne;y++) {
-                        if(data.readByte() == 14){
-                            buttons[x][y].doClick();
-                            System.out.println("clique");
-                        } else if(data.readByte() == 15){
-                        System.out.println("pas clique");
-                    }
-                }
-            }
-                for(int x=0;x<ligne ;x++){
-                    for(int y= 0;y<colonne;y++) {
-                    if(   data.readByte() == 16){
-                        buttons[x][y].setText("");
-                        System.out.println("espace");
-                    } else if(   data.readByte() == 17){
-                        buttons[x][y].setText("?");
-                        System.out.println("?");
-                    } else if(   data.readByte() == 18){
-                        buttons[x][y].setText("★");
-                        System.out.println("★");
-                        n++;
-                    }
-                    }       
-                }
-                nbrMines = nbrMines - n;
-                nbrMines = data.readByte();
-
-                mineLabel.setText("nombre de mines restante : " + nbrMines );
-                data.close();
-        }catch(FileNotFoundException e3){
-            System.err.println("FileNotFoundException");
-        }catch(IOException e2){
-            System.err.println("IOException");
-        }
-        } 
-
-   public void generationgrille(){
-    JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines );
-    for (int x = 0; x < ligne; x++) {
-        for (int y = 0; y < colonne; y++) {
-            presencemines[x][y] = false;
-            clickdone[x][y] = false;
-            clickable[x][y] = true;
-            buttons[x][y] = new JButton( );
-            buttons[x][y].setPreferredSize(new Dimension(35, 35));
-                    ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
-        nbrMines, numbers,quitter2, newGameButton, mineLabel, fenetre,reglage,lost);
-            buttons[x][y].addActionListener(newbut);
-            buttons[x][y].addMouseListener(newbut);
-        }
-    } 
-    Case b = new Case();
-    b.Mine(ligne,colonne,nbrMines,presencemines);
-    b.fillnumbers(colonne,ligne,presencemines,numbers,nbrMines);
-    }
  
     public void fenetre1() {
-        JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines);
 
-         GridLayout layout = new GridLayout(ligne, colonne);
-        p.setLayout(layout);
        if(!nouveau){
         int n = 0;
         try{
@@ -249,6 +138,10 @@ System.err.println("IOException");
     b.Mine(ligne,colonne,nbrMines,presencemines);
     b.fillnumbers(colonne,ligne,presencemines,numbers,nbrMines);
         }
+                JLabel mineLabel = new JLabel("nombre de mines restante : " + nbrMines);
+
+         GridLayout layout = new GridLayout(ligne, colonne);
+        p.setLayout(layout);
 
         ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
         nbrMines, numbers,quitter2, newGameButton, mineLabel, fenetre,reglage,lost);
