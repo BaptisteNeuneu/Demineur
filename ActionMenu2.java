@@ -80,7 +80,7 @@ public ActionMenu2(JTextField newLigne,JTextField newColonne,JTextField newnbrMi
              * en même temps sinon le programme se lance alors qu'il y a trop
              * de mines.
             */
-            }else if(ligne<30 || ligne > 4 || colonne < 30 || colonne > 4|| nbrMines < ligne * colonne){
+            }else if(ligne<30 && ligne > 4 && colonne < 30 && colonne > 4 && nbrMines < ligne * colonne){
               Fenetre newFenetre =new Fenetre();
               boolean nouveau = true;
               newFenetre.setFenetre(ligne,colonne,nbrMines,nouveau);
