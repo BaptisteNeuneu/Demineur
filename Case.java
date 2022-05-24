@@ -4,21 +4,8 @@
 **/
 public class Case {
 
-	private int ligne;
-    private int colonne;
-    private boolean[][] presencemines;
-    private int[][] numbers;
-    private int nbrMines;
 
-	public void setCase(int colonne,int ligne,boolean[][] presencemines,int[][] numbers,int nbrMines) {
-		this.ligne=ligne;
-		this.colonne=colonne;
-		this.presencemines=presencemines;
-		this.numbers=numbers;
-		this.nbrMines=nbrMines;
-	}
-
-    public void Mine() {
+    public void Mine(int ligne,int colonne,int nbrMines,boolean[][] presencemines) {
     int minerestant = nbrMines;
         while (minerestant > 0) {
             int x = (int) Math.floor(Math.random() * ligne);
@@ -28,8 +15,8 @@ public class Case {
                 minerestant--;
             }
         }
-    }
-    public void fillnumbers() {
+}
+    public void fillnumbers(int colonne,int ligne,boolean[][] presencemines,int[][] numbers,int nbrMines) {
         for (int x = 0; x < ligne; x++) {
             for (int y = 0; y < colonne; y++) {
                 if (presencemines[x][y]) {

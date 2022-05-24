@@ -136,10 +136,9 @@ public class Fenetre {
             buttons[x][y].addMouseListener(newbut);
         }
     } 
-Case b = new Case();
-b.setCase(colonne,ligne,presencemines,numbers,nbrMines);
-b.Mine();
-b.fillnumbers();
+    Case b = new Case();
+    b.Mine(ligne,colonne,nbrMines,presencemines);
+    b.fillnumbers(colonne,ligne,presencemines,numbers,nbrMines);
     }
  
     public void fenetre1() {
@@ -247,9 +246,8 @@ System.err.println("IOException");
             }
         } 
     Case b = new Case();
-    b.setCase(colonne,ligne,presencemines,numbers,nbrMines);
-    b.Mine();
-    b.fillnumbers();
+    b.Mine(ligne,colonne,nbrMines,presencemines);
+    b.fillnumbers(colonne,ligne,presencemines,numbers,nbrMines);
         }
 
         ActionButton newbut = new ActionButton(ligne, colonne, clickdone, clickable, buttons, presencemines, 
