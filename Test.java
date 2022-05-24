@@ -38,6 +38,7 @@ public class Test {
 
         
     }
+    /**Effectue les tests pour chaque case lorsqu'elles sont cliquées */
     public void doCheck(int x, int y) {
         boolean l = (y - 1) >= 0;
         boolean r = (y + 1) < colonne;
@@ -49,7 +50,8 @@ public class Test {
         int down = (x + 1);
         clickdone[x][y] = true;
         buttons[x][y].setEnabled(false);
-        if (numbers[x][y] == 0 && !presencemines[x][y] && !lost && !won) {
+        /** vérifie que la case a un nombre de zero , que ce n'est pas une mine et que l'on a pas gagné */
+        if (numbers[x][y] == 0 && !presencemines[x][y]  && !won) {
             if (u && !won) {
                 if (!clickdone[up][y] && !presencemines[up][y]) {
                     clickdone[up][y] = true;
