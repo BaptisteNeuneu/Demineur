@@ -80,9 +80,8 @@ public class ActionButton implements ActionListener, MouseListener {
                 for (int y = 0; y < colonne; y++) {
                     if (e.getSource() == buttons[x][y]
                      && clickable[x][y]) {
-                                newtest.setTest(ligne, colonne,clickdone, 
-                                clickable, presencemines, buttons, numbers,
-                                  fenetre, lost);     
+                    newtest.setTest(ligne, colonne,clickdone, clickable, presencemines, buttons, numbers,
+                    fenetre, lost);     
                         newtest.doCheck(x, y);
                             }
                 }
@@ -116,7 +115,7 @@ public class ActionButton implements ActionListener, MouseListener {
             int n = 0;
             for (int x = 0; x < ligne; x++) {
                 for (int y = 0; y < colonne; y++) {
-                    if (e.getSource() == buttons[(31 * y+x)]) {
+                    if (e.getSource() == buttons[x][y]) {
                         if (!clickdone[x][y]) {
                             if(buttons[x][y].getText() == "") {
                             buttons[x][y].setText("★");

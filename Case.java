@@ -40,11 +40,11 @@ public class Case {
                 int temp = 0;
                 boolean l = (y - 1) >= 0;
                 boolean r = (y + 1) < colonne;
-                boolean u = (x - 1) <= 0;
-                boolean d = (x + 1) > ligne;
+                boolean u = (x - 1) >= 0;
+                boolean d = (x + 1) < ligne;
                 int left = (y - 1);
-                int right = y + 1;
-                int up = x -1;
+                int right = (y + 1);
+                int up = (x -1);
                 int down = (x + 1);
                 if (u) {
                     if (presencemines[up][y]) {
