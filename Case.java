@@ -28,23 +28,12 @@ public class Case {
                 minerestant--;
             }
         }
-        for(int x = 0;x<ligne ;x++){
-            for(int y = 0;y<colonne;y++){
-                if(presencemines[x][y]){
-                    System.out.print("9");
-                } else {
-                System.out.print("0");
-                }
-            }
-            System.out.println("");
-        }
-        System.out.println("");
-}
+    }
     public void fillnumbers() {
         for (int x = 0; x < ligne; x++) {
             for (int y = 0; y < colonne; y++) {
                 if (presencemines[x][y]) {
-                    numbers[x][y] = 9;
+                    numbers[x][y] = 0;
                     continue;
                 }
                 int temp = 0;
@@ -98,12 +87,6 @@ public class Case {
                 }
                 numbers[x][y] = temp;
             }
-        }
-        for(int x = 0;x<ligne ;x++){
-            for(int y = 0;y<colonne;y++){
-                System.out.print(numbers[x][y]);
-            }
-            System.out.println("");
         }
     }
 
