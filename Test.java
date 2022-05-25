@@ -263,7 +263,7 @@ public class Test {
             if(presencemines[x][y]){
                 doLose();
                 /**
-                 * Revelation des cases demandé mais ouvre plusieur fois doLose
+                 * Revelation des cases demandé mais problème, ouvre plusieurs fois doLose
                  */
             for ( x = 0; x < ligne; x++) {
                 for( y=0;y<colonne;y++){
@@ -333,7 +333,8 @@ public class Test {
             JLabel def = new JLabel("Tu as perdue! Retour au menu");
             remenudef = new JButton("OK");
             /**
-             * ajoute un listener qui va fermer la fenetre de jeu et du message defaite et supprimer la sauvegarde actuelle
+             * ajoute un listener qui va fermer la fenetre de jeu et du message
+             * defaite et supprimer la sauvegarde actuelle
              */
             ActionVdDf clique = new ActionVdDf(remenudef,remenuvic,fendefaite,fenvictoire,fenetre);
             remenudef.addActionListener(clique);
@@ -360,7 +361,8 @@ public class Test {
             JPanel f = new JPanel();
             f.setLayout(apparence);
              /**
-             * ajoute un listener qui va fermer la fenetre de jeu et du message victire et supprimer la sauvegarde actuelle
+             * ajoute un listener qui va fermer la fenetre de jeu 
+             * et du message victire et supprimer la sauvegarde actuelle
              */
             ActionVdDf clique = new ActionVdDf(remenudef,remenuvic,fenvictoire,fendefaite,fenetre);
             f.add(vic);

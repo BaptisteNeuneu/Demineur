@@ -16,7 +16,7 @@ public class Menu{
      */
     private JButton newgame = new JButton("Nouvelle Partie");
     private JButton reprendregame = new JButton("Reprendre la partie");
-    private JButton quitter = new JButton("Quitter la partie");
+    private JButton quitter = new JButton("Quitter la    partie");
     /**
      * Un objet pour servir de fenetre1
      */

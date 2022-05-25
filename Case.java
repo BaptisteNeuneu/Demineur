@@ -1,6 +1,6 @@
 /**
 * @version 26/04/2022
-* @author Felix Brinetigne
+* @author Felix Brinet
 **/
 public class Case {
 
