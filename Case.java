@@ -30,15 +30,46 @@ public class Case {
                     numbers[x][y] = 0;
                     continue;
                 }
+                /**
+                 * la case commence avec la valeur 0
+                 * et augmente si il y a des mines autour
+                 */
                 int temp = 0;
-                boolean l = (y - 1) >= 0;
-                boolean r = (y + 1) < colonne;
-                boolean u = (x - 1) >= 0;
-                boolean d = (x + 1) < ligne;
-                int left = (y - 1);
-                int right = (y + 1);
-                int up = (x -1);
-                int down = (x + 1);
+        /**
+         * Vérifie que l'on a pas dépassé la case la plus à gauche
+         */
+        boolean l = (y - 1) >= 0;
+        /**
+         * Vérifie que l'on a pas dépassé la case la plus à droite
+         */
+        boolean r = (y + 1) < colonne;
+        /**
+         * Vérifie que l'on a pas dépassé la case la plus en haut
+         */
+        boolean u = (x - 1) >= 0;
+        /**
+         * Vérifie la case la plus en bas
+         */
+        boolean d = (x + 1) < ligne;
+        /**
+         * Permet de regarder la case à gauche
+         */
+        int left = (y - 1); 
+        /**
+         * Permet de regarder la case à droite
+         */                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+        int right = (y + 1);
+        /**
+         * Permet de regarder la case juste au-dessus
+         */
+        int up = (x -1);
+        /**
+         * Permet de regarder la case juste en-dessous
+         */
+        int down = (x + 1);
+        /**
+         * vérifie pour chaque position utour de la caase si il y a une mine
+         */
                 if (u) {
                     if (presencemines[up][y]) {
                         temp++;
@@ -79,6 +110,9 @@ public class Case {
                         temp++;
                     }
                 }
+                /**
+                 * la case recupère le nombre de mine autour de cette case
+                 */
                 numbers[x][y] = temp;
             }
         }
