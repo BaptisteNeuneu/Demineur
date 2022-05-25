@@ -94,7 +94,6 @@ public class Fenetre {
     for(int x=0;x<ligne ;x++){
         for(int y= 0;y<colonne;y++) {
             numbers[x][y] = data.readByte();
-            System.out.println("nombre");
         }
     }
     /**
@@ -105,10 +104,8 @@ public class Fenetre {
         for(int y= 0;y<colonne;y++) {
              if(data.readByte() == 1){
                 presencemines[x][y]=true;
-                System.out.println("true");
             } else if(data.readByte() == 2){
                 presencemines[x][y]=false;
-                System.out.println("false");
             }
         }
     }
@@ -120,10 +117,8 @@ public class Fenetre {
         for(int y= 0;y<colonne;y++) {
             if(data.readByte() == 1){
                 clickable[x][y]=true;
-                System.out.println("true");
             } else if(data.readByte() == 2){
                 clickable[x][y]=false;
-                System.out.println("false");
             }
         }
     }
@@ -152,9 +147,8 @@ buttons[x][y].addMouseListener(newbut);
         for(int y= 0;y<colonne;y++) {
             if(data.readByte() == 1){
                 buttons[x][y].doClick();
-                System.out.println("clique");
-            } else if(data.readByte() == 2){
-            System.out.println("pas clique");
+            } else if(data.readByte() == 2){      
+            continue;
         }
     }
 }
@@ -165,13 +159,10 @@ buttons[x][y].addMouseListener(newbut);
         for(int y= 0;y<colonne;y++) {
         if(   data.readByte() == 1){
             buttons[x][y].setText("");
-            System.out.println("espace");
         } else if(   data.readByte() == 2){
             buttons[x][y].setText("?");
-            System.out.println("?");
         } else if(   data.readByte() == 3){
             buttons[x][y].setText("★");
-            System.out.println("★");
             n++;
         }
         }       
