@@ -58,8 +58,14 @@ private JFrame fenetre = new JFrame("fenetre");
 			 * lors de la défaite
 			 */
 			deleteSave();
+			/**
+			 * renvoie au premier menu
+			 */
 			Menu i = new Menu();
 			i.Menu1();
+			/**
+			 * supprime la fenetre de victoire et la fenetre de jeu
+			 */
 			fendefaite.dispose();
 			fenetre.dispose();
 			
@@ -72,8 +78,14 @@ private JFrame fenetre = new JFrame("fenetre");
 			 * lors de la victoire
 			 */
 			deleteSave();
+			/**
+			 * renvoie au premier menu
+			 */
 			Menu i = new Menu();
 			i.Menu1();
+			/**
+			 * supprime la fenetre de victoire et la fenetre de jeu
+			 */
 			fenvictoire.dispose();
 			fenetre.dispose();
 

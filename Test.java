@@ -45,14 +45,41 @@ public class Test {
      * Effectue les tests pour chaque case lorsqu'elles sont cliquées 
      */
     public void doCheck(int x, int y) {
+        /**
+         * Vérifie que l'on a pas dépassé la case la plus à gauche
+         */
         boolean l = (y - 1) >= 0;
+        /**
+         * Vérifie que l'on a pas dépassé la case la plus à droite
+         */
         boolean r = (y + 1) < colonne;
+        /**
+         * Vérifie que l'on a pas dépassé la case la plus en haut
+         */
         boolean u = (x - 1) >= 0;
+        /**
+         * Vérifie la case la plus en bas
+         */
         boolean d = (x + 1) < ligne;
-        int left = (y - 1);                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+        /**
+         * Permet de regarder la case à gauche
+         */
+        int left = (y - 1); 
+        /**
+         * Permet de regarder la case à droite
+         */                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         int right = (y + 1);
+        /**
+         * Permet de regarder la case juste au-dessus
+         */
         int up = (x -1);
+        /**
+         * Permet de regarder la case juste en-dessous
+         */
         int down = (x + 1);
+        /**
+         * Le bouton a été cliqué et il est désactivé
+         */
         clickdone[x][y] = true;
         buttons[x][y].setEnabled(false);
         /**
@@ -60,55 +87,57 @@ public class Test {
          * que ce n'est pas une mine et que l'on a pas gagné 
          */
         if (numbers[x][y] == 0 && !presencemines[x][y]  && !won) {
+            /**
+             * Vérifie à chaque fois la case en haut,en haut à gauche
+             * En haut à droite,en bas,en bas à gauche,en bas à droite
+             * à gauche et à droite.
+             * On vérifie ensuite que la case n'a pas déja été cliqué.
+             * Puis le clique devient vrai et on clique sur la case
+             */
             if (u && !won) {
-                if (!clickdone[up][y] && !presencemines[up][y]) {
+                if (!clickdone[up][y] ) {
                     clickdone[up][y] = true;
                     buttons[up][y].doClick();
                 }
                 if (l && !won) {
-                    if (!clickdone[up][left] && numbers[up][left] != 0
-                            && !presencemines[up][left]) {
+                    if (!clickdone[up][left]  ) {
                         clickdone[up][left] = true;
                         buttons[up][left].doClick();
                     }
                 }
                 if (r && !won) {
-                    if (!clickdone[up][right] && numbers[up][right] != 0
-                            && !presencemines[up][right]) {
+                    if (!clickdone[up][right]) {
                         clickdone[up][right] = true;
                         buttons[up][right].doClick();
                     }
                 }
             }
             if (d && !won) {
-                if (!clickdone[down][y] && !presencemines[down][y]) {
+                if (!clickdone[down][y] ) {
                     clickdone[down][y] = true;
                     buttons[down][y].doClick();
                 }
                 if (l && !won) {
-                    if (!clickdone[down][left] && numbers[down][left] != 0
-                            && !presencemines[down][left]) {
+                    if (!clickdone[down][left]  ) {
                         clickdone[down][left] = true;
                         buttons[down][left].doClick();
                     }
                 }
                 if (r && !won) {
-                    if (!clickdone[down][right]
-                            && numbers[down][right] != 0
-                            && !presencemines[down][right]) {
+                    if (!clickdone[down][right] ) {
                         clickdone[down][right] = true;
                         buttons[down][right].doClick();
                     }
                 }
             }
             if (l && !won) {
-                if (!clickdone[x][left] && !presencemines[x][left]) {
+                if (!clickdone[x][left] ) {
                     clickdone[x][left] = true;
                     buttons[x][left].doClick();
                 }
             }
             if (r && !won) {
-                if (!clickdone[x][right] && !presencemines[x][right]) {
+                if (!clickdone[x][right] ) {
                     clickdone[x][right] = true;
                     buttons[x][right].doClick();
                 }
@@ -228,9 +257,14 @@ public class Test {
                     buttons[x][y].setBorderPainted(false);
 
             buttons[x][y].setIcon(iconbombe);
+            /**
+             * Si clique sur la bombe alors la fin ce lance
+             */
             if(presencemines[x][y]){
                 doLose();
-                
+                /**
+                 * Revelation des cases demandé mais ouvre plusieur fois doLose
+                 */
             for ( x = 0; x < ligne; x++) {
                 for( y=0;y<colonne;y++){
                 if (!clickdone[x][y]) {
@@ -250,11 +284,17 @@ public class Test {
     }
  
 
-
+    /**
+     * Vérifie la victoire
+     */
     public void checkWin() {
         if(won == false){
         for (int x = 0; x < ligne; x++) {
             for (int y = 0; y < colonne; y++ ) {
+                /**
+                 * vérifie que les cases qui n'ont pas été cliqué sont des mines et 
+                 * que celle qui ont été cliqué ne sont pas des mines
+                 */
                 if (!clickdone[x][y]) {
                     if (presencemines[x][y]) {
                         continue;
@@ -268,9 +308,16 @@ public class Test {
                 }
             }
         }
+        /**
+         * réalise la fonction victoire
+         */
         doWin();
     }
     }
+
+    /**
+     * la fonction doLOse affiche une fenetre de defaite
+     */
     public void doLose() {
         if (lost == false && !won) {
                 lost = true;
@@ -285,6 +332,9 @@ public class Test {
             f.setLayout(apparence);
             JLabel def = new JLabel("Tu as perdue! Retour au menu");
             remenudef = new JButton("OK");
+            /**
+             * ajoute un listener qui va fermer la fenetre de jeu et du message defaite et supprimer la sauvegarde actuelle
+             */
             ActionVdDf clique = new ActionVdDf(remenudef,remenuvic,fendefaite,fenvictoire,fenetre);
             remenudef.addActionListener(clique);
             f.add(def);
@@ -293,7 +343,9 @@ public class Test {
             fendefaite.setVisible(true);
         }
     }
- 
+    /**
+     * La fonction doWon affiche une fenetre de victoire
+     */
     public void doWin() {
         if (lost == false && won == false) {
             won = true;
@@ -307,6 +359,9 @@ public class Test {
             GridLayout apparence = new GridLayout(2,1);
             JPanel f = new JPanel();
             f.setLayout(apparence);
+             /**
+             * ajoute un listener qui va fermer la fenetre de jeu et du message victire et supprimer la sauvegarde actuelle
+             */
             ActionVdDf clique = new ActionVdDf(remenudef,remenuvic,fenvictoire,fendefaite,fenetre);
             f.add(vic);
             remenuvic.addActionListener(clique);
